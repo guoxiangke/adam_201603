@@ -1,0 +1,26 @@
+# Chinese, Simplified translation of Batch add terms (7.x-1.1)
+# Copyright (c) 2015 by the Chinese, Simplified translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Batch add terms (7.x-1.1)\n"
+"POT-Creation-Date: 2015-11-13 01:54+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Chinese, Simplified\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Operations"
+msgstr "操作"
+msgid "Weight"
+msgstr "权重"
+msgid "Add"
+msgstr "添加"
+msgid "Vocabulary name"
+msgstr "术语表名称"
+msgid "Terms"
+msgstr "术语"
+msgid "No vocabularies available. <a href=\"@link\">Add vocabulary</a>."
+msgstr "没有可用的词汇表。<a href=\"@link\">添加词汇表</a>。"

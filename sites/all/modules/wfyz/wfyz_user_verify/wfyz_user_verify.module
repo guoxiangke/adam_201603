@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the wfyz user verify feature.
+ */
+
+include_once 'wfyz_user_verify.features.inc';

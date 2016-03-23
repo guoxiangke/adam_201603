@@ -1,0 +1,6 @@
+name = zdruerp
+description = zdruerp
+core = 7.x
+package = A-DEV
+
+dependencies[] = subuser

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the wfyz commerce service feature.
+ */
+
+include_once 'wfyz_commerce_service.features.inc';

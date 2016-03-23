@@ -1,0 +1,994 @@
+li {
+    list-style: none;
+}
+.marginTop50{
+    margin-top: 50px;
+}
+.marginTop30{
+    margin-top: 30px;
+}
+.marginTop10{
+    margin-top: 10px;
+}
+.marginRight{
+    margin-right:20px ;
+}
+.marginLeft{
+    margin-left: 10px;
+}
+#_pageContent h1,#_pageContent h2,#_pageContent h3,#_pageContent h4,#_pageContent h5,#_pageContent h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-weight:normal
+}
+
+.h2{
+    font-size: 24px;
+    font-family:"Microsoft YaHei",'微软雅黑',"MicrosoftJhengHei",'华文细黑',"STHeiti,MingLiu";
+}
+.h5{
+    font-size: 14px;
+    font-family:"Microsoft YaHei",'微软雅黑',"MicrosoftJhengHei",'华文细黑',"STHeiti,MingLiu";
+}
+
+/*搜索框**/
+#home_daohang .seacher_mod{
+	width:750px;
+	margin:10px auto;
+	height:60px;
+	position:relative;
+	}
+#home_daohang .seacher_module{
+	border:1px #f2f2f2 solid;
+	width:550px;
+	height:40px;
+	float:left !important;
+	position:relative;
+
+	}
+#home_daohang .seacher_module .seacher_menu{
+	position:absolute;
+	top:2px;
+	left:2px;
+	}
+#home_daohang .seacher_module .seacher_menu #dropdownMenu1{
+	background:#00b8ee;
+	border:none;
+	border-radius:0;
+	color:#ffffff;
+	width:92px;
+	 height:35px;
+	  line-height:35px;
+	  padding:0;
+	  text-align:center;
+	
+	
+	}
+#home_daohang .seacher_module .seacher_menu .dropdown-menu{
+	  width:92px;
+	  border-radius:0;
+	  min-width:92px;
+	  background:#6bc6fc;
+	
+	 
+	}
+#home_daohang .seacher_module .seacher_menu .dropdown-menu li a{
+	   color:#ffffff;
+	}
+#home_daohang .seacher_module .seacher_input{
+	width:550px;
+	padding:0 100px;
+	height:40px;
+	line-height:40px;
+	border-radius:0px;
+	
+	}
+#home_daohang .seacher_module .seacher_input:facus{
+   font-size:12px;
+   height:38px;
+   width:60%;
+   color:#cccccc;
+   line-height:38px;
+   border:none !important; 
+	}
+#home_daohang .seacher_module .seacher_icon{
+	position:absolute;
+	top:2px;
+	right:2px;}
+#home_daohang .seacher_btn{
+	position:absolute;
+	height:40px;
+	line-height:40px;
+	top:10px;
+	right:10px;
+	color:#999999;
+	
+	}
+#home_daohang .seacher_btn .fabuxuqiu{
+	background:#00b8ee;
+	height:38px;
+	line-height:38px;
+	display:inline-block;
+	color:#fff;
+	padding:0 30px;
+	margin-left:30px;
+	border-radius:0;
+	border:none;
+	}
+
+
+/*<!--在这里有你所需的一切-->*/
+
+#DemandServicesModule {
+    width: 100%;
+    padding-bottom: 50px;
+    font-family: "宋体";
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#DemandServicesModule .DemandServices {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    /* IE */
+    -moz-opacity: 0.8;
+    /* 老版Mozilla */
+    -khtml-opacity: 0.8;
+    /* 老版Safari */
+    width: 100%;
+    margin: 0 auto;
+}
+
+#DemandServicesModule .DemandServices .ds_container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+#DemandServicesModule .ds_ul {
+    overflow: hidden;
+    /*background:#f8f9fb ;*/
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li {
+    float: left;
+    width: 225px;
+    height: 300px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh {
+    position: absolute;
+    width: 675px;
+    height: 300px;
+    overflow: hidden;
+    z-index: 5;
+    position: relative;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .left {
+    overflow: hidden;
+    display: block;
+    float: left;
+    width: 225px;
+    height: 300px;
+    position: absolute;
+    left: 0px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .right {
+    float: left;
+    width: 448px;
+    height: 300px;
+    position: absolute;
+    left: 225px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .zxfwbg {
+    background-image:url(../images/xzfwbg.png);
+    background-repeat: no-repeat;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .erpbg {
+    background-image:url(../images/erpbg.png);
+    background-repeat: no-repeat;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .zlbg {
+    background-image: url(../images/zlbg.png);
+    background-repeat: no-repeat;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .dxyqbg {
+    background-image: url(../images/dxyqbg.png);
+    background-repeat: no-repeat;
+}
+
+/*.action1 {
+    width: 450px;
+}*/
+
+#DemandServicesModule .ds_ul>.ds_ul_li:hover {
+    width: 450px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li:hover .left {
+    left: -225px;
+    transition: left .5s;
+    -moz-transition: left .5s;
+    /* Firefox 4 */
+    -webkit-transition: left .5s;
+    /* Safari 和 Chrome */
+    -o-transition: left .5s;
+    /* Opera */
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li:hover .right {
+    left: 0px;
+    transition: left .5s;
+    -moz-transition: left .5s;
+    /* Firefox 4 */
+    -webkit-transition: left .5s;
+    /* Safari 和 Chrome */
+    -o-transition: left 0.5s;
+    /* Opera */
+    border-left: 1px solid #28a7e1;
+    border-right: 1px solid #28a7e1;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title {
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 50px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title .dsl_title_left {
+    width: 100%;
+    height: 78px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title .dsl_title_right {
+    width: 170px;
+    height: 30px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title img {
+    margin-left: 80px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title span {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #000;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_menu {
+    text-align: center;
+    font-size: 12px;
+    color: #666666;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_menu a {
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_menu li {
+    width: 100%;
+    margin: 10px auto;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_title {
+    width: 532px;
+    height: 50px;
+    margin: 10px auto 5px auto;
+    margin-top: 20px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_title img {
+    width: 30px;
+    height: 30px;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content {
+    width: 532px;
+    height: 210px;
+    margin: 10px auto;
+    color: #999999;
+    font-size: 10px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content >.dsr_ul li {
+    width: 110px;
+    height: 90px;
+    float: left;
+    margin-left: 40px;
+    margin-right: 60px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content >.dsr_ul li .dsr_ul_title {
+    font-size: 12px;
+    text-align: center;
+    color: #010101;
+    display: inline-block;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content >.dsr_ul li a {
+    margin-left: 80px;
+    color: #00c4ff;
+}
+
+#DemandServicesModule .more {
+    text-align: center;
+    /*margin-bottom: 50px;*/
+    font-size: 10px;
+    color: #999999;
+}
+
+#DemandServicesModule .more .moretitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+
+}
+
+#DemandServicesModule .more .title {
+    margin: 10px auto;
+	color:#000000;
+
+}
+
+#DemandServicesModule .more a {
+    color: #00c4ff;
+}
+
+#DemandServicesModule .more .title .content {}
+
+#DemandServicesModule .more span {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+/*在微服继续你的服务*/
+.syBg {
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -2;
+}
+.continueBusinessModule {
+    width: 100%;
+    height: 529px;
+    font-size: 12px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.continueBusinessModule h2,
+.continueBusinessModule h4 {
+    color: #fff;
+}
+
+
+/*导航栏区域*/
+
+.continueBusinessModule .continueBusiness_tab {
+    border-right: 1px solid #cfcdd3;
+    padding: 20px 0 60px 0;
+}
+
+.continueBusinessModule .continueBusiness_tab>li {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+
+.continueBusinessModule .continueBusiness_tab .tabClick {
+    background-color: #00b8ee;
+}
+
+.continueBusinessModule .continueBusiness_tab>li>a {
+    text-decoration: none;
+    color: #fff;
+    width: 120px;
+    height: 40px;
+    display: block;
+    border: none;
+	font-size:14px;
+}
+
+.continueBusinessModule .continueBusiness_tab>li>a:hover {
+	background:#00b8ee;
+    color: #ffffff;
+}
+
+
+/*内容显示区域*/
+
+.continueBusinessModule .continueBusiness_TabContent>ul>li {
+    margin: 5px auto;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li .yxqy_libg {
+    width: 140px;
+    height: 160px;
+    /*text-align: center;*/
+    /*border: 1px solid #cfcdd3;*/
+    /*padding: 15px 10px;*/
+    background-color: #fff;
+    opacity: 0.4;
+    filter: alpha(opacity=0.4);
+    -moz-opacity: 0.4;
+    -khtml-opacity: 0.4;
+    position: absolute;
+    z-index: 2;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li .yxqy_li {
+    width: 140px;
+    height: 160px;
+    text-align: center;
+    border: 1px solid #cfcdd3;
+    padding: 15px 10px;
+    position: absolute;
+    z-index: 3;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li img {
+    width: 80px;
+    height: 80px;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li h4 {
+    margin-top: 20px;
+    color: #1a1a1a;
+	font-size:16px;
+}
+
+.continueBusinessModule .continueBusiness_TabContent .jieshao{
+    margin-top: 200px;
+	
+	font-size:14px;
+}
+.continueBusinessModule .continueBusiness_TabContent .jieshao p{
+	line-height:30px;
+	}
+
+/*综合信息服务*/
+
+
+/*综合信息服务*/
+
+.generalMessageModule {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    font-size: 12px;
+    background-color: #f2f2f2;
+    padding-bottom: 50px;
+}
+
+.generalMessageModule h3 {
+    color: #1a1a1a;
+    font-family: "Microsoft YaHei",'微软雅黑';
+}
+
+
+/*bootstrap样式重置*/
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 0px;
+    border-bottom: 1px solid #000;
+}
+
+.generalMessageModule .nav_title {
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+.generalMessageModule .nav_title>li {
+    float: left;
+}
+
+.generalMessageModule .nav_title>li a {
+    padding: 8px 19px;
+    color: #4d4d4d;
+}
+
+.generalMessageModule .nav_title a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.generalMessageModule .newsBox .newsPic {
+    width: 560px;
+    height: 347px;
+    margin-top: 15px;
+}
+
+.generalMessageModule .content_nav {
+    margin-top: 15px;
+}
+
+.generalMessageModule .content_nav>li a {
+    color: #333;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 20px;
+    display: block;
+    line-height: 20px;
+    padding-left: 15px;
+    border-left: 4px solid #00b8ee;
+	font-family:'微软雅黑';
+}
+
+.generalMessageModule .content_nav>li a:hover {
+    color: #00b8ee;
+}
+
+.generalMessageModule .content_nav>li span {
+    float: right;
+}
+
+.generalMessageModule .look_all {
+    color: #00c4ff;
+    font-size: 18px;
+    font-weight: 800;
+    display: block;
+}
+
+
+/*超市服务*/
+
+.ServiceSupermarket {
+    background-color: #fff;
+    padding-bottom: 50px;
+}
+.ServiceSupermarket .ServiceSupermarket_ul>li{
+	margin-top:30px;
+	
+	}
+.ServiceSupermarket .ServiceSupermarket_li {
+    border: 1px solid #f2f2f2;
+    width: 264px;
+    height: 250px;
+    overflow:hidden;
+}
+
+.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg {
+    width: 262px;
+    height: 190px;
+    overflow: hidden;
+    margin-bottom: 10px;
+	position:relative;
+}
+
+.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg .ServiceSupermarket_intro1{
+    width: 262px;
+    height: 190px;
+    overflow: hidden;
+    background-color: #00b8ee;
+	
+}
+.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg .ServiceSupermarket_intro1 p{
+    width: 262px;
+    height: 190px;
+    text-align: center;
+    line-height: 190px;
+    font-size: 14px;
+    color:#fff;
+    display:block;
+}
+.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg .ServiceSupermarket_p{
+	    width: 262px;
+    height: 190px;
+    text-align: center;
+    line-height: 190px;
+    font-size: 14px;
+    color:#fff;
+    display:block;
+	}
+
+.ServiceSupermarket .ServiceSupermarket_li img {
+    width: 262px;
+    height: 190px;
+    /*transition: 0.5s;*/
+}
+
+/*.ServiceSupermarket .ServiceSupermarket_li img:hover {
+    transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    /* IE 9 */
+    -moz-transform: scale(1.4);
+    /* Firefox */
+    -webkit-transform: scale(1.4);
+    /* Safari and Chrome */
+    -o-transform: scale(1.4);
+    /* Opera */
+}*/
+
+.ServiceSupermarket .ServiceSupermarket_li p {
+    margin: 30px 0;
+    font-size: 14px;
+    color: #666666;
+}
+@media (min-width:768px) and (max-width: 992px) {
+	#DemandServicesModule .DemandServices .ds_container {
+    width: 970px;
+    margin: 0 auto;
+}
+    .continueBusinessModule .continueBusiness_TabContent ul li .yxqy_li{
+        width: 99%;
+        height:99%;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+        padding:0 1px;
+
+    }
+    .continueBusinessModule .continueBusiness_TabContent ul li img{
+        width: 60px;
+        height:60px;
+    }
+
+    .continueBusinessModule .continueBusiness_TabContent ul li .yxqy_li h4{
+        font-size: 12px;
+    }
+
+}
+@media (min-width:992px) and (max-width: 1200px) {
+    #DemandServicesModule .DemandServices {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    /* IE */
+    -moz-opacity: 0.8;
+    /* 老版Mozilla */
+    -khtml-opacity: 0.8;
+    /* 老版Safari */
+    width: 100%;
+    margin: 0 auto;
+}
+
+#DemandServicesModule .DemandServices .ds_container {
+    width: 970px;
+    margin: 0 auto;
+}
+
+#DemandServicesModule .ds_ul {
+    overflow: hidden;
+    /*background:#f8f9fb ;*/
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li {
+    float: left;
+    width: 180px;
+    height: 300px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh {
+    position: absolute;
+    width: 540px;
+    height: 300px;
+    overflow: hidden;
+    z-index: 5;
+    position: relative;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .left {
+    overflow: hidden;
+    display: block;
+    float: left;
+    width: 180px;
+    height: 300px;
+    position: absolute;
+    left: 0px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .right {
+    float: left;
+    width: 360px;
+    height: 300px;
+    position: absolute;
+    left: 170px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .zxfwbg {
+    background-image:url(../images/xzfwbg.png);
+    background-repeat: no-repeat;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .erpbg {
+    background-image:url(../images/erpbg.png);
+    background-repeat: no-repeat;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .zlbg {
+    background-image: url(../images/zlbg.png);
+    background-repeat: no-repeat;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .hhh .dxyqbg {
+    background-image: url(../images/dxyqbg.png);
+    background-repeat: no-repeat;
+}
+
+/*.action1 {
+    width: 450px;
+}*/
+
+#DemandServicesModule .ds_ul>.ds_ul_li:hover {
+    width: 360px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li:hover .left {
+    left: -180px;
+    transition: left .5s;
+    -moz-transition: left .5s;
+    /* Firefox 4 */
+    -webkit-transition: left .5s;
+    /* Safari 和 Chrome */
+    -o-transition: left .5s;
+    /* Opera */
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li:hover .right {
+    left: 0px;
+    transition: left .5s;
+    -moz-transition: left .5s;
+    /* Firefox 4 */
+    -webkit-transition: left .5s;
+    /* Safari 和 Chrome */
+    -o-transition: left 0.5s;
+    /* Opera */
+    border-left: 1px solid #28a7e1;
+    border-right: 1px solid #28a7e1;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title {
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 50px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title .dsl_title_left {
+    width: 100%;
+    height: 78px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title .dsl_title_right {
+    width: 180px;
+    height: 30px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title img {
+    margin-left: 80px;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_title span {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #000;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_menu {
+    text-align: center;
+    font-size: 12px;
+    color: #666666;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_menu a {
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+}
+
+#DemandServicesModule .ds_ul >.ds_ul_li .left .dsl_menu li {
+    width: 100%;
+    margin: 10px auto;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_title {
+    width: 360px;
+    height: 50px;
+    margin: 10px auto 5px auto;
+    margin-top: 20px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_title img {
+    width: 30px;
+    height: 30px;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_title span {
+    width: 140px;
+	display:inline-block;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content {
+    width: 360px;
+    height: 210px;
+    margin: 10px auto;
+    color: #999999;
+    font-size: 10px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content >.dsr_ul li {
+    width: 110px;
+    height: 90px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 40px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content >.dsr_ul li .dsr_ul_title {
+    font-size: 12px;
+    text-align: center;
+    color: #010101;
+    display: inline-block;
+}
+
+#DemandServicesModule .ds_ul>.ds_ul_li .right .dsr_content >.dsr_ul li a {
+    margin-left: 80px;
+    color: #00c4ff;
+}
+
+#DemandServicesModule .more {
+    text-align: center;
+    /*margin-bottom: 50px;*/
+    font-size: 10px;
+    color: #999999;
+}
+
+#DemandServicesModule .more .moretitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+
+}
+
+#DemandServicesModule .more .title {
+    margin: 10px auto;
+	color:#000000;
+
+}
+
+#DemandServicesModule .more a {
+    color: #00c4ff;
+}
+
+#DemandServicesModule .more .title .content {}
+
+#DemandServicesModule .more span {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+	<!--在微服继续你的服务-->
+.continueBusinessModule .continueBusiness_TabContent>ul>li {
+    margin: 5px auto;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li .yxqy_libg {
+    width: 120px;
+    height: 140px;
+    /*text-align: center;*/
+    /*border: 1px solid #cfcdd3;*/
+    /*padding: 15px 10px;*/
+    background-color: #fff;
+    opacity: 0.4;
+    filter: alpha(opacity=0.4);
+    -moz-opacity: 0.4;
+    -khtml-opacity: 0.4;
+    position: absolute;
+    z-index: 2;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li .yxqy_li {
+    width: 120px;
+    height: 140px;
+    text-align: center;
+    border: 1px solid #cfcdd3;
+    padding: 15px 10px;
+    position: absolute;
+    z-index: 3;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li img {
+    width: 60px;
+    height: 60px;
+}
+
+.continueBusinessModule .continueBusiness_TabContent ul li h4 {
+    margin-top: 20px;
+    color: #1a1a1a;
+	font-size:16px;
+}
+
+.continueBusinessModule .continueBusiness_TabContent .jieshao{
+    margin-top: 200px;
+	
+	font-size:14px;
+}
+.continueBusinessModule .continueBusiness_TabContent .jieshao p{
+	line-height:30px;
+	}
+	
+	
+.generalMessageModule .newsBox .newsPic {
+    width: 460px;
+    height: 347px;
+    margin-top: 15px;
+}
+.ServiceSupermarket .ServiceSupermarket_li {
+    border: 1px solid #f2f2f2;
+    width: 224px;
+    height: 250px;
+    overflow: hidden;
+}
+.ServiceSupermarket .ServiceSupermarket_li img {
+    width: 222px;
+    height: 190px;
+    /* transition: 0.5s; */
+}.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg {
+    width: 222px;
+    height: 190px;
+    overflow: hidden;
+    margin-bottom: 10px;
+	position:relative;
+}
+
+.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg .ServiceSupermarket_intro1{
+    width: 222px;
+    height: 190px;
+    overflow: hidden;
+    background-color: #00b8ee;
+	
+}
+
+.ServiceSupermarket .ServiceSupermarket_li .ServiceSupermarket_numimg .ServiceSupermarket_p{
+	width: 222px;
+    height: 190px;
+    text-align: center;
+    line-height: 190px;
+    font-size: 14px;
+    color:#fff;
+    display:block;
+	}
+
+
+}

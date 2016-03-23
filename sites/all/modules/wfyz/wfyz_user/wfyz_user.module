@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the wfyz user feature.
+ */
+
+include_once 'wfyz_user.features.inc';

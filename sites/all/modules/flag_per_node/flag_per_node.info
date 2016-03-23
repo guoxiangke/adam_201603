@@ -1,0 +1,14 @@
+name = Flag Per Node
+description = Allows flags to be enabled and disabled on a per-node basis.
+core = 7.x
+package = Flags
+
+dependencies[] = flag
+dependencies[] = node
+
+; Information added by Drupal.org packaging script on 2016-03-08
+version = "7.x-1.2"
+core = "7.x"
+project = "flag_per_node"
+datestamp = "1457467743"
+

@@ -1,0 +1,6 @@
+name = eshop_rating
+description = eshop Service Rating
+core = 7.x
+package = wfyz
+
+dependencies[] = fivestar

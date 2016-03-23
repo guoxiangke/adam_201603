@@ -1,0 +1,55 @@
+name = Proedge
+description =  Proedge Bootstrap based theme
+core = 7.x
+engine = phptemplate
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/proedge-media.css
+stylesheets[all][] = css/login.css
+stylesheets[all][] = css/bootstrap.min.css
+stylesheets[all][] = css/bootstrap.css
+stylesheets[all][] = css/home.css
+
+scripts[] = js/proedge.js
+scripts[] = js/bootstrap.min.js
+scripts[] = js/bootstrap.js
+
+regions[top_menu] = Top menu
+regions[top_message] = Top message
+regions[slideshow] = Slideshow
+regions[search] = Search
+regions[sidebar_left] = Sidebar Left
+regions[sidebar_right] = Sidebar Right
+regions[content_top_right] = Content Top Right
+regions[content_top] = Content Top
+regions[content] = Content
+regions[top_first] = First top
+regions[top_second] = Second top
+regions[top_third] = Third top
+regions[top_first_widget] = Top first widget
+regions[top_second_widget] = Top second widget
+regions[footer_first] = First Bottom
+regions[footer_second] = Second Bottom
+regions[footer_third] = Third Bottom
+regions[footer_forth] = Forth Bottom
+regions[offer] = Offer
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+settings[header_img_url] = 1
+settings[breadcrumbs] = 1
+settings[social_links] = 0
+
+
+version = "7.x-1.0"
+core = "7.x"
+project = "proedge_responsive_theme"
+
+

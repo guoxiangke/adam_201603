@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the wfyz news feature.
+ */
+
+include_once 'wfyz_news.features.inc';

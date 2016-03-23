@@ -1,0 +1,209 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function zdruerp_menu() {
+  $items = array();
+  $items['user/%user/erp'] = array(
+    'title' => t('Configue ERP'),//connect erp!
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('configue_erp_from'),
+    'access callback' => '_user_has_role',
+    'access arguments' => array(1, array('企业用户')),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['user/%user/connect'] = array(
+    'title' => t('Connect to ERP'),//connect erp!
+    'page callback' => '_connect_erp',
+    'page arguments' => array(1),
+    'access callback' => '_user_has_role',
+    'access arguments' => array(1, array('企业用户','企业子用户')),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['author/erp'] = array(
+    'page callback' => '_zdruerp_author_erp',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['author/erp_check'] = array(
+    'page callback' => '_zdruerp_author',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['pay/%node/%node/%'] = array(
+    'title' => 'Checkout',//connect erp!
+    'page callback' => '_pay_checkout',
+    'page arguments' => array(1,2),
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+function _zdruerp_author_erp(){
+  // global $user;
+  drupal_goto('http://erp.com/checkuser?token='.session_id());
+}
+
+function  _zdruerp_author(){
+  if (empty($_POST['token'])) {
+    drupal_exit();//error!
+  }
+  header('Content-Type: application/json');
+  $sid = $_POST['token'];
+  // $sid = 'c54J16-toE4ZtE_tIWfSifXAn2n4opR5Mi_onAL2kIM';
+  $uid = db_select('sessions','s')
+    ->fields('s', array('uid'))
+    ->condition('sid', $sid)
+    ->execute()
+    ->fetchField();
+  if(is_numeric($uid) && $uid>=0){
+    $account = user_load($uid);
+    print json_encode($account);
+    drupal_exit();
+  }else{//error!
+    drupal_exit();
+  }
+}
+
+function _user_has_role($user, $roles = array()) {
+  foreach ($roles as $role) {
+    if (in_array($role, $user->roles)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+function configue_erp_from(){
+  global $user;
+  $setted = variable_get('zdruerp_'.$user->uid, FALSE);
+  $form['erpdomain'] = array(
+    '#type' => 'textfield',
+    '#title' => '域名设置',
+    '#description' => '必须字母开头，只准有字母？',
+    '#default_value' => variable_get('zdruerp_'.$user->uid, "yoursubdomain"),
+    '#required' => TRUE,
+    '#disabled'=>$setted?TRUE:FALSE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+    '#disabled'=>$setted?TRUE:FALSE,
+  );
+  return $form;
+}
+
+
+/**
+ * save wechat setting config
+ CALL bash.sh reload nginx for subdomain.
+ */
+function configue_erp_from_submit($form, &$form_state){
+  global $user;
+  variable_set('zdruerp_'.$user->uid, $form_state['values']['erpdomain']);
+  // drupal_set_message('设置成功！您的URL是：'.url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=').'???', 'warning', FALSE);
+  //do some subdomain settings!!!here!
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function zdruerp_user_login(&$edit, $account) {
+  $params = session_get_cookie_params();
+  $expire = $params['lifetime'] ? REQUEST_TIME + $params['lifetime'] : 0;
+  setcookie('token', session_id(), $expire, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+}
+
+function _connect_erp(){
+  return '_connect_erp!';
+}
+
+/**
+ * Implements hook_user_update().
+  UPdate user!! Call ERP API UPDATE
+ */
+function zdruerp_user_update(&$edit, $account, $category) {
+  // $account = user_load(96);
+  // dpm(subuser_load_all($account));
+}
+
+/**
+ * Implements hook_user_delete().
+ delete User Call ERP API DELETE
+ */
+function zdruerp_user_delete($account) {
+  // $account = user_load(96);
+  // dpm(subuser_load_all($account));
+}
+
+/**
+ * Implements hook_form_alter().
+ Add subsuser! Call ERP API PUT
+ */
+function zdruerp_form_user_register_form_alter(&$form, &$form_state) {
+  $form['#submit'][] = 'zdruerp_user_register_form_submit';
+}
+function zdruerp_user_register_form_submit($form, &$form_state) {
+  global $user;
+  // If the subuser relation is to be stored then create the relation.
+  if ($form_state['values']['subuser_relation']) {
+    // $endpoints = array(
+    //   array('entity_type' => 'user', 'entity_id' => $form_state['user']->uid),
+    //   array('entity_type' => 'user', 'entity_id' => $user->uid),
+    // );
+    // $relation = relation_create('subuser', $endpoints);
+    // relation_save($relation);
+    // dpm($form);
+    // dpm($form_state);
+  }
+}
+
+/**
+ * Implements hook_node_submit().
+ */
+function zdruerp_node_submit($node, $form, &$form_state) {
+  // if($node->type == 'service_order'){
+  //   // dpm($form_state);
+  //   $url = 'pay/'.$form_state['values']['field_from_service'][LANGUAGE_NONE][0]['target_id'].'/'.$node->nid.'/'.$field_amount;
+  //   drupal_goto($url);
+  // }
+}
+
+
+function _pay_checkout($server_node,$node){//$order_node
+  //get amount!
+  if($node->field_payment_choice[LANGUAGE_NONE][0]['value']==0){// 一次性付款！
+    $field_amount = $node->field_amount[LANGUAGE_NONE][0]['value'];
+  }else{// 分阶段付款！
+    $entity_id = $node->field_multi_milestones[LANGUAGE_NONE][0]['target_id'];
+    $entity = entity_object_load($entity_id, 'milestone');
+    $field_amount = $entity->field_amount[LANGUAGE_NONE][0]['value'];
+  }
+  return 'Pay with:'.$field_amount;
+}
+
+// id (String, 1 characters ) 3
+// field_multiple_payment_eck_payment_entity_title (String, 5 characters ) SO143
+// field_single_payment_eck_payment_entity_title (NULL)
+// node_field_data_field_from_service_1_title (String, 19 characters ) 很好的logo设计
+// node_field_data_field_from_service_title (NULL)
+// node_field_data_field_from_service_1_nid (String, 2 characters ) 11
+// node_field_data_field_from_service_nid (NULL)
+// field_data_body_node_entity_type (String, 4 characters ) node
+
+function get_service_info_by_payment($entity_id){
+  return db_query("SELECT eck_payment_entity.id AS id, field_multiple_payment_eck_payment_entity.title AS field_multiple_payment_eck_payment_entity_title, field_single_payment_eck_payment_entity.title AS field_single_payment_eck_payment_entity_title, node_field_data_field_from_service_1.title AS node_field_data_field_from_service_1_title, field_single_payment_eck_payment_entity.nid AS field_single_payment_eck_payment_entity_nid, field_multiple_payment_eck_payment_entity.nid AS field_multiple_payment_eck_payment_entity_nid, node_field_data_field_from_service.title AS node_field_data_field_from_service_title, node_field_data_field_from_service_1.nid AS node_field_data_field_from_service_1_nid, node_field_data_field_from_service.nid AS node_field_data_field_from_service_nid, 'node' AS field_data_body_node_entity_type
+FROM 
+{eck_payment_entity} eck_payment_entity
+LEFT JOIN {field_data_field_single_payment} field_data_field_single_payment ON eck_payment_entity.id = field_data_field_single_payment.field_single_payment_target_id AND (field_data_field_single_payment.entity_type = 'node' AND field_data_field_single_payment.deleted = '0')
+LEFT JOIN {node} field_single_payment_eck_payment_entity ON field_data_field_single_payment.entity_id = field_single_payment_eck_payment_entity.nid
+LEFT JOIN {field_data_field_multiple_payment} field_data_field_multiple_payment ON eck_payment_entity.id = field_data_field_multiple_payment.field_multiple_payment_target_id AND (field_data_field_multiple_payment.entity_type = 'node' AND field_data_field_multiple_payment.deleted = '0')
+LEFT JOIN {node} field_multiple_payment_eck_payment_entity ON field_data_field_multiple_payment.entity_id = field_multiple_payment_eck_payment_entity.nid
+LEFT JOIN {field_data_field_from_service} field_single_payment_eck_payment_entity__field_data_field_from_service ON field_single_payment_eck_payment_entity.nid = field_single_payment_eck_payment_entity__field_data_field_from_service.entity_id AND (field_single_payment_eck_payment_entity__field_data_field_from_service.entity_type = 'node' AND field_single_payment_eck_payment_entity__field_data_field_from_service.deleted = '0')
+LEFT JOIN {node} node_field_data_field_from_service ON field_single_payment_eck_payment_entity__field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service.nid
+LEFT JOIN {field_data_field_from_service} field_multiple_payment_eck_payment_entity__field_data_field_from_service ON field_multiple_payment_eck_payment_entity.nid = field_multiple_payment_eck_payment_entity__field_data_field_from_service.entity_id AND (field_multiple_payment_eck_payment_entity__field_data_field_from_service.entity_type = 'node' AND field_multiple_payment_eck_payment_entity__field_data_field_from_service.deleted = '0')
+LEFT JOIN {node} node_field_data_field_from_service_1 ON field_multiple_payment_eck_payment_entity__field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service_1.nid
+WHERE (( (eck_payment_entity.id = '".$entity_id."' ) )AND(( (eck_payment_entity.type IN  ('payment')) )))
+LIMIT 1 OFFSET 0")->fetchObject();
+}
