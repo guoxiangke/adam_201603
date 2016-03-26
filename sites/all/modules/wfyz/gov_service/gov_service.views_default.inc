@@ -85,7 +85,7 @@ function gov_service_views_default_views() {
   $handler->display->display_options['relationships']['field_gov_dept_tid']['id'] = 'field_gov_dept_tid';
   $handler->display->display_options['relationships']['field_gov_dept_tid']['table'] = 'field_data_field_gov_dept';
   $handler->display->display_options['relationships']['field_gov_dept_tid']['field'] = 'field_gov_dept_tid';
-  /* Field: Field: 公司Logo */
+  /* Field: Field: 行政部门封面图 */
   $handler->display->display_options['fields']['field_image_logo']['id'] = 'field_image_logo';
   $handler->display->display_options['fields']['field_image_logo']['table'] = 'field_data_field_image_logo';
   $handler->display->display_options['fields']['field_image_logo']['field'] = 'field_image_logo';
@@ -285,11 +285,10 @@ function gov_service_views_default_views() {
   $handler->display->display_options['fields']['field_applicant']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Field: 公司简介 */
+  /* Field: Field: 备注 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
-  $handler->display->display_options['fields']['field_body']['label'] = '备注';
   /* Field: Workflow current: New state name */
   $handler->display->display_options['fields']['sid']['id'] = 'sid';
   $handler->display->display_options['fields']['sid']['table'] = 'workflow_node_current';
@@ -350,8 +349,8 @@ function gov_service_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  /* Display: Page-order */
+  $handler = $view->new_display('page', 'Page-order', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '行政服务订单';
   $handler->display->display_options['defaults']['access'] = FALSE;
@@ -365,8 +364,8 @@ function gov_service_views_default_views() {
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page_1');
+  /* Display: Page-info */
+  $handler = $view->new_display('page', 'Page-info', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '行政服务业务';
   $handler->display->display_options['defaults']['access'] = FALSE;
@@ -417,6 +416,8 @@ function gov_service_views_default_views() {
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '200';
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
   /* Field: Content: 申报日期 */
   $handler->display->display_options['fields']['field_multiple_date']['id'] = 'field_multiple_date';
   $handler->display->display_options['fields']['field_multiple_date']['table'] = 'field_data_field_multiple_date';
@@ -430,6 +431,20 @@ function gov_service_views_default_views() {
     'show_remaining_days' => 0,
   );
   $handler->display->display_options['fields']['field_multiple_date']['delta_offset'] = '0';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = '编辑';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = '';
+  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['delete_node']['text'] = '删除';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -746,7 +761,7 @@ function gov_service_views_default_views() {
   $view->description = '';
   $view->tag = 'gov-service';
   $view->base_table = 'users';
-  $view->human_name = '行政服务订单申请人名单';
+  $view->human_name = '行政服务订单申办人名单';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -769,12 +784,24 @@ function gov_service_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: Field: 昵称 */
-  $handler->display->display_options['fields']['field_single_text']['id'] = 'field_single_text';
-  $handler->display->display_options['fields']['field_single_text']['table'] = 'field_data_field_single_text';
-  $handler->display->display_options['fields']['field_single_text']['field'] = 'field_single_text';
-  $handler->display->display_options['fields']['field_single_text']['label'] = '';
-  $handler->display->display_options['fields']['field_single_text']['element_label_colon'] = FALSE;
+  /* Field: Field: 联系电话 */
+  $handler->display->display_options['fields']['field_single_text2']['id'] = 'field_single_text2';
+  $handler->display->display_options['fields']['field_single_text2']['table'] = 'field_data_field_single_text2';
+  $handler->display->display_options['fields']['field_single_text2']['field'] = 'field_single_text2';
+  $handler->display->display_options['fields']['field_single_text2']['label'] = '';
+  $handler->display->display_options['fields']['field_single_text2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_single_text2']['alter']['text'] = ' - [field_single_text2]';
+  $handler->display->display_options['fields']['field_single_text2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_single_text2']['type'] = 'text_plain';
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['label'] = '';
+  $handler->display->display_options['fields']['mail']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['mail']['alter']['text'] = ' - [mail]';
+  $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['mail']['link_to_user'] = '0';
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -796,11 +823,12 @@ function gov_service_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
     'name' => 'name',
-    'field_single_text' => 'field_single_text',
+    'field_single_text2' => 'field_single_text2',
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['row_options']['separator'] = '';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['gov_service_order_user_list'] = $view;
 

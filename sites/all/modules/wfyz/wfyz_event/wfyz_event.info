@@ -1,7 +1,7 @@
 name = wfyz event
 core = 7.x
 package = wfyz
-version = 7.x-3.1
+version = 7.x-3.3
 dependencies[] = better_exposed_filters
 dependencies[] = date
 dependencies[] = dragndrop_upload_image
@@ -9,7 +9,6 @@ dependencies[] = entity
 dependencies[] = features
 dependencies[] = field_slideshow
 dependencies[] = flag
-dependencies[] = flag_per_node
 dependencies[] = image
 dependencies[] = number
 dependencies[] = options

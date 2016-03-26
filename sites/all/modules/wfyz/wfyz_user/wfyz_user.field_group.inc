@@ -22,7 +22,10 @@ function wfyz_user_field_group_info() {
   $field_group->data = array(
     'label' => '企业资料',
     'weight' => '3',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_image_logo',
+      1 => 'field_body',
+    ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -48,7 +51,11 @@ function wfyz_user_field_group_info() {
   $field_group->data = array(
     'label' => '个人资料',
     'weight' => '2',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_single_text',
+      1 => 'field_single_text2',
+      2 => 'picture',
+    ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -76,17 +83,17 @@ function wfyz_user_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'account',
-      1 => 'picture',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => '注册资料',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-register field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-register field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $field_groups['group_register|user|user|form'] = $field_group;

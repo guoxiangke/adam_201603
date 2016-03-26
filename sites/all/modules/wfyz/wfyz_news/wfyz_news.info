@@ -1,7 +1,7 @@
 name = wfyz news
 core = 7.x
 package = wfyz
-version = 7.x-1.5
+version = 7.x-1.7
 dependencies[] = better_exposed_filters
 dependencies[] = features
 dependencies[] = field_slideshow
