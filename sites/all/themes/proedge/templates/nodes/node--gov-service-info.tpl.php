@@ -51,15 +51,15 @@
 //field_multiple_date
 //field_doc_required
 foreach ($node->field_doc_required['und'] as $key => $value) {
-  // dpm($value['entity']);
+  dpm($value['entity']);
   $entity = $value['entity'];
   $entity_type = 'gov_service_doc';
   $field_file = field_view_field($entity_type, $entity, 'field_file');
   $field_body = field_view_field($entity_type, $entity, 'field_body');
-  $doc_title = field_view_field($entity_type, $entity, 'doc_title');
+  // $doc_title = field_view_field($entity_type, $entity, 'doc_title');
   // dpm($the_field);
   // render the field
-  print drupal_render($doc_title);
+  print $doc_title;
   print drupal_render($field_body);
   print drupal_render($field_file);
 }
