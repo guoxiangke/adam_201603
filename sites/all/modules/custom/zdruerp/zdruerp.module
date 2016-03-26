@@ -113,6 +113,19 @@ function zdruerp_user_login(&$edit, $account) {
   $params = session_get_cookie_params();
   $expire = $params['lifetime'] ? REQUEST_TIME + $params['lifetime'] : 0;
   setcookie('token', session_id(), $expire, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+
+
+  $url = 'http://111.9.116.181:20160/sso/api/rest/login';
+  $data = 'appId=3b0d556d3add420596a9afdd58f1bc103b0d556d3add420596a9afdd58f1bc10&service=http://new.camplus.cn:8003/sso&username='.$account->name.'&password='.$account->name;
+  $options = array(
+                'method' => 'POST',
+                'data' => $data,
+                'timeout' => 15,
+                'headers' => array('Content-Type' => 'application/x-www-form-urlencoded'),
+        );
+  $result = drupal_http_request($url, $options);
+  dpm($result);
+
 }
 
 function _connect_erp(){
@@ -194,7 +207,7 @@ function _pay_checkout($server_node,$node){//$order_node
 
 function get_service_info_by_payment($entity_id){
   return db_query("SELECT eck_payment_entity.id AS id, field_multiple_payment_eck_payment_entity.title AS field_multiple_payment_eck_payment_entity_title, field_single_payment_eck_payment_entity.title AS field_single_payment_eck_payment_entity_title, node_field_data_field_from_service_1.title AS node_field_data_field_from_service_1_title, field_single_payment_eck_payment_entity.nid AS field_single_payment_eck_payment_entity_nid, field_multiple_payment_eck_payment_entity.nid AS field_multiple_payment_eck_payment_entity_nid, node_field_data_field_from_service.title AS node_field_data_field_from_service_title, node_field_data_field_from_service_1.nid AS node_field_data_field_from_service_1_nid, node_field_data_field_from_service.nid AS node_field_data_field_from_service_nid, 'node' AS field_data_body_node_entity_type
-FROM 
+FROM
 {eck_payment_entity} eck_payment_entity
 LEFT JOIN {field_data_field_single_payment} field_data_field_single_payment ON eck_payment_entity.id = field_data_field_single_payment.field_single_payment_target_id AND (field_data_field_single_payment.entity_type = 'node' AND field_data_field_single_payment.deleted = '0')
 LEFT JOIN {node} field_single_payment_eck_payment_entity ON field_data_field_single_payment.entity_id = field_single_payment_eck_payment_entity.nid
