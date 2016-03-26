@@ -127,55 +127,16 @@ function gov_service_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Field: 身份证照片 */
-  $handler->display->display_options['fields']['field_single_image']['id'] = 'field_single_image';
-  $handler->display->display_options['fields']['field_single_image']['table'] = 'field_data_field_single_image';
-  $handler->display->display_options['fields']['field_single_image']['field'] = 'field_single_image';
-  $handler->display->display_options['fields']['field_single_image']['label'] = '';
-  $handler->display->display_options['fields']['field_single_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_single_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_single_image']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
-  /* Field: Content: 所需文件 */
-  $handler->display->display_options['fields']['field_doc_required']['id'] = 'field_doc_required';
-  $handler->display->display_options['fields']['field_doc_required']['table'] = 'field_data_field_doc_required';
-  $handler->display->display_options['fields']['field_doc_required']['field'] = 'field_doc_required';
-  $handler->display->display_options['fields']['field_doc_required']['label'] = '';
-  $handler->display->display_options['fields']['field_doc_required']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_doc_required']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_doc_required']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_doc_required']['settings'] = array(
-    'view_mode' => 'ief_table',
-    'links' => 0,
-  );
-  $handler->display->display_options['fields']['field_doc_required']['group_column'] = 'entity_id';
-  $handler->display->display_options['fields']['field_doc_required']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_doc_required']['separator'] = '';
-  /* Field: Content: 内容 */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Content: 申报日期 */
-  $handler->display->display_options['fields']['field_multiple_date']['id'] = 'field_multiple_date';
-  $handler->display->display_options['fields']['field_multiple_date']['table'] = 'field_data_field_multiple_date';
-  $handler->display->display_options['fields']['field_multiple_date']['field'] = 'field_multiple_date';
-  $handler->display->display_options['fields']['field_multiple_date']['label'] = '';
-  $handler->display->display_options['fields']['field_multiple_date']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_multiple_date']['alter']['text'] = '申报日期: [field_multiple_date]';
-  $handler->display->display_options['fields']['field_multiple_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_multiple_date']['settings'] = array(
-    'format_type' => 'china_date',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-  );
-  $handler->display->display_options['fields']['field_multiple_date']['delta_offset'] = '0';
+  /* Field: Content: Rendered Node */
+  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
+  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
