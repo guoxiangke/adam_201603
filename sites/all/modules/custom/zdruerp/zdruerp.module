@@ -114,9 +114,11 @@ function zdruerp_user_login(&$edit, $account) {
   $expire = $params['lifetime'] ? REQUEST_TIME + $params['lifetime'] : 0;
   setcookie('token', session_id(), $expire, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
 
-
-  $url = 'http://111.9.116.181:20160/sso/api/rest/login';
-  $data = 'appId=3b0d556d3add420596a9afdd58f1bc103b0d556d3add420596a9afdd58f1bc10&service=http://new.camplus.cn:8003/sso&username='.$account->name.'&password='.$account->name;
+  $sso_host = 'http://111.9.116.181:20160';
+  $url = $sso_host.'/sso/api/rest/login';
+  $appID = '3b0d556d3add420596a9afdd58f1bc103b0d556d3add420596a9afdd58f1bc10';
+  $service = 'http://new.camplus.cn:8003/sso';
+  $data = 'appId='.$appID.'&service='.$service.'&username=admin&password=adam2002';//'.$account->name.' .$account->name;
   $options = array(
                 'method' => 'POST',
                 'data' => $data,
@@ -124,8 +126,27 @@ function zdruerp_user_login(&$edit, $account) {
                 'headers' => array('Content-Type' => 'application/x-www-form-urlencoded'),
         );
   $result = drupal_http_request($url, $options);
-  dpm($result);
+  if(isset($result->data)){
+    $data = drupal_json_decode($result->data);
+    if($data['code']=='200'){
+      $sso_client_ec = $data['data']['SSO_CLIENT_EC'];
+      drupal_set_message('SSO LOGIN成功！go other site: http://othersite.com/service?SSO_CLIENT_EC='.$sso_client_ec,'status');
+      watchdog('$sso_client_ec', $sso_client_ec);
+    }
 
+  }
+  watchdog('$result', '<pre>'.print_r($result,1));
+  // dpm($result);
+}
+/**
+ * Implements hook_init().
+ */
+function zdruerp_init() {
+  $url = URL('',array('absolute'=>1));
+  $sso_host = 'http://111.9.116.181:20160';
+  $sso_logout_url = $sso_host.'/sso/api/logoutJs';
+  drupal_add_js($sso_logout_url.'?appId=3b0d556d3add420596a9afdd58f1bc10&logoutSuccessUrl='.$url, 'external');
+  drupal_add_js(drupal_get_path('module', 'zdruerp').'/sso.js',array('weight' => 1,'group'=>JS_THEME,'scope'=>'footer'));
 }
 
 function _connect_erp(){
