@@ -196,7 +196,6 @@
             </div>
        <?php endif; ?>
 
-
       <?php if ($secondary_local_tasks): ?>
           <div class="container page-width">
             <div class="row">
@@ -223,26 +222,26 @@
                     <?php print render($page['sidebar_left']) ?>
                   </div>
                 <?php endif; ?>
-
-                  <div class="col-lg-9 col-md-9">
-                    <?php print render($page['content']) ?>
+                  
+                  <div class="col-lg-9 col-md-9"> 
+                    <?php print render($page['content']) ?> 
                   </div>
-
+              
                 <?php  if($page['sidebar_right']): ?>
                   <div class="col-lg-3 col-md-3 col-sm-12">
                     <?php print render($page['sidebar_right']) ?>
                   </div>
                 <?php endif; ?>
-
+              
             <?php } else {?>
               <div class="col-lg-12">
                 <?php  if($page['content']):?>
                     <?php print render($page['content']) ?>
                 <?php endif; ?>
               </div>
-            <?php } ?>
-        </div>
-    </div>
+            <?php } ?> 
+        </div>   
+    </div>    
       <!-- Main Content end//-->
 </div>
 
@@ -272,7 +271,7 @@
       <div id="copyright">
         <p class="copyright">
           <?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?>
-        </p>
+        </p> 
         <div class="clear"></div>
       </div>
     </div>

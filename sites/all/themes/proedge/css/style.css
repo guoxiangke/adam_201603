@@ -177,6 +177,7 @@ th,
 tr,
 td {
   vertical-align: middle;
+  padding: 10px !important;
 }
 .sticky-header th,
 .sticky-table th {
@@ -185,23 +186,26 @@ td {
   text-align: left;
 }
 table {
-  background: #ececec;
-  border: 1px solid #bbbbbb;
+    border: 1px solid #eee;
+    margin-top: 20px;
 }
 th {
-  background: #2e3d4a;
-  border-right: 1px solid #c8c7c7;
-  color: #fff;
-  padding: 10px;
+  background: #F0F8FF;
+  color: #333;
   font-weight: bold;
+}
+th a {
+    color: #666;
 }
 td {
   background: #fff;
   color: #747474;
   text-align: left;
-  padding: 10px;
-  border: 1px solid #dbdbdb;
 }
+td.views-field.views-field-field-body {
+    width: 50%;
+}
+
 code {
   background: rgb(250,250,250);
   text-shadow: 1px 1px #fff;
@@ -1900,5 +1904,9 @@ div#admin-toolbar.vertical div.admin-tab-active {
     float: right;
     position: relative;
     bottom: 20px;
+}
+
+.form-type-bef-link a.active {
+    color: #00B8EE;
 }
 

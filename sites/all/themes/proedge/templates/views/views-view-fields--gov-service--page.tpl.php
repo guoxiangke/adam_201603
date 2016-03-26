@@ -32,9 +32,7 @@
 
 
 
-<?php print $fields['field_image_logo']->content; ?>
 
-<?php print $fields['description']->content; ?>
 
 
   <div class="panel-group" id="accordion">
@@ -51,10 +49,7 @@
       
       
         <div class="panel-body">
-          <?php print $fields['field_single_image']->content; ?>
-          <?php print $fields['body']->content; ?>
-          <?php print $fields['field_doc_required']->content; ?>
-          <?php print $fields['field_multiple_date']->content; ?>
+          <?php print $fields['rendered_entity']->content; ?>
         </div>
       </div>
     </div>

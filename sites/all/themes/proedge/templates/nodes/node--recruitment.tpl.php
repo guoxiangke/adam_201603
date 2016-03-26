@@ -5,20 +5,21 @@
  */
 
 //title
-//body
 //changed
 //format_date($node->changed);
-//field_employment_type
-//field_job_category 
-//field_single_text 
-//field_salary 
-//field_location 
-//field_single_integer 
-//field_deadline 
-//field_fringe_benefits
-//field_email
-//field_body
-//field_single_text2
+
+//body @@
+//field_employment_type @@
+//field_job_category @@
+//field_single_text @@
+//field_salary@@
+//field_location @@
+//field_single_integer @@
+//field_deadline @@
+//field_fringe_benefits @@
+//field_email @@
+//field_single_text2 @@
+//field_body 
 
 ?>
 
@@ -43,8 +44,8 @@
         </div>
     </div>
 
-
-
+    <p><?php print render($content['field_single_text']); ?></p>
+    <p><?php print render($content['field_body']); ?></p>
     <p><?php print render($content['body']); ?></p>
 
 

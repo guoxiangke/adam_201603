@@ -45,29 +45,7 @@
 //$output = field_view_value('ENTITY_TYPE_NAME', $entity, 'field_name', $field[$delta]);
 
 
-
-//body
-//field_gov_dept
-//field_multiple_date
-//field_doc_required
-foreach ($node->field_doc_required['und'] as $key => $value) {
-  // dpm($value['entity']);
-  $entity = $value['entity'];
-  $entity_type = 'gov_service_doc';
-  $field_file = field_view_field($entity_type, $entity, 'field_file');
-  $field_body = field_view_field($entity_type, $entity, 'field_body');
-  // $doc_title = field_view_field($entity_type, $entity, 'doc_title');
-  $doc_title = $value['entity']->doc_title;
-  // dpm($the_field);
-  // render the field
-  print $doc_title;
-  print drupal_render($field_body);
-  print drupal_render($field_file);
-}
-
 ?>
-
-
 
 
 <p class="title"><?php print $title; ?></p>
@@ -81,13 +59,36 @@ foreach ($node->field_doc_required['und'] as $key => $value) {
 
      <?php print render($content['field_multiple_date']); ?>
 
-    <?php print render($content['field_doc_required']); ?>
+     <br><br><br><br>
+     
+<?php
+foreach ($node->field_doc_required['und'] as $key => $value) {
+  // dpm($value['entity']);
+  $entity = $value['entity'];
+  $entity_type = 'gov_service_doc';
+  $field_file = field_view_field($entity_type, $entity, 'field_file');
+  $field_body = field_view_field($entity_type, $entity, 'field_body');
+  //$doc_title = field_view_field($entity_type, $entity, 'doc_title');
+  // dpm($the_field);
+  // render the field
+
+print $id = $value['entity']->id;
+print $doc_title = $value['entity']->doc_title;
+print drupal_render($field_body);
+print drupal_render($field_file);
 
 
+}
+
+?>
+
+     
+     
     <?php
       // Hide comments, tags, and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
+      hide($content['field_doc_required']);
       print render($content);
     ?>
   </div>
@@ -98,23 +99,3 @@ foreach ($node->field_doc_required['und'] as $key => $value) {
 
 
 
- <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php print $fields['counter']->content; ?>">
-            <?php print $fields['title']->content; ?>
-          </a>
-        </h4>
-      </div>
-
-      <div id="collapse<?php print $fields['counter']->content; ?>" class="panel-collapse collapse <?php if($fields['counter']->content == '0'): ?>in<?php endif; ?>">
-
-
-        <div class="panel-body">
-           <?php print render($content['field_doc_required']); ?>
-        </div>
-      </div>
-    </div>
-
-  </div>
