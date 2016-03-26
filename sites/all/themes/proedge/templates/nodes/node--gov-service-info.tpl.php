@@ -21,7 +21,7 @@
 //body
 //field_gov_dept
 //field_multiple_date
-//field_doc_required 
+//field_doc_required
 
 
 // $nod_ref : the referenced node Object (without Content)
@@ -50,6 +50,19 @@
 //field_gov_dept
 //field_multiple_date
 //field_doc_required
+foreach ($node->field_doc_required['und'] as $key => $value) {
+  // dpm($value['entity']);
+  $entity = $value['entity'];
+  $entity_type = 'gov_service_doc';
+  $field_file = field_view_field($entity_type, $entity, 'field_file');
+  $field_body = field_view_field($entity_type, $entity, 'field_body');
+  $doc_title = field_view_field($entity_type, $entity, 'doc_title');
+  // dpm($the_field);
+  // render the field
+  print drupal_render($doc_title);
+  print drupal_render($field_body);
+  print drupal_render($field_file);
+}
 
 ?>
 
@@ -66,10 +79,10 @@
      <?php print render($content['field_gov_dept']); ?>
 
      <?php print render($content['field_multiple_date']); ?>
-     
+
     <?php print render($content['field_doc_required']); ?>
-     
-     
+
+
     <?php
       // Hide comments, tags, and links now so that we can render them later.
       hide($content['comments']);
@@ -93,14 +106,14 @@
           </a>
         </h4>
       </div>
-      
+
       <div id="collapse<?php print $fields['counter']->content; ?>" class="panel-collapse collapse <?php if($fields['counter']->content == '0'): ?>in<?php endif; ?>">
-      
-      
+
+
         <div class="panel-body">
            <?php print render($content['field_doc_required']); ?>
         </div>
       </div>
     </div>
-    
+
   </div>

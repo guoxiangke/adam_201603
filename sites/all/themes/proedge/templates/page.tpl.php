@@ -126,7 +126,7 @@
 
 
   <div class="slide-show-wrap">
-    <?php print render($page['slideshow']); ?> 
+    <?php print render($page['slideshow']); ?>
     <div class="full-wrap clearfix">
       <?php print render($page['search']) ?>
     </div>
@@ -144,7 +144,7 @@
 
       <?php if ($is_front): ?>
         <!-- Top Three blocks -->
-          <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?> 
+          <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?>
             <div class="container">
               <div class="row">
                   <?php if ($page['top_first']): ?>
@@ -169,7 +169,7 @@
             <?php print render($page['top_second_widget']) ?>
           </div>
         <!-- End Top Two Widgets -->
-      <?php endif; ?> 
+      <?php endif; ?>
 
 
       <div class="row">
@@ -183,18 +183,18 @@
             <?php endif; ?>
 
             <?php if ($page['content_top_right']): ?>
-                    <div class="add-content-button"> 
-                    <?php print render($page['content_top_right']); ?>                                 
+                    <div class="add-content-button">
+                    <?php print render($page['content_top_right']); ?>
                     </div>
             <?php endif; ?>
         </div>
       </div>
 
       <?php if ($page['content_top']): ?>
-            <div class="slide-show-wrap"> 
-            <?php print render($page['content_top']); ?>                                 
+            <div class="slide-show-wrap">
+            <?php print render($page['content_top']); ?>
             </div>
-       <?php endif; ?>           
+       <?php endif; ?>
 
 
       <?php if ($secondary_local_tasks): ?>
@@ -211,10 +211,11 @@
 
 
 
-    <div class="container page-width">  
+    <div class="container page-width">
         <!-- Main Content start//-->
         <!-- Sider left and sider right cannot appear at the same time!!//-->
         <div class="row">
+            <?php print $messages; ?>
             <?php  if($page['sidebar_right'] || $page['sidebar_left']){ ?>
 
                 <?php  if($page['sidebar_left']): ?>
@@ -222,26 +223,26 @@
                     <?php print render($page['sidebar_left']) ?>
                   </div>
                 <?php endif; ?>
-                  
-                  <div class="col-lg-9 col-md-9"> 
+
+                  <div class="col-lg-9 col-md-9">
                     <?php print render($page['content']) ?>
                   </div>
-              
+
                 <?php  if($page['sidebar_right']): ?>
                   <div class="col-lg-3 col-md-3 col-sm-12">
                     <?php print render($page['sidebar_right']) ?>
                   </div>
                 <?php endif; ?>
-              
+
             <?php } else {?>
               <div class="col-lg-12">
                 <?php  if($page['content']):?>
                     <?php print render($page['content']) ?>
                 <?php endif; ?>
               </div>
-            <?php } ?> 
-        </div>   
-    </div>    
+            <?php } ?>
+        </div>
+    </div>
       <!-- Main Content end//-->
 </div>
 
@@ -267,11 +268,11 @@
       </div>
     <?php endif; ?>
 
-    <div class="footer_bottom">    
+    <div class="footer_bottom">
       <div id="copyright">
         <p class="copyright">
           <?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?>
-        </p> 
+        </p>
         <div class="clear"></div>
       </div>
     </div>
