@@ -130,13 +130,29 @@ function zdruerp_user_login(&$edit, $account) {
     $data = drupal_json_decode($result->data);
     if($data['code']=='200'){
       $sso_client_ec = $data['data']['SSO_CLIENT_EC'];
-      drupal_set_message('SSO LOGIN成功！go other site: http://othersite.com/service?SSO_CLIENT_EC='.$sso_client_ec,'status');
-      watchdog('$sso_client_ec', $sso_client_ec);
+      watchdog('login','SSO LOGIN成功！go other site: http://othersite.com/service?SSO_CLIENT_EC='.$sso_client_ec);
+      $sso_client_ecs = array($account->uid=>$sso_client_ec);
+      variable_set('zdruerp_sso_client_ec',$sso_client_ecs);
+      //TO GET see zdruerp_user_logout
     }
 
   }
   watchdog('$result', '<pre>'.print_r($result,1));
   // dpm($result);
+}
+/**
+ * Implements hook_user_logout().
+ */
+function zdruerp_user_logout($account) {
+  $sso_client_ecs = variable_get('zdruerp_sso_client_ec',array());
+  unset($sso_client_ecs[$account->uid]);
+  variable_set('zdruerp_sso_client_ec',$sso_client_ecs);
+}
+/**
+ * Implements hook_uninstall().
+ */
+function zdruerp_uninstall() {
+  variable_del('zdruerp_sso_client_ec_*');
 }
 /**
  * Implements hook_init().
