@@ -6,9 +6,9 @@ package = Media
 
 dependencies[] = dragndrop_upload_element
 
-; Information added by Drupal.org packaging script on 2014-03-18
-version = "7.x-1.0-alpha2"
+; Information added by Drupal.org packaging script on 2016-02-22
+version = "7.x-1.0-alpha2+13-dev"
 core = "7.x"
 project = "dragndrop_upload"
-datestamp = "1395160764"
+datestamp = "1456131540"
 

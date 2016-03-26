@@ -122,6 +122,7 @@ function dragndrop_upload_element_element_process($element, &$form_state, $form)
   $element['droppable_area'] = array(
     '#theme' => 'dnd_upload_droppable_area',
     '#text' => $element['#droppable_area_text'],
+    '#id' => $element['#id'],
     '#name' => $element['#name'],
     '#dnd_id' => $dnd_id,
     '#standard_upload' => $element['#standard_upload'],
@@ -139,28 +140,15 @@ function dragndrop_upload_element_element_pre_render($element) {
     return $element;
   }
 
-  $file_validate_extensions = '';
-  if (!empty($element['#upload_validators']['file_validate_extensions'])) {
-    $file_validate_extensions = preg_split(
-      '/ +/',
-      implode(
-        ' ',
-        $element['#upload_validators']['file_validate_extensions']
-      )
-    );
-  }
-
   $selector = '#' . $element['droppable_area']['#dnd_id'];
   $element['#attached']['dragndrop_upload'][] = array(
     'selector' => $selector,
     'settings' => array(
+      'id' => $element['upload']['#id'],
       'name' => $element['upload']['#name'],
       'multiupload' => $element['#multiupload'],
       'cardinality' => $element['#multiupload'] ? $element['#cardinality'] : 1,
-      'validators' => array(
-        'maxSize' => parse_size($element['#file_upload_max_size']),
-        'extensions' => $file_validate_extensions,
-      ),
+      'validators' => $element['#upload_validators'],
       'uploadButton' => $element['upload_button']['#id'],
       'browseButton' => $selector . ':parent .droppable-browse-button',
       'allowReplace' => $element['#allow_replace'],
