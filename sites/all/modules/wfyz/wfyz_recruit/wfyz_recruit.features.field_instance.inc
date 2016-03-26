@@ -36,7 +36,7 @@ function wfyz_recruit_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => '职位要求',
+    'label' => '职位详介',
     'required' => 0,
     'settings' => array(
       'display_summary' => 0,
@@ -231,7 +231,7 @@ function wfyz_recruit_field_default_field_instances() {
     'bundle' => 'recruitment',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '最多选5个',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -519,12 +519,11 @@ function wfyz_recruit_field_default_field_instances() {
   t('地区');
   t('待遇');
   t('招聘人数');
-  t('最多选5个');
   t('有效期');
   t('电邮');
   t('福利');
   t('职位类别');
-  t('职位要求');
+  t('职位详介');
   t('联系电话');
   t('详细地址');
   t('雇用性质');

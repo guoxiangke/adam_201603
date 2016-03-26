@@ -77,7 +77,7 @@ function wfyz_recruit_views_default_views() {
   $handler->display->display_options['fields']['field_salary']['field'] = 'field_salary';
   $handler->display->display_options['fields']['field_salary']['label'] = '';
   $handler->display->display_options['fields']['field_salary']['element_label_colon'] = FALSE;
-  /* Field: Field: 公司名称 */
+  /* Field: Field: 昵称 */
   $handler->display->display_options['fields']['field_single_text']['id'] = 'field_single_text';
   $handler->display->display_options['fields']['field_single_text']['table'] = 'field_data_field_single_text';
   $handler->display->display_options['fields']['field_single_text']['field'] = 'field_single_text';
