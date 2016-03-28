@@ -368,14 +368,14 @@ function uuke_alipay_entity_view($entity, $type, $view_mode, $langcode) {
       $base_path = url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=');
       $entity->content['alipay'] =  array(
         '#markup' => '支付宝',
-        '#prefix' => '<a class= "bizz-btn bizz-btn-danger" target="_blank" href="'.$base_path.'order/'.$entity->id.'/alipay">',
+        '#prefix' => '<a class= "btn btn-danger" target="_blank" href="'.$base_path.'order/'.$entity->id.'/alipay">',
         '#suffix' => '</a>',
         '#weight' => -19,
       );
     }else{
       $entity->content['alipay'] =  array(
         '#markup' => '已支付',
-        '#prefix' => '<a class= "bizz-btn bizz-btn-secondary" href="#">',
+        '#prefix' => '<a class= "btn btn-secondary" href="#">',
         '#suffix' => '</a>',
         '#weight' => -19,
       );
