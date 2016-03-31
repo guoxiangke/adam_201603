@@ -1910,3 +1910,13 @@ div#admin-toolbar.vertical div.admin-tab-active {
     color: #00B8EE;
 }
 
+.store-navbar-header {
+    float: left;
+    margin-right: 10px;
+}
+
+
+.store-navbar-header img{
+	height:50px;
+	width: 50px;
+}

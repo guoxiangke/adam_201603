@@ -14,6 +14,7 @@
 //[field_multiple_date-value] == Raw value
 //[field_multiple_date-value2] == Raw value2
 //[field_single_image] == Field: 流程图
+//[nid] == 内容: Nid
 
 
 //$fields: an array of $field objects. Each one contains:
@@ -35,26 +36,26 @@
 
 
 
-  <div class="panel-group" id="accordion">
+<div class="panel-group" id="accordion">
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php print $fields['counter']->content; ?>">
-            <?php print $fields['title']->content; ?>
-          </a>
-        </h4>
-      </div>
-      
-      <div id="collapse<?php print $fields['counter']->content; ?>" class="panel-collapse collapse <?php if($fields['counter']->content == '0'): ?>in<?php endif; ?>">
-      
-      
-        <div class="panel-body">
-          <?php print $fields['rendered_entity']->content; ?>
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php print $fields['counter']->content; ?>">
+              <?php print $fields['title']->content; ?>
+            </a>
+          </h4>
         </div>
-      </div>
-    </div>
     
-  </div>
+        <div id="collapse<?php print $fields['counter']->content; ?>" class="panel-collapse collapse <?php if($fields['counter']->content == '0'): ?>in<?php endif; ?>">
+          <div class="panel-body">
+            <?php print $fields['rendered_entity']->content; ?>
+          </div>
+        </div>
+    </div>
+</div>
+
+    
+  
 
 
 
