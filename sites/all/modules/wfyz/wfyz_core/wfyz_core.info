@@ -1,8 +1,7 @@
 name = wfyz core
 core = 7.x
 package = wfyz
-version = 7.x-2.3
-dependencies[] = addressfield
+version = 7.x-2.4
 dependencies[] = ckeditor
 dependencies[] = date
 dependencies[] = email
@@ -27,7 +26,6 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[field_base][] = body
-features[field_base][] = field_address
 features[field_base][] = field_body
 features[field_base][] = field_category
 features[field_base][] = field_deadline

@@ -64,42 +64,6 @@ function gov_service_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_eck_bundle_info().
- */
-function gov_service_eck_bundle_info() {
-  $items = array(
-    'gov_service_doc_gov_service_doc' => array(
-      'machine_name' => 'gov_service_doc_gov_service_doc',
-      'entity_type' => 'gov_service_doc',
-      'name' => 'gov_service_doc',
-      'label' => 'Gov Service Doc',
-      'config' => array(),
-    ),
-  );
-  return $items;
-}
-
-/**
- * Implements hook_eck_entity_type_info().
- */
-function gov_service_eck_entity_type_info() {
-  $items = array(
-    'gov_service_doc' => array(
-      'name' => 'gov_service_doc',
-      'label' => 'Gov Service Doc',
-      'properties' => array(
-        'doc_title' => array(
-          'label' => '文件名称',
-          'type' => 'text',
-          'behavior' => 'title',
-        ),
-      ),
-    ),
-  );
-  return $items;
-}
-
-/**
  * Implements hook_node_info().
  */
 function gov_service_node_info() {

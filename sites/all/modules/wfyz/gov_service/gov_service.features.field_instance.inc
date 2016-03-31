@@ -10,9 +10,10 @@
 function gov_service_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'gov_service_doc-gov_service_doc-field_body'.
-  $field_instances['gov_service_doc-gov_service_doc-field_body'] = array(
-    'bundle' => 'gov_service_doc',
+  // Exported field_instance:
+  // 'field_collection_item-field_documents-field_body'.
+  $field_instances['field_collection_item-field_documents-field_body'] = array(
+    'bundle' => 'field_documents',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -22,23 +23,10 @@ function gov_service_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'ief_table' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
         'weight' => 1,
       ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
-    'entity_type' => 'gov_service_doc',
+    'entity_type' => 'field_collection_item',
     'field_name' => 'field_body',
     'label' => '文件说明',
     'required' => 0,
@@ -53,13 +41,14 @@ function gov_service_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
-  // Exported field_instance: 'gov_service_doc-gov_service_doc-field_file'.
-  $field_instances['gov_service_doc-gov_service_doc-field_file'] = array(
-    'bundle' => 'gov_service_doc',
+  // Exported field_instance:
+  // 'field_collection_item-field_documents-field_file'.
+  $field_instances['field_collection_item-field_documents-field_file'] = array(
+    'bundle' => 'field_documents',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -68,23 +57,10 @@ function gov_service_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 1,
-      ),
-      'ief_table' => array(
-        'label' => 'hidden',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
         'weight' => 2,
       ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
-    'entity_type' => 'gov_service_doc',
+    'entity_type' => 'field_collection_item',
     'field_name' => 'field_file',
     'label' => '相关附件',
     'required' => 0,
@@ -102,7 +78,42 @@ function gov_service_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 4,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_documents-field_single_text'.
+  $field_instances['field_collection_item-field_documents-field_single_text'] = array(
+    'bundle' => 'field_documents',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_single_text',
+    'label' => '文件名称',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 10,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
     ),
   );
 
@@ -151,21 +162,27 @@ function gov_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-gov_service_info-field_doc_required'.
-  $field_instances['node-gov_service_info-field_doc_required'] = array(
+  // Exported field_instance: 'node-gov_service_info-field_documents'.
+  $field_instances['node-gov_service_info-field_documents'] = array(
     'bundle' => 'gov_service_info',
-    'default_value_function' => '',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
+        'module' => 'field_collection_table',
         'settings' => array(
-          'links' => 1,
-          'view_mode' => 'ief_table',
+          'add' => 'Add',
+          'cssfield' => 0,
+          'cssrowcol' => 0,
+          'delete' => 'Delete',
+          'description' => 1,
+          'edit' => 'Edit',
+          'empty' => 1,
+          'view_mode' => 'full',
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'field_collection_table_view',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -176,34 +193,20 @@ function gov_service_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_doc_required',
+    'field_name' => 'field_documents',
     'label' => '所需文件',
     'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'inline_entity_form',
+      'module' => 'field_collection_table',
       'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 1,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'entities',
-          'label_singular' => 'entity',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
+        'nodragging' => 0,
       ),
-      'type' => 'inline_entity_form',
-      'weight' => 5,
+      'type' => 'field_collection_table',
+      'weight' => 31,
     ),
   );
 
@@ -626,6 +629,7 @@ function gov_service_field_default_field_instances() {
   t('受理编号');
   t('备注');
   t('所需文件');
+  t('文件名称');
   t('文件说明');
   t('流程图');
   t('申办人');

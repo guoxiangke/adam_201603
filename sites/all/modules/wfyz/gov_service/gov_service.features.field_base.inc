@@ -45,40 +45,27 @@ function gov_service_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_doc_required'.
-  $field_bases['field_doc_required'] = array(
+  // Exported field_base: 'field_documents'.
+  $field_bases['field_documents'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_doc_required',
+    'field_name' => 'field_documents',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'revision_id' => array(
+        0 => 'revision_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'field_collection',
     'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'gov_service_doc' => 'gov_service_doc',
-        ),
-      ),
+      'hide_blank_items' => 1,
+      'path' => '',
       'profile2_private' => FALSE,
-      'target_type' => 'gov_service_doc',
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_gov_dept'.

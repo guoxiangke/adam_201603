@@ -75,6 +75,24 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_first_rate'.
+  $field_bases['field_first_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_first_rate',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'fivestar',
+    'settings' => array(
+      'axis' => 'first_rate',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'fivestar',
+  );
+
   // Exported field_base: 'field_from_service'.
   $field_bases['field_from_service'] = array(
     'active' => 1,
@@ -111,40 +129,27 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_multiple_payment'.
-  $field_bases['field_multiple_payment'] = array(
+  // Exported field_base: 'field_invoice_address'.
+  $field_bases['field_invoice_address'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_multiple_payment',
+    'field_name' => 'field_invoice_address',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'revision_id' => array(
+        0 => 'revision_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'field_collection',
     'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'payment' => 'payment',
-        ),
-      ),
+      'hide_blank_items' => 1,
+      'path' => '',
       'profile2_private' => FALSE,
-      'target_type' => 'payment_entity',
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_need_invoice'.
@@ -171,6 +176,24 @@ function wfyz_commerce_service_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_overall_rate'.
+  $field_bases['field_overall_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_overall_rate',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'fivestar',
+    'settings' => array(
+      'axis' => 'overall',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'fivestar',
   );
 
   // Exported field_base: 'field_pay_amount'.
@@ -215,27 +238,6 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_pay_remark'.
-  $field_bases['field_pay_remark'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_pay_remark',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_pay_status'.
   $field_bases['field_pay_status'] = array(
     'active' => 1,
@@ -266,30 +268,27 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_payment_choice'.
-  $field_bases['field_payment_choice'] = array(
+  // Exported field_base: 'field_payment'.
+  $field_bases['field_payment'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_payment_choice',
+    'field_name' => 'field_payment',
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'revision_id' => array(
+        0 => 'revision_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'field_collection',
     'settings' => array(
-      'allowed_values' => array(
-        0 => '一次性付款',
-        1 => '分阶段付款',
-      ),
-      'allowed_values_function' => '',
+      'hide_blank_items' => 1,
+      'path' => '',
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
-    'type' => 'list_boolean',
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_paytype'.
@@ -336,6 +335,51 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_second_rate'.
+  $field_bases['field_second_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_second_rate',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'fivestar',
+    'settings' => array(
+      'axis' => 'second_rate',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'fivestar',
+  );
+
+  // Exported field_base: 'field_service_guarantee'.
+  $field_bases['field_service_guarantee'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_service_guarantee',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'service_guarantee',
+          'parent' => 0,
+        ),
+      ),
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_service_type'.
   $field_bases['field_service_type'] = array(
     'active' => 1,
@@ -361,42 +405,6 @@ function wfyz_commerce_service_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_single_payment'.
-  $field_bases['field_single_payment'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_single_payment',
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'payment' => 'payment',
-        ),
-      ),
-      'profile2_private' => FALSE,
-      'target_type' => 'payment_entity',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_so_pay_status'.
@@ -442,9 +450,10 @@ function wfyz_commerce_service_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => '订单取消',
+        0 => '订单已提交',
         1 => '交易失败',
         2 => '交易成功',
+        3 => '订单已取消',
       ),
       'allowed_values_function' => '',
       'profile2_private' => FALSE,
@@ -486,6 +495,24 @@ function wfyz_commerce_service_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_third_rate'.
+  $field_bases['field_third_rate'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_third_rate',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'fivestar',
+    'settings' => array(
+      'axis' => 'third_rate',
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'fivestar',
   );
 
   // Exported field_base: 'group_group'.

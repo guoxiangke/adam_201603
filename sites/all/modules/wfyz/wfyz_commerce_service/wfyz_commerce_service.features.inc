@@ -12,33 +12,123 @@ function wfyz_commerce_service_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_eck_bundle_info().
+ * Implements hook_flag_default_flags().
  */
-function wfyz_commerce_service_eck_bundle_info() {
-  $items = array(
-    'payment_entity_payment' => array(
-      'machine_name' => 'payment_entity_payment',
-      'entity_type' => 'payment_entity',
-      'name' => 'payment',
-      'label' => 'Payment',
-      'config' => array(),
+function wfyz_commerce_service_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Cancel Sales Order".
+  $flags['cancel_sales_order'] = array(
+    'entity_type' => 'node',
+    'title' => 'Cancel Sales Order',
+    'global' => 1,
+    'types' => array(
+      0 => 'service_order',
     ),
+    'flag_short' => '取消订单',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => '订单已取消',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '订单已取消',
+    'link_type' => 'confirm',
+    'weight' => 0,
+    'show_in_links' => array(
+      'full' => 0,
+      'teaser' => 0,
+      'rss' => 0,
+      'diff_standard' => 0,
+      'ief_table' => 0,
+      'token' => 0,
+      'workflow_tab' => 0,
+    ),
+    'show_as_field' => 1,
+    'show_on_form' => 0,
+    'access_author' => 'own',
+    'show_contextual_link' => 0,
+    'i18n' => 0,
+    'flag_confirmation' => '确认取消订单?',
+    'unflag_confirmation' => '确认不取消订单?',
+    'module' => 'wfyz_commerce_service',
+    'locked' => array(
+      0 => 'name',
+    ),
+    'api_version' => 3,
   );
-  return $items;
+  // Exported flag: "Paid to vendor".
+  $flags['paid_to_vendor'] = array(
+    'entity_type' => 'field_collection_item',
+    'title' => 'Paid to vendor',
+    'global' => 1,
+    'types' => array(
+      0 => 'field_payment',
+    ),
+    'flag_short' => '标示为已付给商家',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => '已付给商家',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '已付给商家',
+    'link_type' => 'toggle',
+    'weight' => 0,
+    'show_in_links' => array(
+      'full' => 0,
+      'diff_standard' => 0,
+      'ief_table' => 0,
+      'token' => 0,
+    ),
+    'show_as_field' => 1,
+    'show_on_form' => 0,
+    'access_author' => '',
+    'show_contextual_link' => 0,
+    'module' => 'wfyz_commerce_service',
+    'locked' => array(
+      0 => 'name',
+    ),
+    'api_version' => 3,
+  );
+  return $flags;
+
 }
 
 /**
- * Implements hook_eck_entity_type_info().
+ * Implements hook_image_default_styles().
  */
-function wfyz_commerce_service_eck_entity_type_info() {
-  $items = array(
-    'payment_entity' => array(
-      'name' => 'payment_entity',
-      'label' => 'Payment Entity',
-      'properties' => array(),
+function wfyz_commerce_service_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: service_catalog.
+  $styles['service_catalog'] = array(
+    'label' => 'Service Catalog (600 x 380)',
+    'effects' => array(
+      4 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 600,
+          'height' => 380,
+        ),
+        'weight' => 2,
+      ),
     ),
   );
-  return $items;
+
+  // Exported image style: service_catalog_thumbnail.
+  $styles['service_catalog_thumbnail'] = array(
+    'label' => 'Service Catalog Thumbnail (145 x 90)',
+    'effects' => array(
+      5 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 145,
+          'height' => 90,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  return $styles;
 }
 
 /**
@@ -59,7 +149,7 @@ function wfyz_commerce_service_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('服务订单号'),
       'help' => '',
     ),
     'service_requirement' => array(
