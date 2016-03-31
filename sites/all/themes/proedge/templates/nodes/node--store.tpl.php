@@ -19,8 +19,6 @@
 <div class="label-tag label-orange"><?php print render($content['field_service_type']); ?></div>
 
 
-
-
 <p>
 <p>
 
