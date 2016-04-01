@@ -22,11 +22,11 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="individual-reg">
-                <p><?php $block = module_invoke('profile2_regpath', 'block_view', 'p2rp_register_7');
+                <p><?php $block = module_invoke('profile2_regpath', 'block_view', 'p2rp_register_3');
               print render($block['content']); ?></p>
               </div>
               <div class="tab-pane" id="company-reg">
-                <p><?php $block = module_invoke('profile2_regpath', 'block_view', 'p2rp_register_6');
+                <p><?php $block = module_invoke('profile2_regpath', 'block_view', 'p2rp_register_2');
               print render($block['content']);
               ?></p>
               </div>

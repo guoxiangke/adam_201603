@@ -38,7 +38,7 @@
         <?php print render($content['field_location']); ?>
         
 		<div style="margin-top: 15px;">
-    		<a href="/wfyz3/node/add/service-order?field_from_service=<?php print $node->nid; ?>" class="btn btn-danger">
+    		<a href="/node/add/service-order?field_from_service=<?php print $node->nid; ?>" class="btn btn-danger">
     	<?php print t('下单') ?></a>
 
 		<?php print render($content['field_sales_volume']); ?>
