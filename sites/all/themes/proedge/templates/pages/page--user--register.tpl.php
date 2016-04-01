@@ -65,7 +65,7 @@
                             <div style="float: left;">
                                 <p>Copyright @2013-2016 Qcloud.com.&nbsp;科服驿站&nbsp;版权所有</p>
                                 <p>绵阳科技城科技服务有限责任公司&nbsp;版权所有&nbsp;&nbsp;ICP备案许可证:川ICP备&nbsp;11018762号</p>
-                                <p>技术支持:绵阳大数据公司&nbsp;&nbsp;&nbsp;&nbsp;攻城狮网络科技&nbsp;&nbsp;&nbsp;&nbsp;绵阳傲风科技</p>
+                                <p>技术支持:绵阳大数据公司&nbsp;&nbsp;&nbsp;&nbsp;绵阳傲锋科技&nbsp;&nbsp;&nbsp;&nbsp;攻城狮</p>
                             </div>
                         </div>
                     </row>
