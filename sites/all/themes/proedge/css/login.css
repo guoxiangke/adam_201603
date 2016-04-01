@@ -1,53 +1,296 @@
-#auth_box {
-  width: 350px;
-  margin: 0 auto;
-  padding: 50px 0 0;
-  font-family: sans-serif;
+/*重置样式*/
+
+.floatRight {
+    float: right;
 }
 
-  #auth_box h1#the_logo {
-    text-align: center;
-    margin: 0;
-    padding: 0 0 25px;
-  }
-    
- #auth_box h1#the_logo img {
-      max-width: 150px;
-    }
-  
-  #auth_box h2.title {
-    margin: 0;
-    padding: 0 0 15px;
-    font-size: 2em;
-  }
-  
-  #auth_box input[type="text"],
-  #auth_box input[type="password"] {
-    width: 320px;
-    border: 1px #ccc solid;
-    border-radius: 3px;
-    padding: 5px;
-    font-size: 15px;
-  }
 
-  #auth_box input[type="submit"] {
-    float: right;
-  }
+/*顶部logo*/
 
-  #auth_box #middle_part {
-    border-radius: 3px;
-    background: #fff;
-    padding: 15px;
+.login_header {
+    width: 100%;
+    height: 73px;
+}
+
+.login_header img {
+    margin-top: 8px;
+}
+
+.login_header .back_link a {
+    line-height: 73px;
+    color: #00b8ee;
+}
+
+.login_header .back_link a:hover {
+    color: #00b8ee;
+    text-decoration: none;
+}
+
+.login_header .back_link img {
+    margin-top: -7px;
+    margin-right: 5px;
+}
+
+.footer {
+    width: 100%;
+    height: 185px;
+    background-color: #000;
+}
+
+
+/*页脚*/
+
+#_pageBottom {
+    width: 100%;
+    height: 200px;
+    padding-top: 25px;
+    background-color: #000;
+}
+
+#_pageBottom * {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+}
+
+#_pageBottomInfo {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+    color: #484848;
+}
+
+#_pageBottomInfo .logo {
+    padding-top: 30px;
+}
+
+#_pageBottomInfo .logo p {
+    color: #666666;
+}
+
+#_pageBottomInfo .kcylink>li {
+    float: left;
+    padding: 5px 20px;
+}
+
+#_pageBottomInfo .kcylink>li>a,
+.usme {
+    font-size: 18px;
+    color: #666666;
+}
+
+#_pageBottomInfo .kcylink>li>a:hover {
+    color: #fff;
+}
+
+#_pageBottomInfo .contactus {
+    padding-top: 15px;
+}
+
+#_pageBottomInfo .contactus p {
+    padding-top: 8px;
+    color: #666666;
+}
+
+
+/*登录主体*/
+
+.login {
+    position: relative;
+}
+
+.loginBox {
+    position: absolute;
+    z-index: 168;
+    top: 140px;
+    left: 58%;
+    width: 410px;
+    background-color: #fff;
     overflow: hidden;
-    box-shadow: 0 0 3px 1px #ccc;
-  }
+}
 
-  #auth_box .back_link {
-    padding: 15px 0 0;
-  }
+.loginBox .messages_part {
+    padding: 10px 20px;
+}
 
-  #auth_box #bottom_part {
-    font-size: 13px;
-    padding: 15px 0 0;
-    margin-bottom: 200px;
-  }
+#edit-name {
+    width: 100%;
+    height: 34px;
+}
+
+#edit-pass {
+    width: 100%;
+    height: 34px;
+}
+
+#edit-submit {
+    float: right;
+    margin-top: 20px;
+}
+
+.loginBox .password_link {
+    width: 100%;
+    height: 30px;
+}
+
+.loginBox .password_link a {
+    float: right;
+    margin-right: -70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 10px;
+    color: #999;
+}
+
+.loginBox .password_link a:hover {
+    text-decoration: none;
+    color: #00b8ee;
+}
+
+.register_link {
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+
+/*密码修改主体*/
+
+.register {
+    position: relative;
+}
+
+.RePasswordBody {
+    position: absolute;
+    z-index: 168;
+    top: 140px;
+    left: 58%;
+    width: 410px;
+    background-color: #fff;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.RePasswordBody #middle_part {
+    padding: 10px 20px;
+}
+
+.RePasswordBody .register_link {
+    margin-top: -5px;
+    padding-left: 30px;
+}
+
+
+/*用户注册*/
+
+.register {
+    position: relative;
+}
+
+.bodyBox .registerBody {
+    position: absolute;
+    z-index: 168;
+    top: 140px;
+    left: 58%;
+    width: 410px;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.registerBody #auth_box {
+    width: 380px;
+    height: 100%;
+    border: 1px solid #f2f2f2;
+}
+
+.registerBody #middle_part .tabbable {
+    width: 378px;
+    height: 100%;
+}
+
+.registerBody #middle_part .tabbable ul {
+    width: 378px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.registerBody #middle_part .tabbable ul li {
+    float: left;
+    display: inline-block;
+    width: 189px;
+    height: 40px;
+}
+
+.registerBody #middle_part .tabbable ul li>a {
+    width: 189px;
+    height: 40px;
+    display: block;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f2f2f2;
+    color: #00b8ee;
+    text-decoration: none;
+    border: 1px solid #f2f2f2;
+}
+
+.registerBody #middle_part .tabbable ul li>a.act {
+    width: 189px;
+    height: 40px;
+    display: block;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
+    color: #00b8ee;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+#edit-name--2,
+#edit-mail--2,
+#edit-field-subuser-limit-und-0-value--2 {
+    width: 360px;
+}
+
+#edit-field-subuser-limit-und-0-value--2 {
+    margin-left: 10px;
+}
+
+.form-item-field-subuser-limit-und-0-value label {
+    margin-left: 10px;
+}
+
+#edit-submit--2 {
+    float: right;
+    margin-right: 10px;
+}
+
+#bottom_part .login_link {
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#edit-profile-company-field-single-text-und-0-value,
+#edit-name--3,
+#edit-mail--3,
+#edit-field-subuser-limit-und-0-value--3 {
+    width: 360px;
+}
+
+#edit-field-subuser-limit-und-0-value--3 {
+    margin-left: 10px;
+}
+
+#edit-submit--3 {
+    float: right;
+    margin-right: 10px;
+}
+
+#edit-profile-company-field-single-image-und-0-upload-button {
+    margin: 10px 0;
+}

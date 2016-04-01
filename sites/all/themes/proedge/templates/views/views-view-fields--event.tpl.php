@@ -21,15 +21,15 @@
 ?>
 
 <div class="col-lg-4 col-md-4 col-sm-6"> 
-  <div class="grid-box">
+  <div class="grid-box eventBox">
     <div class="grid-box-image event">
         <?php print $fields['field_image_logo']->content; ?>
     </div>
 
     <div class="grid-box-bottom event">                
           <p class="title"><?php print $fields['title']->content; ?></p>
-          <p><?php print $fields['ops']->content; ?></p>
-          <p><?php print $fields['field_single_date']->content; ?></p>
+          <p class="join"><?php print $fields['ops']->content; ?></p>
+          <p class="e_date"><?php print $fields['field_single_date']->content; ?></p>
           <div class="grid-edit"><?php print $fields['edit_node']->content; ?></div>
           <div class="clear"></div>    
     </div>

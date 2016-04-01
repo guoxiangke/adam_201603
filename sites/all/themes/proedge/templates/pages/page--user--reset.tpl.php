@@ -19,6 +19,7 @@
     <div class="login_link">
       <?php print l(t('Login'), 'user/login'); ?>
     </div>
+ 
 
     <?php if (variable_get('user_register')): ?>
       <div class="register_link">
