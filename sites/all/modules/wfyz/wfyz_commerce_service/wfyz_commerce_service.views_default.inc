@@ -847,35 +847,71 @@ function wfyz_commerce_service_views_default_views() {
 
   /* Display: EVA Field-comment */
   $handler = $view->new_display('entity_view', 'EVA Field-comment', 'eva_comment');
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Comment: Comments of the node */
-  $handler->display->display_options['relationships']['cid']['id'] = 'cid';
-  $handler->display->display_options['relationships']['cid']['table'] = 'node';
-  $handler->display->display_options['relationships']['cid']['field'] = 'cid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Comment: Author */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'comment';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Field: Comment: Comment */
-  $handler->display->display_options['fields']['comment_body']['id'] = 'comment_body';
-  $handler->display->display_options['fields']['comment_body']['table'] = 'field_data_comment_body';
-  $handler->display->display_options['fields']['comment_body']['field'] = 'comment_body';
-  $handler->display->display_options['fields']['comment_body']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['comment_body']['label'] = '';
-  $handler->display->display_options['fields']['comment_body']['element_label_colon'] = FALSE;
-  /* Field: Comment: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'comment';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Field: 具体要求 */
+  $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
+  $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
+  $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
+  $handler->display->display_options['fields']['field_body']['label'] = '评价';
+  $handler->display->display_options['fields']['field_body']['element_label_colon'] = FALSE;
+  /* Field: Content: 总体评分 */
+  $handler->display->display_options['fields']['field_overall_rate']['id'] = 'field_overall_rate';
+  $handler->display->display_options['fields']['field_overall_rate']['table'] = 'field_data_field_overall_rate';
+  $handler->display->display_options['fields']['field_overall_rate']['field'] = 'field_overall_rate';
+  $handler->display->display_options['fields']['field_overall_rate']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_overall_rate']['click_sort_column'] = 'rating';
+  $handler->display->display_options['fields']['field_overall_rate']['settings'] = array(
+    'widget' => array(
+      'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+    ),
+    'expose' => 0,
+    'style' => 'average',
+    'text' => 'average',
+  );
+  /* Field: Content: 服务态度 */
+  $handler->display->display_options['fields']['field_first_rate']['id'] = 'field_first_rate';
+  $handler->display->display_options['fields']['field_first_rate']['table'] = 'field_data_field_first_rate';
+  $handler->display->display_options['fields']['field_first_rate']['field'] = 'field_first_rate';
+  $handler->display->display_options['fields']['field_first_rate']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_first_rate']['click_sort_column'] = 'rating';
+  $handler->display->display_options['fields']['field_first_rate']['settings'] = array(
+    'widget' => array(
+      'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+    ),
+    'expose' => 0,
+    'style' => 'average',
+    'text' => 'average',
+  );
+  /* Field: Content: 工作速度 */
+  $handler->display->display_options['fields']['field_second_rate']['id'] = 'field_second_rate';
+  $handler->display->display_options['fields']['field_second_rate']['table'] = 'field_data_field_second_rate';
+  $handler->display->display_options['fields']['field_second_rate']['field'] = 'field_second_rate';
+  $handler->display->display_options['fields']['field_second_rate']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_second_rate']['click_sort_column'] = 'rating';
+  $handler->display->display_options['fields']['field_second_rate']['settings'] = array(
+    'widget' => array(
+      'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+    ),
+    'expose' => 0,
+    'style' => 'average',
+    'text' => 'average',
+  );
+  /* Field: Content: 完成质量 */
+  $handler->display->display_options['fields']['field_third_rate']['id'] = 'field_third_rate';
+  $handler->display->display_options['fields']['field_third_rate']['table'] = 'field_data_field_third_rate';
+  $handler->display->display_options['fields']['field_third_rate']['field'] = 'field_third_rate';
+  $handler->display->display_options['fields']['field_third_rate']['click_sort_column'] = 'rating';
+  $handler->display->display_options['fields']['field_third_rate']['settings'] = array(
+    'widget' => array(
+      'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+    ),
+    'expose' => 0,
+    'style' => 'average',
+    'text' => 'average',
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: 购买服务 (field_from_service) */
   $handler->display->display_options['arguments']['field_from_service_target_id']['id'] = 'field_from_service_target_id';

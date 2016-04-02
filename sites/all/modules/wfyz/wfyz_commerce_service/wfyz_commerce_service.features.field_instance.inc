@@ -453,6 +453,12 @@ function wfyz_commerce_service_field_default_field_instances() {
         'type' => 'fivestar_formatter_default',
         'weight' => 9,
       ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_first_rate',
@@ -619,6 +625,12 @@ function wfyz_commerce_service_field_default_field_instances() {
         'type' => 'fivestar_formatter_default',
         'weight' => 8,
       ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_overall_rate',
@@ -781,6 +793,12 @@ function wfyz_commerce_service_field_default_field_instances() {
         'type' => 'fivestar_formatter_default',
         'weight' => 10,
       ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_second_rate',
@@ -898,6 +916,12 @@ function wfyz_commerce_service_field_default_field_instances() {
         'type' => 'fivestar_formatter_default',
         'weight' => 11,
       ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_third_rate',
@@ -1005,7 +1029,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1102,7 +1126,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'above',
@@ -1271,7 +1295,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1312,7 +1336,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'above',
@@ -1416,7 +1440,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_table_view',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1503,7 +1527,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'full' => array(
         'label' => 'above',
@@ -1550,7 +1574,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1593,7 +1617,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',

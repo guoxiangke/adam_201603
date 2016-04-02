@@ -486,7 +486,7 @@ function wfyz_commerce_service_field_default_field_bases() {
         ),
         'view' => array(
           'args' => array(),
-          'display_name' => 'entityreference_1',
+          'display_name' => 'entityreference_subuser',
           'view_name' => 'subuser',
         ),
       ),

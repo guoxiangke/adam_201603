@@ -25,7 +25,7 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['title'] = '子用户';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'create subuser 7';
+  $handler->display->display_options['access']['perm'] = 'create store content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -113,12 +113,6 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['fields']['cancel_node']['relationship'] = 'relation_subuser_user';
   $handler->display->display_options['fields']['cancel_node']['label'] = '';
   $handler->display->display_options['fields']['cancel_node']['element_label_colon'] = FALSE;
-  /* Sort criterion: User: Created date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'users';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['relationship'] = 'relation_subuser_user';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -127,11 +121,6 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: User: Current */
-  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
-  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -141,8 +130,8 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<div class="bizz-btn bizz-btn-primary">
-<a href="/wfyz/admin/people/create">新增子用户</a>
+  $handler->display->display_options['header']['area']['content'] = '<div class="btn btn-primary">
+<a href="/admin/people/create">新增子用户</a>
 </div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['path'] = 'user/my-company-subuser';
@@ -154,9 +143,10 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Entity Reference */
-  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_subuser');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
@@ -166,26 +156,49 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'name' => 'name',
+    'mail' => 'mail',
+  );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User: Relation: Subuser (user → relation) */
+  $handler->display->display_options['relationships']['relation_base_left_subuser']['id'] = 'relation_base_left_subuser';
+  $handler->display->display_options['relationships']['relation_base_left_subuser']['table'] = 'users';
+  $handler->display->display_options['relationships']['relation_base_left_subuser']['field'] = 'relation_base_left_subuser';
+  $handler->display->display_options['relationships']['relation_base_left_subuser']['r_index'] = '0';
+  $handler->display->display_options['relationships']['relation_base_left_subuser']['entity_deduplication_left'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'relation_subuser_user';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Field: User: E-mail */
-  $handler->display->display_options['fields']['mail']['id'] = 'mail';
-  $handler->display->display_options['fields']['mail']['table'] = 'users';
-  $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  $handler->display->display_options['fields']['mail']['relationship'] = 'relation_subuser_user';
-  $handler->display->display_options['fields']['mail']['label'] = '';
-  $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['mail']['link_to_user'] = '0';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Relation: endpoints (endpoints:entity_id) */
+  $handler->display->display_options['arguments']['endpoints_entity_id']['id'] = 'endpoints_entity_id';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['table'] = 'field_data_endpoints';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['field'] = 'endpoints_entity_id';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['relationship'] = 'relation_base_left_subuser';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['endpoints_entity_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'relation_subuser_user';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   $export['subuser'] = $view;
 
   $view = new view();
