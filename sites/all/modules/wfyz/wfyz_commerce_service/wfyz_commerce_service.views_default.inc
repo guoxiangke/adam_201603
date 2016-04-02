@@ -154,7 +154,7 @@ function wfyz_commerce_service_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Field: Field: 文件说明 */
+  /* Field: Field: 具体要求 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
@@ -204,28 +204,6 @@ function wfyz_commerce_service_views_default_views() {
     9 => 0,
     7 => 0,
   );
-  /* Filter criterion: Flags: Flagged */
-  $handler->display->display_options['filters']['flagged']['id'] = 'flagged';
-  $handler->display->display_options['filters']['flagged']['table'] = 'flagging';
-  $handler->display->display_options['filters']['flagged']['field'] = 'flagged';
-  $handler->display->display_options['filters']['flagged']['relationship'] = 'flag_content_rel';
-  $handler->display->display_options['filters']['flagged']['value'] = '0';
-  $handler->display->display_options['filters']['flagged']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['flagged']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['flagged']['expose']['label'] = '已付给商家?';
-  $handler->display->display_options['filters']['flagged']['expose']['operator'] = 'flagged_op';
-  $handler->display->display_options['filters']['flagged']['expose']['identifier'] = 'flagged';
-  $handler->display->display_options['filters']['flagged']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    6 => 0,
-    5 => 0,
-    8 => 0,
-    9 => 0,
-    7 => 0,
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -236,6 +214,59 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-admin-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: EVA Field */
+  $handler = $view->new_display('entity_view', 'EVA Field', 'entity_view_1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Field collection item: Entity with the 付款方式 (field_payment) */
+  $handler->display->display_options['relationships']['field_payment_node']['id'] = 'field_payment_node';
+  $handler->display->display_options['relationships']['field_payment_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_payment_node']['field'] = 'field_payment_node';
+  $handler->display->display_options['relationships']['field_payment_node']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_from_service_target_id']['id'] = 'field_from_service_target_id';
+  $handler->display->display_options['relationships']['field_from_service_target_id']['table'] = 'field_data_field_from_service';
+  $handler->display->display_options['relationships']['field_from_service_target_id']['field'] = 'field_from_service_target_id';
+  $handler->display->display_options['relationships']['field_from_service_target_id']['relationship'] = 'field_payment_node';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_payment_node';
+  $handler->display->display_options['fields']['title']['label'] = '服务订单号';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_payment_node';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_from_service_target_id';
+  $handler->display->display_options['fields']['title_1']['label'] = '服务';
+  /* Field: Content: 内容 */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['relationship'] = 'field_from_service_target_id';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Field collection item: Field collection item ID */
+  $handler->display->display_options['arguments']['item_id']['id'] = 'item_id';
+  $handler->display->display_options['arguments']['item_id']['table'] = 'field_collection_item';
+  $handler->display->display_options['arguments']['item_id']['field'] = 'item_id';
+  $handler->display->display_options['arguments']['item_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['item_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['item_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['item_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['item_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  $handler->display->display_options['entity_type'] = 'node';
+  $handler->display->display_options['bundles'] = array(
+    0 => 'service_order',
+  );
   $translatables['payment'] = array(
     t('Master'),
     t('支付管理'),
@@ -264,8 +295,11 @@ function wfyz_commerce_service_views_default_views() {
     t('支付宝交易号'),
     t('支付者ID'),
     t('店铺'),
-    t('已付给商家?'),
     t('Page'),
+    t('EVA Field'),
+    t('Nid'),
+    t('内容'),
+    t('All'),
   );
   $export['payment'] = $view;
 
@@ -367,7 +401,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '8';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: 服务图片 */
+  /* Field: Content: 图片 */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -409,7 +443,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: 预算 */
+  /* Field: Content: 融资区间 */
   $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
   $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
   $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
@@ -770,7 +804,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Field: 文件说明 */
+  /* Field: Field: 具体要求 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
@@ -778,7 +812,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_body']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_body']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_body']['alter']['preserve_tags'] = '<p> <br>';
-  /* Field: Content: 预算 */
+  /* Field: Content: 融资区间 */
   $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
   $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
   $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
@@ -882,7 +916,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: 文件说明 */
+  /* Field: Field: 具体要求 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
@@ -1030,8 +1064,8 @@ function wfyz_commerce_service_views_default_views() {
     t('Page-all-vendors'),
     t('Page-needs'),
     t('需求项目'),
-    t('文件说明'),
-    t('预算'),
+    t('具体要求'),
+    t('融资区间'),
     t('招标情况'),
     t('[comment_count] 参与|招标'),
     t('.'),
@@ -1388,7 +1422,7 @@ function wfyz_commerce_service_views_default_views() {
       'label' => '',
     ),
   );
-  /* Field: Content: 服务图片 */
+  /* Field: Content: 图片 */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -1432,7 +1466,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: 预算 */
+  /* Field: Content: 融资区间 */
   $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
   $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
   $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';

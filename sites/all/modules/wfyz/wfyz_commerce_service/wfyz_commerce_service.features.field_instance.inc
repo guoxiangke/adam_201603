@@ -954,9 +954,11 @@ function wfyz_commerce_service_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 5,
       ),
       'teaser' => array(
