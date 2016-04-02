@@ -1,4 +1,4 @@
-<?php
+get_service_info_by_payment<?php
 
 /**
  * Implements hook_menu().
@@ -243,17 +243,13 @@ function _pay_checkout($server_node,$node){//$order_node
 // field_data_body_node_entity_type (String, 4 characters ) node
 
 function get_service_info_by_payment($entity_id){
-  return db_query("SELECT eck_payment_entity.id AS id, field_multiple_payment_eck_payment_entity.title AS field_multiple_payment_eck_payment_entity_title, field_single_payment_eck_payment_entity.title AS field_single_payment_eck_payment_entity_title, node_field_data_field_from_service_1.title AS node_field_data_field_from_service_1_title, field_single_payment_eck_payment_entity.nid AS field_single_payment_eck_payment_entity_nid, field_multiple_payment_eck_payment_entity.nid AS field_multiple_payment_eck_payment_entity_nid, node_field_data_field_from_service.title AS node_field_data_field_from_service_title, node_field_data_field_from_service_1.nid AS node_field_data_field_from_service_1_nid, node_field_data_field_from_service.nid AS node_field_data_field_from_service_nid, 'node' AS field_data_body_node_entity_type
+  return db_query("SELECT field_payment_field_collection_item.title AS field_payment_field_collection_item_title, field_payment_field_collection_item.nid AS field_payment_field_collection_item_nid, node_field_data_field_from_service.title AS node_field_data_field_from_service_title, node_field_data_field_from_service.nid AS node_field_data_field_from_service_nid, field_collection_item.item_id AS item_id, 'field_collection_item' AS field_data_field_pay_amount_field_collection_item_entity_typ, 'node' AS field_data_body_node_entity_type
 FROM
-{eck_payment_entity} eck_payment_entity
-LEFT JOIN {field_data_field_single_payment} field_data_field_single_payment ON eck_payment_entity.id = field_data_field_single_payment.field_single_payment_target_id AND (field_data_field_single_payment.entity_type = 'node' AND field_data_field_single_payment.deleted = '0')
-LEFT JOIN {node} field_single_payment_eck_payment_entity ON field_data_field_single_payment.entity_id = field_single_payment_eck_payment_entity.nid
-LEFT JOIN {field_data_field_multiple_payment} field_data_field_multiple_payment ON eck_payment_entity.id = field_data_field_multiple_payment.field_multiple_payment_target_id AND (field_data_field_multiple_payment.entity_type = 'node' AND field_data_field_multiple_payment.deleted = '0')
-LEFT JOIN {node} field_multiple_payment_eck_payment_entity ON field_data_field_multiple_payment.entity_id = field_multiple_payment_eck_payment_entity.nid
-LEFT JOIN {field_data_field_from_service} field_single_payment_eck_payment_entity__field_data_field_from_service ON field_single_payment_eck_payment_entity.nid = field_single_payment_eck_payment_entity__field_data_field_from_service.entity_id AND (field_single_payment_eck_payment_entity__field_data_field_from_service.entity_type = 'node' AND field_single_payment_eck_payment_entity__field_data_field_from_service.deleted = '0')
-LEFT JOIN {node} node_field_data_field_from_service ON field_single_payment_eck_payment_entity__field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service.nid
-LEFT JOIN {field_data_field_from_service} field_multiple_payment_eck_payment_entity__field_data_field_from_service ON field_multiple_payment_eck_payment_entity.nid = field_multiple_payment_eck_payment_entity__field_data_field_from_service.entity_id AND (field_multiple_payment_eck_payment_entity__field_data_field_from_service.entity_type = 'node' AND field_multiple_payment_eck_payment_entity__field_data_field_from_service.deleted = '0')
-LEFT JOIN {node} node_field_data_field_from_service_1 ON field_multiple_payment_eck_payment_entity__field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service_1.nid
-WHERE (( (eck_payment_entity.id = '".$entity_id."' ) )AND(( (eck_payment_entity.type IN  ('payment')) )))
+{field_collection_item} field_collection_item
+INNER JOIN {field_data_field_payment} field_data_field_payment ON field_collection_item.item_id = field_data_field_payment.field_payment_value
+INNER JOIN {node} field_payment_field_collection_item ON field_data_field_payment.entity_id = field_payment_field_collection_item.nid
+LEFT JOIN {field_data_field_from_service} field_payment_field_collection_item__field_data_field_from_service ON field_payment_field_collection_item.nid = field_payment_field_collection_item__field_data_field_from_service.entity_id AND (field_payment_field_collection_item__field_data_field_from_service.entity_type = 'node' AND field_payment_field_collection_item__field_data_field_from_service.deleted = '0')
+LEFT JOIN {node} node_field_data_field_from_service ON field_payment_field_collection_item__field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service.nid
+WHERE (( (field_collection_item.item_id = '".$entity_id."' ) ))
 LIMIT 1 OFFSET 0")->fetchObject();
 }

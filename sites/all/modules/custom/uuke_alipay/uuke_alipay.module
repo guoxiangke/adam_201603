@@ -47,7 +47,7 @@ function uuke_alipay_menu() {
     'type' => MENU_CALLBACK,
 		'access arguments' => array('access content'),
 	);
-  $items['order/%entity_object/alipay'] = array(
+  $items['order/%/alipay'] = array(
     'title' => '',
     'page callback' => 'uuke_alipay_for_entity',
     'page arguments' => array(1),
@@ -126,18 +126,22 @@ function uuke_alipay_permission() {
   return $perms;
 }
 
-function uuke_alipay_for_entity($entity){
+function uuke_alipay_for_entity($entity_id){
+  $entity_type = 'field_collection_item';
+  $order_entitys = entity_load($entity_type, array($entity_id));
+  $entity =  $order_entitys[$entity_id];
   // dpm($entity);
-  $service_info = get_service_info_by_payment($entity->id);
-  $product_node_nid = $service_info->node_field_data_field_from_service_1_nid;
-  $product_node_title = $service_info->node_field_data_field_from_service_1_title;
+  $service_info = get_service_info_by_payment($entity_id);
+  // dpm($service_info);
+  $product_node_nid = $service_info->node_field_data_field_from_service_nid;
+  $product_node_title = $service_info->node_field_data_field_from_service_title;
   $price = $entity->field_pay_amount[LANGUAGE_NONE][0]['value'];
   // return '$field_pay_amount:'.$field_pay_amount;
   //支付宝即时到账交易接口参数
   $base_path = url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=');
   $show_url = $base_path.$product_node_nid;
   $service = variable_get('uuke_alipay_service', '');
-  $out_trade_no = $entity->id;//str_pad(, 9, "0", STR_PAD_LEFT);//118854555 //000000001
+  $out_trade_no = $entity_id;//str_pad(, 9, "0", STR_PAD_LEFT);//118854555 //000000001
   $parameter = array(
     "service"         => variable_get('uuke_alipay_service', 'create_direct_pay_by_user'),  //交易类型
     "partner"         => variable_get('uuke_alipay_partner', ''),         //合作商户号
@@ -153,9 +157,9 @@ function uuke_alipay_for_entity($entity){
     "seller_email"    => variable_get('uuke_alipay_seller_email', ''),     //卖家邮箱，必填
   );
   //支付宝即时到账交易接口参数 end
-
+dpm($parameter);
   //支付宝纯担保交易接口
-  if($service == 'create_partner_trade_by_buyer') {
+  if($service == 'create_partner_trade_by_buyer') {dpm('123');
     //商品数量
     $quantity = "1";
     //必填，建议默认为1，不改变值，把一次交易看成是一次下订单而非购买一件商品
@@ -178,13 +182,13 @@ function uuke_alipay_for_entity($entity){
       "notify_url"      => $base_path.'alipay/notify_entity',      //异步返回
       "seller_email"    => variable_get('uuke_alipay_seller_email', ''),     //卖家邮箱，必填
       "out_trade_no"    => time().'_'.$out_trade_no,//time().'_n'.$node->nid.'_u'.$user->uid,//1365500773_n1_u1,     //商品外部交易号，必填（保证唯一性）.time()
-      "price" => $product_node->field_uuke_price[LANGUAGE_NONE][0]['value'],
+      "price" => $price,
       "quantity"  => $quantity,
       "logistics_fee" => $logistics_fee,
       "logistics_type"  => $logistics_type,
       "logistics_payment" => $logistics_payment,
 
-      "subject"         => $product_node->title,       //商品名称，必填
+      "subject"         => $product_node_title,       //商品名称，必填
       "body"            => $base_path.'node/'.$product_node->nid,        //商品描述，必填,这里用网站名字代替
       "show_url"        => $base_path.'node/'.$product_node->nid,        //商品相关网站
       // "receive_name" => $receive_name,
@@ -195,6 +199,7 @@ function uuke_alipay_for_entity($entity){
       "_input_charset"  =>  'UTF-8',  //字符集，默认为GBK
     );
   }
+  // return 'hi';
   module_load_include('inc', 'uuke_alipay', 'uuke_alipay_service');
   $security_code = variable_get('uuke_alipay_key', '');
 
@@ -362,13 +367,13 @@ function uuke_alipay_for_node($product_node) {
  */
 function uuke_alipay_entity_view($entity, $type, $view_mode, $langcode) {
   // $view_mode == 'full'
-  if($type == 'payment_entity'){
-    // dpm($entity);
+  // dpm($type);
+  if($type == 'field_collection_item'){
     if(!$entity->field_pay_status[LANGUAGE_NONE][0]['value']) {
       $base_path = url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=');
       $entity->content['alipay'] =  array(
         '#markup' => '支付宝',
-        '#prefix' => '<a class= "btn btn-danger" target="_blank" href="'.$base_path.'order/'.$entity->id.'/alipay">',
+        '#prefix' => '<a class= "btn btn-danger" target="_blank" href="'.$base_path.'order/'.$entity->item_id.'/alipay">',
         '#suffix' => '</a>',
         '#weight' => -19,
       );
@@ -657,6 +662,7 @@ function uuke_alipay_views_api() {
  * @return [nothing] [description]
  */
 function _uuke_alipay_notify() {
+  $entity_type = 'field_collection_item';
   //$output = "uc_alipay_return test";
   $partner = variable_get('uuke_alipay_partner', '');
   $security_code = variable_get('uuke_alipay_key', '');
@@ -697,7 +703,7 @@ function _uuke_alipay_notify() {
     $entity_id = explode('_',$out_trade_no)[1];
     // dpm(explode('_',time().'_'.'99')[1]);
     // $entity_id = $out_trade_no-0;
-    $order_entitys = entity_load('payment_entity',array($entity_id));
+    $order_entitys = entity_load($entity_type,array($entity_id));
     $order_entity =  $order_entitys[$entity_id];
     // $product_node = node_load($order_node->field_uuke_alipay_product_nid[LANGUAGE_NONE][0]['target_id']);
     // $nid = $order_entity->id;
@@ -744,16 +750,12 @@ function _uuke_alipay_notify() {
     //更新订单
     // $request = $_POST;
     // $order = uuke_alipay_order_save($request);
-    entity_save('payment_entity',$order_entity);
+    entity_save($entity_type,$order_entity);
 
     // update order begin
     $service_info = get_service_info_by_payment($entity_id);
-    // dpm($service_info);
-    if(isset($service_info->field_multiple_payment_eck_payment_entity_nid))
-      $order_id = $service_info->field_multiple_payment_eck_payment_entity_nid;
-
-    if(isset($service_info->field_single_payment_eck_payment_entity_nid))
-      $order_id = $service_info->field_single_payment_eck_payment_entity_nid;
+    dpm($service_info);
+    $order_id = $service_info->field_payment_field_collection_item_nid;
     $node = node_load($order_id);//get order order!
     // dpm($node);
     $count = 0;
@@ -768,7 +770,7 @@ function _uuke_alipay_notify() {
       //查看其他订单，第二个！第三个！
       $count = 1;
       foreach ($node->field_multiple_payment[LANGUAGE_NONE] as $key => $value) {
-        $payment_entity = entity_load('payment_entity', array($value['target_id']));
+        $payment_entity = entity_load($entity_type, array($value['target_id']));
         if(!isset($payment_entity[$service_info->id])){
           // dpm($payment_entity);
           foreach ($payment_entity as $key => $value) {
@@ -810,7 +812,8 @@ function _uuke_alipay_return() {
   //获取支付宝的反馈参数
   $out_trade_no   = $_GET['out_trade_no'];   //获取支付宝传递过来的订单号
   $entity_id = explode('_',$out_trade_no)[1];
-  $order_entitys = entity_load('payment_entity',array($entity_id));
+  $entity_type = 'field_collection_item';
+  $order_entitys = entity_load($entity_type,array($entity_id));
   $order_entity =  $order_entitys[$entity_id];
   // $product_node = node_load($order_node->field_uuke_alipay_product_nid[LANGUAGE_NONE][0]['target_id']);
   $trade_no =  $_GET['trade_no'];
@@ -868,19 +871,15 @@ function _uuke_alipay_return() {
       $order_entity->field_paytype[LANGUAGE_NONE][0]['value'] = 0;
       $order_entity->field_pay_id[LANGUAGE_NONE][0]['value'] = $_GET['buyer_email'];
     }
-    entity_save('payment_entity',$order_entity);
+    entity_save($entity_type,$order_entity);
     // update order begin
     $service_info = get_service_info_by_payment($entity_id);
     // dpm($service_info);
-    if(isset($service_info->field_multiple_payment_eck_payment_entity_nid))
-      $order_id = $service_info->field_multiple_payment_eck_payment_entity_nid;
-
-    if(isset($service_info->field_single_payment_eck_payment_entity_nid))
-      $order_id = $service_info->field_single_payment_eck_payment_entity_nid;
+    $order_id = $service_info->field_payment_field_collection_item_nid;
     $node = node_load($order_id);//get order order!
     // dpm($node);
     $count = 0;
-    if($node->field_payment_choice[LANGUAGE_NONE][0]['value']==0){//1cixing
+    if(count($node->field_payment[LANGUAGE_NONE]) ==1){//1cixing
     	// 一次性付款成功，更新订单！
     	$node->field_so_status[LANGUAGE_NONE][0]['value']=2;
     	$node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
@@ -889,10 +888,10 @@ function _uuke_alipay_return() {
     }else{
     	//查看其他订单，第二个！第三个！
       $count = 1;
-    	foreach ($node->field_multiple_payment[LANGUAGE_NONE] as $key => $value) {
-        $payment_entity = entity_load('payment_entity', array($value['target_id']));
-        if(!isset($payment_entity[$service_info->id])){
-          // dpm($payment_entity);
+    	foreach ($node->field_payment[LANGUAGE_NONE] as $key => $value) {
+        $payment_entity = entity_load($entity_type, array($value['value']));
+        // if(!isset($payment_entity[$service_info->id])){
+        if($value['value']==$service_info->item_id)continue;
           foreach ($payment_entity as $key => $value) {
             // 0|未支付
             // 1|已支付
@@ -903,15 +902,18 @@ function _uuke_alipay_return() {
             if(in_array($value->field_pay_status[LANGUAGE_NONE][0]['value'], array(1,2))) $count++;
               // dpm($count);
           }
-        }
+        // }
     	}
-      if($count) {
-        $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//部分支付
-      }
-      if($count==count($node->field_multiple_payment[LANGUAGE_NONE])){
+
+      // if($count) {
+      $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//部分支付
+      $node->field_so_status[LANGUAGE_NONE][0]['value']=1;//全部支付
+      // }
+      if($count==count($node->field_payment[LANGUAGE_NONE])){
         //付款成功！
         $node->field_so_status[LANGUAGE_NONE][0]['value']=2;//全部支付
         $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//交易成功
+        // dpm('交易成功?');
       }
       node_save($node);
     }
