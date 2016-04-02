@@ -1087,7 +1087,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           'fallback_settings' => array(),
         ),
         'type' => 'editable',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1183,7 +1183,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1381,7 +1381,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'above',
         'module' => 'fivestar',
         'settings' => array(
-          'expose' => 1,
+          'expose' => 0,
           'style' => 'average',
           'text' => 'average',
           'widget' => array(
@@ -1389,7 +1389,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1486,7 +1486,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1663,7 +1663,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',

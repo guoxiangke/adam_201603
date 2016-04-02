@@ -154,7 +154,7 @@ function wfyz_commerce_service_views_default_views() {
     'scale' => '2',
     'prefix_suffix' => 1,
   );
-  /* Field: Field: 具体要求 */
+  /* Field: Field: 文件说明 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
@@ -236,6 +236,37 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-admin-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $translatables['payment'] = array(
+    t('Master'),
+    t('支付管理'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('field_payment'),
+    t('flag'),
+    t('Content entity referenced from field_from_service'),
+    t('Content entity referenced from og_group_ref'),
+    t('服务订单号'),
+    t('服务'),
+    t('金额'),
+    t('付款备注'),
+    t('支付状态'),
+    t('支付宝交易号'),
+    t('支付者ID'),
+    t('店铺'),
+    t('已付给商家?'),
+    t('Page'),
+  );
   $export['payment'] = $view;
 
   $view = new view();
@@ -336,7 +367,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '8';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: 图片 */
+  /* Field: Content: 服务图片 */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -378,7 +409,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: 融资区间 */
+  /* Field: Content: 预算 */
   $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
   $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
   $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
@@ -739,7 +770,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Field: 具体要求 */
+  /* Field: Field: 文件说明 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
@@ -747,7 +778,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_body']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_body']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_body']['alter']['preserve_tags'] = '<p> <br>';
-  /* Field: Content: 融资区间 */
+  /* Field: Content: 预算 */
   $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
   $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
   $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
@@ -851,7 +882,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: 具体要求 */
+  /* Field: Field: 文件说明 */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
@@ -972,6 +1003,47 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['entity_type'] = 'node';
   $handler->display->display_options['bundles'] = array(
     0 => 'store',
+  );
+  $translatables['service_market'] = array(
+    t('Master'),
+    t('服务大厅'),
+    t('more'),
+    t('Apply'),
+    t('重设'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Select any filter and click on Apply to see results'),
+    t('Advanced options'),
+    t('全部'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('雇主保障'),
+    t('地区'),
+    t('Page-default'),
+    t('Page-all-services'),
+    t('Page-all-vendors'),
+    t('Page-needs'),
+    t('需求项目'),
+    t('文件说明'),
+    t('预算'),
+    t('招标情况'),
+    t('[comment_count] 参与|招标'),
+    t('.'),
+    t('EVA Field-comment'),
+    t('Reset'),
+    t('评价'),
+    t('总体评分'),
+    t('服务态度'),
+    t('工作速度'),
+    t('完成质量'),
+    t('All'),
+    t('EVA Field-store'),
   );
   $export['service_market'] = $view;
 
@@ -1316,7 +1388,7 @@ function wfyz_commerce_service_views_default_views() {
       'label' => '',
     ),
   );
-  /* Field: Content: 图片 */
+  /* Field: Content: 服务图片 */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -1360,7 +1432,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: 融资区间 */
+  /* Field: Content: 预算 */
   $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
   $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
   $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
@@ -1562,6 +1634,54 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-member-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $translatables['store'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('服务订单编号'),
+    t('购买服务'),
+    t('付款方式'),
+    t('订单支付状态'),
+    t('订单状态'),
+    t('Page-my-service-order'),
+    t('我的服务订单'),
+    t('flag'),
+    t('Page-my-store'),
+    t('<button class="btn btn-primary"><a href="/node/add/store">新增店铺</a></button>'),
+    t('OG membership from node group'),
+    t('user from OG membership'),
+    t('编辑'),
+    t('删除'),
+    t('<div class="btn btn-primary"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>
+'),
+    t('Page-my-store-service'),
+    t('Content entity referenced from og_group_ref'),
+    t('- Choose an operation -'),
+    t('服务名称'),
+    t('价格'),
+    t('服务类别'),
+    t('销售量'),
+    t('总体评分'),
+    t('<h2 class="float-left margin-top-0">[title_1]</h2>
+<div class="btn btn-primary float-right"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>'),
+    t('All'),
+    t('Page-my-store-order'),
+    t('Content entity referenced from field_from_service'),
+    t('author'),
+    t('买家'),
+    t('店铺'),
+  );
   $export['store'] = $view;
 
   return $export;
