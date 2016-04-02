@@ -2024,6 +2024,55 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-store-field_first_rate'.
+  $field_instances['node-store-field_first_rate'] = array(
+    'bundle' => 'store',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => 0,
+          'style' => 'average',
+          'text' => 'average',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_first_rate',
+    'label' => '服务态度',
+    'required' => 0,
+    'settings' => array(
+      'allow_clear' => 0,
+      'allow_ownvote' => 0,
+      'allow_revote' => 0,
+      'stars' => 5,
+      'target' => 'none',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'fivestar',
+      'settings' => array(),
+      'type' => 'exposed',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'node-store-field_image_logo'.
   $field_instances['node-store-field_image_logo'] = array(
     'bundle' => 'store',
@@ -2081,6 +2130,104 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-store-field_overall_rate'.
+  $field_instances['node-store-field_overall_rate'] = array(
+    'bundle' => 'store',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => 0,
+          'style' => 'average',
+          'text' => 'average',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_overall_rate',
+    'label' => '总体评分',
+    'required' => 0,
+    'settings' => array(
+      'allow_clear' => 0,
+      'allow_ownvote' => 0,
+      'allow_revote' => 0,
+      'stars' => 5,
+      'target' => 'none',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'fivestar',
+      'settings' => array(),
+      'type' => 'exposed',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'node-store-field_second_rate'.
+  $field_instances['node-store-field_second_rate'] = array(
+    'bundle' => 'store',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => 0,
+          'style' => 'average',
+          'text' => 'average',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_second_rate',
+    'label' => '工作速度',
+    'required' => 0,
+    'settings' => array(
+      'allow_clear' => 0,
+      'allow_ownvote' => 0,
+      'allow_revote' => 0,
+      'stars' => 5,
+      'target' => 'none',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'fivestar',
+      'settings' => array(),
+      'type' => 'exposed',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'node-store-field_service_type'.
   $field_instances['node-store-field_service_type'] = array(
     'bundle' => 'store',
@@ -2093,7 +2240,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2215,6 +2362,55 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-store-field_third_rate'.
+  $field_instances['node-store-field_third_rate'] = array(
+    'bundle' => 'store',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => 0,
+          'style' => 'average',
+          'text' => 'average',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_third_rate',
+    'label' => '完成质量',
+    'required' => 0,
+    'settings' => array(
+      'allow_clear' => 0,
+      'allow_ownvote' => 0,
+      'allow_revote' => 0,
+      'stars' => 5,
+      'target' => 'none',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'fivestar',
+      'settings' => array(),
+      'type' => 'exposed',
+      'weight' => 38,
+    ),
+  );
+
   // Exported field_instance: 'node-store-group_group'.
   $field_instances['node-store-group_group'] = array(
     'bundle' => 'store',
@@ -2230,7 +2426,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
