@@ -1,4 +1,4 @@
-get_service_info_by_payment<?php
+<?php
 
 /**
  * Implements hook_menu().
