@@ -130,10 +130,6 @@
   </div>
 
 
-
-
-
-
 <div id="page-wrapper">
 
       <div class="row">
@@ -179,18 +175,20 @@
 
 <div class="container page-width">
 
-<div class="store-navbar-header"><?php print render(field_view_field('node', $node, 'field_image_logo', array('label'=>'hidden'))); ?></div>
+<div class="store-navbar-header">
+<?php 
+$image_logo = field_view_field('node', $node, 'field_image_logo', array('label'=>'hidden'));
+print render($image_logo); ?>
+
+</div>
 <p class="title"><?php print drupal_get_title(); ?></p>
 </div>
 
 
 <div class="store_banner">
-<?php print render(field_view_field('node', $node, 'field_single_image', array('label'=>'hidden'))); ?>
+<?php $single_image = field_view_field('node', $node, 'field_single_image', array('label'=>'hidden')); 
+print render($single_image ); ?>
 </div>
-
-
-
-
 
     <div class="container page-width">
         <!-- Main Content start//-->
