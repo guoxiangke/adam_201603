@@ -182,10 +182,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['label'] = '付款备注';
-  /* Field: Field collection item: 支付状态 */
-  $handler->display->display_options['fields']['field_pay_status']['id'] = 'field_pay_status';
-  $handler->display->display_options['fields']['field_pay_status']['table'] = 'field_data_field_pay_status';
-  $handler->display->display_options['fields']['field_pay_status']['field'] = 'field_pay_status';
   /* Field: Field collection item: 支付宝交易号 */
   $handler->display->display_options['fields']['field_alipay_trade_no']['id'] = 'field_alipay_trade_no';
   $handler->display->display_options['fields']['field_alipay_trade_no']['table'] = 'field_data_field_alipay_trade_no';
@@ -207,28 +203,9 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Field collection item: 支付状态 (field_pay_status) */
-  $handler->display->display_options['filters']['field_pay_status_value']['id'] = 'field_pay_status_value';
-  $handler->display->display_options['filters']['field_pay_status_value']['table'] = 'field_data_field_pay_status';
-  $handler->display->display_options['filters']['field_pay_status_value']['field'] = 'field_pay_status_value';
-  $handler->display->display_options['filters']['field_pay_status_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_pay_status_value']['expose']['operator_id'] = 'field_pay_status_value_op';
-  $handler->display->display_options['filters']['field_pay_status_value']['expose']['label'] = '支付状态';
-  $handler->display->display_options['filters']['field_pay_status_value']['expose']['operator'] = 'field_pay_status_value_op';
-  $handler->display->display_options['filters']['field_pay_status_value']['expose']['identifier'] = 'field_pay_status_value';
-  $handler->display->display_options['filters']['field_pay_status_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    6 => 0,
-    5 => 0,
-    8 => 0,
-    9 => 0,
-    7 => 0,
-  );
   $handler->display->display_options['path'] = 'admin/payment';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = '支付管理';
@@ -306,6 +283,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['label'] = '付款备注';
+  $handler->display->display_options['fields']['field_body']['element_label_colon'] = FALSE;
   /* Field: Workflow current: New state name */
   $handler->display->display_options['fields']['sid']['id'] = 'sid';
   $handler->display->display_options['fields']['sid']['table'] = 'workflow_node_current';
@@ -316,7 +294,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_pay_workflow']['id'] = 'field_pay_workflow';
   $handler->display->display_options['fields']['field_pay_workflow']['table'] = 'field_data_field_pay_workflow';
   $handler->display->display_options['fields']['field_pay_workflow']['field'] = 'field_pay_workflow';
-  $handler->display->display_options['fields']['field_pay_workflow']['label'] = '支付流程(workflow)';
   $handler->display->display_options['fields']['field_pay_workflow']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pay_workflow']['type'] = 'workflow_default';
   $handler->display->display_options['fields']['field_pay_workflow']['field_api_classes'] = TRUE;
@@ -354,7 +331,7 @@ function wfyz_commerce_service_views_default_views() {
     t('Nid'),
     t('内容'),
     t('Block'),
-    t('支付流程(workflow)'),
+    t('支付流程'),
   );
   $export['payment'] = $view;
 
@@ -1300,10 +1277,6 @@ function wfyz_commerce_service_views_default_views() {
     'cssfield' => 0,
   );
   $handler->display->display_options['fields']['field_payment']['delta_offset'] = '0';
-  /* Field: Content: 订单支付状态 */
-  $handler->display->display_options['fields']['field_so_pay_status']['id'] = 'field_so_pay_status';
-  $handler->display->display_options['fields']['field_so_pay_status']['table'] = 'field_data_field_so_pay_status';
-  $handler->display->display_options['fields']['field_so_pay_status']['field'] = 'field_so_pay_status';
   /* Field: Content: 订单状态 */
   $handler->display->display_options['fields']['field_so_status']['id'] = 'field_so_status';
   $handler->display->display_options['fields']['field_so_status']['table'] = 'field_data_field_so_status';
@@ -1439,23 +1412,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_from_service']['settings'] = array(
     'link' => 1,
   );
-  /* Field: Content: 付款方式 */
-  $handler->display->display_options['fields']['field_payment']['id'] = 'field_payment';
-  $handler->display->display_options['fields']['field_payment']['table'] = 'field_data_field_payment';
-  $handler->display->display_options['fields']['field_payment']['field'] = 'field_payment';
-  $handler->display->display_options['fields']['field_payment']['label'] = '付款方式_old';
-  $handler->display->display_options['fields']['field_payment']['type'] = 'field_collection_table_view';
-  $handler->display->display_options['fields']['field_payment']['settings'] = array(
-    'edit' => '',
-    'delete' => '',
-    'add' => '',
-    'description' => 0,
-    'view_mode' => 'full',
-    'empty' => 1,
-    'cssrowcol' => 0,
-    'cssfield' => 0,
-  );
-  $handler->display->display_options['fields']['field_payment']['delta_offset'] = '0';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -1472,10 +1428,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['view']['view'] = 'payment';
   $handler->display->display_options['fields']['view']['display'] = 'block_1';
   $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
-  /* Field: Content: 订单支付状态 */
-  $handler->display->display_options['fields']['field_so_pay_status']['id'] = 'field_so_pay_status';
-  $handler->display->display_options['fields']['field_so_pay_status']['table'] = 'field_data_field_so_pay_status';
-  $handler->display->display_options['fields']['field_so_pay_status']['field'] = 'field_so_pay_status';
   /* Field: Content: 订单状态 */
   $handler->display->display_options['fields']['field_so_status']['id'] = 'field_so_status';
   $handler->display->display_options['fields']['field_so_status']['table'] = 'field_data_field_so_status';
@@ -1923,10 +1875,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['view']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view']['view'] = 'payment';
   $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
-  /* Field: Content: 订单支付状态 */
-  $handler->display->display_options['fields']['field_so_pay_status']['id'] = 'field_so_pay_status';
-  $handler->display->display_options['fields']['field_so_pay_status']['table'] = 'field_data_field_so_pay_status';
-  $handler->display->display_options['fields']['field_so_pay_status']['field'] = 'field_so_pay_status';
   /* Field: Content: 订单状态 */
   $handler->display->display_options['fields']['field_so_status']['id'] = 'field_so_status';
   $handler->display->display_options['fields']['field_so_status']['table'] = 'field_data_field_so_status';
@@ -1982,7 +1930,6 @@ function wfyz_commerce_service_views_default_views() {
     t('服务订单编号'),
     t('购买服务'),
     t('付款方式'),
-    t('订单支付状态'),
     t('订单状态'),
     t('店铺'),
     t('Page-my-service-order'),
@@ -1992,7 +1939,6 @@ function wfyz_commerce_service_views_default_views() {
     t('Content entity referenced from og_group_ref'),
     t('[field_from_service]<br>
 (店铺: [title_1])'),
-    t('付款方式_old'),
     t('付款详情'),
     t('Page-my-store'),
     t('<button class="btn btn-primary"><a href="/node/add/store">新增店铺</a></button>'),

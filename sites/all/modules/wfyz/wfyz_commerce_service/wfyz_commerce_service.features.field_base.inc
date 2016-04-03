@@ -216,32 +216,6 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
-  // Exported field_base: 'field_pay_button'.
-  $field_bases['field_pay_button'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_pay_button',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => '',
-        1 => '',
-      ),
-      'allowed_values_function' => '',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
-  );
-
   // Exported field_base: 'field_pay_id'.
   $field_bases['field_pay_id'] = array(
     'active' => 1,
@@ -262,36 +236,6 @@ function wfyz_commerce_service_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_pay_status'.
-  $field_bases['field_pay_status'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_pay_status',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => '未支付',
-        1 => '已支付平台',
-        2 => '已支付商家',
-        3 => '申请退款中',
-        4 => '已退款',
-        5 => '退款失败',
-      ),
-      'allowed_values_function' => '',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_integer',
   );
 
   // Exported field_base: 'field_pay_workflow'.
@@ -339,7 +283,7 @@ function wfyz_commerce_service_field_default_field_bases() {
         'comment' => 0,
         'fieldset' => 0,
         'hide' => 1,
-        'name_as_title' => 1,
+        'name_as_title' => 0,
         'options' => 'buttons',
         'schedule' => 0,
         'schedule_timezone' => 0,
@@ -486,33 +430,6 @@ function wfyz_commerce_service_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_so_pay_status'.
-  $field_bases['field_so_pay_status'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_so_pay_status',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => '未支付',
-        1 => '部分支付',
-        2 => '全部支付',
-      ),
-      'allowed_values_function' => '',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_integer',
   );
 
   // Exported field_base: 'field_so_status'.

@@ -21,7 +21,7 @@
  * regardless of any changes in the aliasing that might happen if
  * the view is modified.
  */
-dpm($row);
+// dpm($row);
 $base_path = url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=');
 if($row->_field_data['item_id']['entity']->field_pay_workflow['und'][0]['value'] ==12){
   echo '<a class= "btn btn-danger" target="_blank" href="'.$base_path.'order/'.$row->_field_data['item_id']['entity']->item_id.'/alipay">支付宝</a>';

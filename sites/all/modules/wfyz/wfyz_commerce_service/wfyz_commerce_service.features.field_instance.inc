@@ -143,7 +143,7 @@ function wfyz_commerce_service_field_default_field_instances() {
       'module' => 'field_extrawidgets',
       'settings' => array(),
       'type' => 'field_extrawidgets_hidden',
-      'weight' => 10,
+      'weight' => 4,
     ),
   );
 
@@ -175,7 +175,7 @@ function wfyz_commerce_service_field_default_field_instances() {
       'module' => 'field_extrawidgets',
       'settings' => array(),
       'type' => 'field_extrawidgets_hidden',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -207,7 +207,7 @@ function wfyz_commerce_service_field_default_field_instances() {
       'module' => 'field_extrawidgets',
       'settings' => array(),
       'type' => 'field_extrawidgets_hidden',
-      'weight' => 12,
+      'weight' => 5,
     ),
   );
 
@@ -241,7 +241,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -282,43 +282,7 @@ function wfyz_commerce_service_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_payment-field_pay_button'.
-  $field_instances['field_collection_item-field_payment-field_pay_button'] = array(
-    'bundle' => 'field_payment',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_key',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_pay_button',
-    'label' => '支付',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 17,
+      'weight' => 0,
     ),
   );
 
@@ -350,41 +314,7 @@ function wfyz_commerce_service_field_default_field_instances() {
       'module' => 'field_extrawidgets',
       'settings' => array(),
       'type' => 'field_extrawidgets_hidden',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_payment-field_pay_status'.
-  $field_instances['field_collection_item-field_payment-field_pay_status'] = array(
-    'bundle' => 'field_payment',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_pay_status',
-    'label' => '支付状态',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'field_extrawidgets',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'field_extrawidgets_hidden',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -417,14 +347,14 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'workflowfield',
+      'module' => 'field_extrawidgets',
       'settings' => array(
         'comment' => 1,
         'fieldset' => 0,
         'name_as_title' => 1,
       ),
-      'type' => 'workflow_default',
-      'weight' => 18,
+      'type' => 'field_extrawidgets_hidden',
+      'weight' => 2,
     ),
   );
 
@@ -455,7 +385,7 @@ function wfyz_commerce_service_field_default_field_instances() {
       'module' => 'field_extrawidgets',
       'settings' => array(),
       'type' => 'field_extrawidgets_hidden',
-      'weight' => 14,
+      'weight' => 6,
     ),
   );
 
@@ -719,7 +649,11 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(),
+      'settings' => array(
+        'widget' => array(
+          'fivestar_widget' => 'default',
+        ),
+      ),
       'type' => 'exposed',
       'weight' => 9,
     ),
@@ -1161,7 +1095,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           'fallback_settings' => array(),
         ),
         'type' => 'editable',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1257,7 +1191,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1463,7 +1397,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1487,7 +1421,11 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(),
+      'settings' => array(
+        'widget' => array(
+          'fivestar_widget' => 'default',
+        ),
+      ),
       'type' => 'exposed',
       'weight' => 14,
     ),
@@ -1560,7 +1498,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1632,49 +1570,6 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service_order-field_so_pay_status'.
-  $field_instances['node-service_order-field_so_pay_status'] = array(
-    'bundle' => 'service_order',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '创建时隐藏',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_so_pay_status',
-    'label' => '订单支付状态',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'field_extrawidgets',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'field_extrawidgets_hidden',
-      'weight' => 11,
-    ),
-  );
-
   // Exported field_instance: 'node-service_order-field_so_status'.
   $field_instances['node-service_order-field_so_status'] = array(
     'bundle' => 'service_order',
@@ -1691,7 +1586,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1737,7 +1632,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2553,7 +2448,6 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('付款方式');
   t('价格范围');
   t('具体要求');
-  t('创建时隐藏');
   t('发票地址');
   t('发票抬头');
   t('地区');
@@ -2566,11 +2460,9 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('总体评分');
   t('您希望用多长的时间来完成这个需求，您可以在截稿后开始选稿');
   t('您需要何时完成?');
-  t('支付');
   t('支付宝交易号');
   t('支付宝订单状态');
   t('支付流程');
-  t('支付状态');
   t('支付类型');
   t('支付者ID');
   t('服务内容');
@@ -2580,7 +2472,6 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('服务范围');
   t('相关资料');
   t('联系电话');
-  t('订单支付状态');
   t('订单状态');
   t('订单编号');
   t('评价');
