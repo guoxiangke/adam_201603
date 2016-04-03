@@ -15,7 +15,7 @@ function wfyz_commerce_service_views_default_views() {
   $view->description = '';
   $view->tag = 'service-market';
   $view->base_table = 'field_collection_item';
-  $view->human_name = '支付管理';
+  $view->human_name = '服务支付';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -24,16 +24,12 @@ function wfyz_commerce_service_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = '支付管理';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    5 => '5',
-    4 => '4',
-  );
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -114,6 +110,60 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['relationships']['field_payment_node']['id'] = 'field_payment_node';
   $handler->display->display_options['relationships']['field_payment_node']['table'] = 'field_collection_item';
   $handler->display->display_options['relationships']['field_payment_node']['field'] = 'field_payment_node';
+  /* Field: Field collection item: 金额 */
+  $handler->display->display_options['fields']['field_pay_amount']['id'] = 'field_pay_amount';
+  $handler->display->display_options['fields']['field_pay_amount']['table'] = 'field_data_field_pay_amount';
+  $handler->display->display_options['fields']['field_pay_amount']['field'] = 'field_pay_amount';
+  $handler->display->display_options['fields']['field_pay_amount']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field: 具体要求 */
+  $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
+  $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
+  $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
+  $handler->display->display_options['fields']['field_body']['label'] = '付款备注';
+  /* Field: Field collection item: 支付状态 */
+  $handler->display->display_options['fields']['field_pay_status']['id'] = 'field_pay_status';
+  $handler->display->display_options['fields']['field_pay_status']['table'] = 'field_data_field_pay_status';
+  $handler->display->display_options['fields']['field_pay_status']['field'] = 'field_pay_status';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_payment_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'service_order' => 'service_order',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    5 => '5',
+    4 => '4',
+  );
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Field collection item: Entity with the 付款方式 (field_payment) */
+  $handler->display->display_options['relationships']['field_payment_node']['id'] = 'field_payment_node';
+  $handler->display->display_options['relationships']['field_payment_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_payment_node']['field'] = 'field_payment_node';
   $handler->display->display_options['relationships']['field_payment_node']['required'] = TRUE;
   /* Relationship: Flags: paid_to_vendor */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
@@ -132,6 +182,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['relationships']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
   $handler->display->display_options['relationships']['og_group_ref_target_id']['relationship'] = 'field_from_service_target_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -184,6 +235,8 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Field collection item: 支付状态 (field_pay_status) */
   $handler->display->display_options['filters']['field_pay_status_value']['id'] = 'field_pay_status_value';
   $handler->display->display_options['filters']['field_pay_status_value']['table'] = 'field_data_field_pay_status';
@@ -204,9 +257,6 @@ function wfyz_commerce_service_views_default_views() {
     9 => 0,
     7 => 0,
   );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/payment';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = '支付管理';
@@ -217,9 +267,6 @@ function wfyz_commerce_service_views_default_views() {
 
   /* Display: EVA Field */
   $handler = $view->new_display('entity_view', 'EVA Field', 'entity_view_1');
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Field collection item: Entity with the 付款方式 (field_payment) */
   $handler->display->display_options['relationships']['field_payment_node']['id'] = 'field_payment_node';
@@ -264,8 +311,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['arguments']['item_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['item_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['item_id']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
   $handler->display->display_options['entity_type'] = 'node';
   $handler->display->display_options['bundles'] = array(
     0 => 'service_order',
@@ -279,6 +324,12 @@ function wfyz_commerce_service_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('field_payment'),
+    t('金额'),
+    t('付款备注'),
+    t('支付状态'),
+    t('All'),
+    t('Page'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -286,23 +337,17 @@ function wfyz_commerce_service_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('field_payment'),
     t('flag'),
     t('Content entity referenced from field_from_service'),
     t('Content entity referenced from og_group_ref'),
     t('服务订单号'),
     t('服务'),
-    t('金额'),
-    t('付款备注'),
-    t('支付状态'),
     t('支付宝交易号'),
     t('支付者ID'),
     t('店铺'),
-    t('Page'),
     t('EVA Field'),
     t('Nid'),
     t('内容'),
-    t('All'),
   );
   $export['payment'] = $view;
 
@@ -1104,8 +1149,22 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'title_1',
+      'rendered' => 0,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
+    'field_from_service' => 'field_from_service',
+    'nid' => 'nid',
+    'view' => 'view',
+    'field_so_pay_status' => 'field_so_pay_status',
+    'field_so_status' => 'field_so_status',
+    'name' => 'name',
+    'title_1' => 'title_1',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -1116,7 +1175,55 @@ function wfyz_commerce_service_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'field_from_service' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'view' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_so_pay_status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_so_status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
+  $handler->display->display_options['style_options']['override'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1156,6 +1263,13 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_so_status']['id'] = 'field_so_status';
   $handler->display->display_options['fields']['field_so_status']['table'] = 'field_data_field_so_status';
   $handler->display->display_options['fields']['field_so_status']['field'] = 'field_so_status';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'og_group_ref_target_id';
+  $handler->display->display_options['fields']['title_1']['label'] = '店铺';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -1180,6 +1294,63 @@ function wfyz_commerce_service_views_default_views() {
   $handler = $view->new_display('page', 'Page-my-service-order', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '我的服务订单';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_from_service' => 'field_from_service',
+    'field_payment' => 'field_payment',
+    'field_so_pay_status' => 'field_so_pay_status',
+    'field_so_status' => 'field_so_status',
+    'title_1' => 'title_1',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_from_service' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_payment' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_so_pay_status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_so_status' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Flags: cancel_sales_order */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
@@ -1187,6 +1358,66 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'cancel_sales_order';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_from_service_target_id']['id'] = 'field_from_service_target_id';
+  $handler->display->display_options['relationships']['field_from_service_target_id']['table'] = 'field_data_field_from_service';
+  $handler->display->display_options['relationships']['field_from_service_target_id']['field'] = 'field_from_service_target_id';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
+  $handler->display->display_options['relationships']['og_group_ref_target_id']['relationship'] = 'field_from_service_target_id';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '服务订单编号';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'og_group_ref_target_id';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  /* Field: Content: 购买服务 */
+  $handler->display->display_options['fields']['field_from_service']['id'] = 'field_from_service';
+  $handler->display->display_options['fields']['field_from_service']['table'] = 'field_data_field_from_service';
+  $handler->display->display_options['fields']['field_from_service']['field'] = 'field_from_service';
+  $handler->display->display_options['fields']['field_from_service']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_from_service']['alter']['text'] = '[field_from_service]<br>
+(店铺: [title_1])';
+  $handler->display->display_options['fields']['field_from_service']['settings'] = array(
+    'link' => 1,
+  );
+  /* Field: Content: 付款方式 */
+  $handler->display->display_options['fields']['field_payment']['id'] = 'field_payment';
+  $handler->display->display_options['fields']['field_payment']['table'] = 'field_data_field_payment';
+  $handler->display->display_options['fields']['field_payment']['field'] = 'field_payment';
+  $handler->display->display_options['fields']['field_payment']['type'] = 'field_collection_table_view';
+  $handler->display->display_options['fields']['field_payment']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 0,
+    'view_mode' => 'full',
+    'empty' => 1,
+    'cssrowcol' => 0,
+    'cssfield' => 0,
+  );
+  $handler->display->display_options['fields']['field_payment']['delta_offset'] = '0';
+  /* Field: Content: 订单支付状态 */
+  $handler->display->display_options['fields']['field_so_pay_status']['id'] = 'field_so_pay_status';
+  $handler->display->display_options['fields']['field_so_pay_status']['table'] = 'field_data_field_so_pay_status';
+  $handler->display->display_options['fields']['field_so_pay_status']['field'] = 'field_so_pay_status';
+  /* Field: Content: 订单状态 */
+  $handler->display->display_options['fields']['field_so_status']['id'] = 'field_so_status';
+  $handler->display->display_options['fields']['field_so_status']['table'] = 'field_data_field_so_status';
+  $handler->display->display_options['fields']['field_so_status']['field'] = 'field_so_status';
   $handler->display->display_options['path'] = 'user/my-service-order';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = '我的服务订单';
@@ -1197,6 +1428,24 @@ function wfyz_commerce_service_views_default_views() {
 
   /* Display: Page-my-store */
   $handler = $view->new_display('page', 'Page-my-store', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -1231,10 +1480,27 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = '店铺名称';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: 服务类别 */
+  $handler->display->display_options['fields']['field_service_type']['id'] = 'field_service_type';
+  $handler->display->display_options['fields']['field_service_type']['table'] = 'field_data_field_service_type';
+  $handler->display->display_options['fields']['field_service_type']['field'] = 'field_service_type';
+  $handler->display->display_options['fields']['field_service_type']['label'] = '店铺营业范围';
+  $handler->display->display_options['fields']['field_service_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_service_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_service_type']['delta_offset'] = '0';
+  /* Field: Content: 店铺管理用户 */
+  $handler->display->display_options['fields']['field_store_user']['id'] = 'field_store_user';
+  $handler->display->display_options['fields']['field_store_user']['table'] = 'field_data_field_store_user';
+  $handler->display->display_options['fields']['field_store_user']['field'] = 'field_store_user';
+  $handler->display->display_options['fields']['field_store_user']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_store_user']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_store_user']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -1261,7 +1527,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="btn btn-primary"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="btn btn-success"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -1391,40 +1657,6 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['relationships']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Bulk operations: Content */
-  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
-  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
-  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
-    'action::views_bulk_operations_delete_item' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 1,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_sticky_action' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_unsticky_action' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-  );
   /* Field: Content: 图片 */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -1500,7 +1732,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_sales_volume']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sales_volume']['settings'] = array(
     'thousand_separator' => '',
-    'prefix_suffix' => 1,
+    'prefix_suffix' => 0,
   );
   /* Field: Content: 总体评分 */
   $handler->display->display_options['fields']['field_overall_rate']['id'] = 'field_overall_rate';
@@ -1542,12 +1774,11 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_group_ref_target_id';
-  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['label'] = '店铺';
   $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = '<h2 class="float-left margin-top-0">[title_1]</h2>
-<div class="btn btn-primary float-right"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>';
-  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = '[title_1]
+<div class="btn btn-success float-right"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: OG membership: Group ID */
   $handler->display->display_options['arguments']['gid']['id'] = 'gid';
@@ -1613,24 +1844,23 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_from_service']['table'] = 'field_data_field_from_service';
   $handler->display->display_options['fields']['field_from_service']['field'] = 'field_from_service';
   $handler->display->display_options['fields']['field_from_service']['settings'] = array(
-    'link' => 0,
+    'link' => 1,
   );
-  /* Field: Content: 付款方式 */
-  $handler->display->display_options['fields']['field_payment']['id'] = 'field_payment';
-  $handler->display->display_options['fields']['field_payment']['table'] = 'field_data_field_payment';
-  $handler->display->display_options['fields']['field_payment']['field'] = 'field_payment';
-  $handler->display->display_options['fields']['field_payment']['type'] = 'field_collection_table_view';
-  $handler->display->display_options['fields']['field_payment']['settings'] = array(
-    'edit' => 'Edit',
-    'delete' => 'Delete',
-    'add' => 'Add',
-    'description' => 1,
-    'view_mode' => 'full',
-    'empty' => 1,
-    'cssrowcol' => 0,
-    'cssfield' => 0,
-  );
-  $handler->display->display_options['fields']['field_payment']['delta_offset'] = '0';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Global: View */
+  $handler->display->display_options['fields']['view']['id'] = 'view';
+  $handler->display->display_options['fields']['view']['table'] = 'views';
+  $handler->display->display_options['fields']['view']['field'] = 'view';
+  $handler->display->display_options['fields']['view']['label'] = '付款资料';
+  $handler->display->display_options['fields']['view']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view']['view'] = 'payment';
+  $handler->display->display_options['fields']['view']['arguments'] = '[!nid]';
   /* Field: Content: 订单支付状态 */
   $handler->display->display_options['fields']['field_so_pay_status']['id'] = 'field_so_pay_status';
   $handler->display->display_options['fields']['field_so_pay_status']['table'] = 'field_data_field_so_pay_status';
@@ -1652,6 +1882,7 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_group_ref_target_id';
   $handler->display->display_options['fields']['title_1']['label'] = '店铺';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: OG membership: Group ID */
   $handler->display->display_options['arguments']['gid']['id'] = 'gid';
@@ -1691,33 +1922,38 @@ function wfyz_commerce_service_views_default_views() {
     t('付款方式'),
     t('订单支付状态'),
     t('订单状态'),
+    t('店铺'),
     t('Page-my-service-order'),
     t('我的服务订单'),
     t('flag'),
+    t('Content entity referenced from field_from_service'),
+    t('Content entity referenced from og_group_ref'),
+    t('[field_from_service]<br>
+(店铺: [title_1])'),
     t('Page-my-store'),
     t('<button class="btn btn-primary"><a href="/node/add/store">新增店铺</a></button>'),
     t('OG membership from node group'),
     t('user from OG membership'),
+    t('店铺名称'),
+    t('店铺营业范围'),
+    t('店铺管理用户'),
     t('编辑'),
     t('删除'),
-    t('<div class="btn btn-primary"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>
+    t('<div class="btn btn-success"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>
 '),
     t('Page-my-store-service'),
-    t('Content entity referenced from og_group_ref'),
-    t('- Choose an operation -'),
     t('服务名称'),
     t('价格'),
     t('服务类别'),
     t('销售量'),
     t('总体评分'),
-    t('<h2 class="float-left margin-top-0">[title_1]</h2>
-<div class="btn btn-primary float-right"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>'),
+    t('[title_1]
+<div class="btn btn-success float-right"><a href="/node/add/service?og_group_ref=[nid]">新增服务</a></div>'),
     t('All'),
     t('Page-my-store-order'),
-    t('Content entity referenced from field_from_service'),
     t('author'),
+    t('付款资料'),
     t('买家'),
-    t('店铺'),
   );
   $export['store'] = $view;
 

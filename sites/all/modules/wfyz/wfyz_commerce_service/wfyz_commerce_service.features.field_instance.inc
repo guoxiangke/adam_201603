@@ -308,7 +308,7 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_pay_button',
-    'label' => 'pay button',
+    'label' => '支付',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2512,7 +2512,6 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('Group');
   t('Groups audience');
   t('TRADE_FINISHED  交易成功 TRADE_SUCCESS  支付成功WAIT_BUYER_PAY  交易创建 TRADE_CLOSED  交易关闭 WAIT_SELLER_SEND_GOODS');
-  t('pay button');
   t('买家留言');
   t('付款备注');
   t('付款方式');
@@ -2531,6 +2530,7 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('总体评分');
   t('您希望用多长的时间来完成这个需求，您可以在截稿后开始选稿');
   t('您需要何时完成?');
+  t('支付');
   t('支付宝交易号');
   t('支付宝订单状态');
   t('支付状态');
