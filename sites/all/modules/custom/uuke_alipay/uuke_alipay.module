@@ -367,14 +367,14 @@ function uuke_alipay_for_node($product_node) {
  */
 function uuke_alipay_entity_view($entity, $type, $view_mode, $langcode) {
   // $view_mode == 'full'
-  if($type == 'field_collection_item'){
-    if(!$entity->field_pay_status[LANGUAGE_NONE][0]['value']) {
-      $base_path = url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=');
-      $entity->content['field_pay_button'][0]['#markup'] = '<a class= "btn btn-danger" target="_blank" href="'.$base_path.'order/'.$entity->item_id.'/alipay">支付宝</a>';
-    }else{
-      $entity->content['field_pay_button']['0']['#markup'] = '<a class= "btn btn-secondary" href="#">已支付</a>';
-    }
-  }
+  // if($type == 'field_collection_item'){
+  //   if(isset($entity->field_pay_status[LANGUAGE_NONE])&&!$entity->field_pay_status[LANGUAGE_NONE][0]['value']) {
+  //     $base_path = url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q=');
+  //     $entity->content['field_pay_button'][0]['#markup'] = '<a class= "btn btn-danger" target="_blank" href="'.$base_path.'order/'.$entity->item_id.'/alipay">支付宝</a>';
+  //   }else{
+  //     $entity->content['field_pay_button']['0']['#markup'] = '<a class= "btn btn-secondary" href="#">已支付</a>';
+  //   }
+  // }
 }
 
 /**
@@ -710,7 +710,8 @@ function _uuke_alipay_notify() {
       // 3|申请退款中
       // 4|已退款
       // 5|退款失败
-      $order_entity->field_pay_status[LANGUAGE_NONE][0]['value'] = 1;
+      // $order_entity->field_pay_status[LANGUAGE_NONE][0]['value'] = 1;
+      $order_entity->field_pay_workflow[LANGUAGE_NONE][0]['value'] = 13;
       // 0|支付宝
       // 1|银联
       // 2|其他
@@ -751,7 +752,7 @@ function _uuke_alipay_notify() {
     if($node->field_payment_choice[LANGUAGE_NONE][0]['value']==0){//1cixing
       // 一次性付款成功，更新订单！
       $node->field_so_status[LANGUAGE_NONE][0]['value']=2;
-      $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
+      // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
       node_save($node);
       // return 'Success！支付成功！谢谢！';
       echo 'success';return;
@@ -763,24 +764,18 @@ function _uuke_alipay_notify() {
         if(!isset($payment_entity[$service_info->id])){
           // dpm($payment_entity);
           foreach ($payment_entity as $key => $value) {
-            // 0|未支付
-            // 1|已支付
-            // 2|确认完成
-            // 3|申请退款中
-            // 4|已退款
-            // 5|退款失败
-            if(in_array($value->field_pay_status[LANGUAGE_NONE][0]['value'], array(1,2))) $count++;
+            if($value->field_pay_workflow[LANGUAGE_NONE][0]['value']==14) $count++;
               // dpm($count);
           }
         }
       }
-      if($count) {
-        $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//部分支付
-      }
+      // if($count) {
+      //   $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//部分支付
+      // }
       if($count==count($node->field_multiple_payment[LANGUAGE_NONE])){
         //付款成功！
         $node->field_so_status[LANGUAGE_NONE][0]['value']=2;//全部支付
-        $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//交易成功
+        // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//交易成功
       }
       node_save($node);
     }
@@ -843,6 +838,7 @@ function _uuke_alipay_return() {
     // dpm($_GET);
     $order_entity->field_alipay_trade_no[LANGUAGE_NONE][0]['value'] = $_GET['trade_no'];
     $order_entity->field_alipay_return[LANGUAGE_NONE][0]['value'] = serialize($_GET);
+
     $old_status = $order_entity->field_alipay_trade_status[LANGUAGE_NONE][0]['value'];
     if($old_status != uuke_alipay_trade_status_to_chinese($_GET['trade_status'])) {
     $order_entity->field_alipay_trade_status[LANGUAGE_NONE][0]['value'] = uuke_alipay_trade_status_to_chinese($_GET['trade_status']);
@@ -853,7 +849,15 @@ function _uuke_alipay_return() {
       // 3|申请退款中
       // 4|已退款
       // 5|退款失败
-      $order_entity->field_pay_status[LANGUAGE_NONE][0]['value'] = 1;
+      // $order_entity->field_pay_status[LANGUAGE_NONE][0]['value'] = 1;
+      // new field_pay_workflow
+      // 未支付12
+      // 已支付平台13
+      // 已支付商家14
+      // 申请退款中15
+      // 已退款16
+      // 退款失败17
+      $order_entity->field_pay_workflow[LANGUAGE_NONE][0]['value'] = 13;
       // 0|支付宝
       // 1|银联
       // 2|其他
@@ -871,7 +875,7 @@ function _uuke_alipay_return() {
     if(count($node->field_payment[LANGUAGE_NONE]) ==1){//1cixing
     	// 一次性付款成功，更新订单！
     	$node->field_so_status[LANGUAGE_NONE][0]['value']=2;
-    	$node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
+    	// $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
     	node_save($node);
       return 'Success！支付成功！谢谢！';
     }else{
@@ -888,20 +892,21 @@ function _uuke_alipay_return() {
             // 3|申请退款中
             // 4|已退款
             // 5|退款失败
-            if(in_array($value->field_pay_status[LANGUAGE_NONE][0]['value'], array(1,2))) $count++;
+            // if(in_array($value->field_pay_status[LANGUAGE_NONE][0]['value'], array(1,2))) $count++;
+            if($value->field_pay_workflow[LANGUAGE_NONE][0]['value']==14) $count++;
               // dpm($count);
           }
         // }
     	}
 
       // if($count) {
-      $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//部分支付
-      $node->field_so_status[LANGUAGE_NONE][0]['value']=1;//全部支付
+      // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//全部支付
+      $node->field_so_status[LANGUAGE_NONE][0]['value']=1;//部分支付
       // }
       if($count==count($node->field_payment[LANGUAGE_NONE])){
         //付款成功！
-        $node->field_so_status[LANGUAGE_NONE][0]['value']=2;//全部支付
-        $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//交易成功
+        $node->field_so_status[LANGUAGE_NONE][0]['value']=2;//交易成功
+        // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//全部支付
         // dpm('交易成功?');
       }
       node_save($node);
