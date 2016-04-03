@@ -32,7 +32,7 @@ function wfyz_finance_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Field: 公司Logo */
+  /* Field: Field: 行政部门封面图 */
   $handler->display->display_options['fields']['field_image_logo']['id'] = 'field_image_logo';
   $handler->display->display_options['fields']['field_image_logo']['table'] = 'field_data_field_image_logo';
   $handler->display->display_options['fields']['field_image_logo']['field'] = 'field_image_logo';
@@ -131,7 +131,7 @@ function wfyz_finance_views_default_views() {
 <div class="clear"></div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html_no_editor';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: 公司Logo */
+  /* Field: Field: 行政部门封面图 */
   $handler->display->display_options['fields']['field_image_logo']['id'] = 'field_image_logo';
   $handler->display->display_options['fields']['field_image_logo']['table'] = 'field_data_field_image_logo';
   $handler->display->display_options['fields']['field_image_logo']['field'] = 'field_image_logo';
@@ -339,6 +339,217 @@ function wfyz_finance_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-admin-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Page-my-project */
+  $handler = $view->new_display('page', 'Page-my-project', 'page_my_project');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<button class="btn btn-warning"><a href="/node/add/project">发布项目</a></button>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: 行政部门封面图 */
+  $handler->display->display_options['fields']['field_image_logo']['id'] = 'field_image_logo';
+  $handler->display->display_options['fields']['field_image_logo']['table'] = 'field_data_field_image_logo';
+  $handler->display->display_options['fields']['field_image_logo']['field'] = 'field_image_logo';
+  $handler->display->display_options['fields']['field_image_logo']['label'] = '';
+  $handler->display->display_options['fields']['field_image_logo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_logo']['settings'] = array(
+    'image_style' => 'event_logo',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'china_date';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: 融资区间 */
+  $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
+  $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
+  $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
+  $handler->display->display_options['fields']['field_price_range']['label'] = '';
+  $handler->display->display_options['fields']['field_price_range']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_price_range']['click_sort_column'] = 'from';
+  $handler->display->display_options['fields']['field_price_range']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'range_separator' => '-',
+    'range_combine' => 0,
+    'from_prefix_suffix' => 1,
+    'to_prefix_suffix' => 1,
+    'field_prefix_suffix' => 1,
+    'combined_prefix_suffix' => 0,
+  );
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = '编辑';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = '';
+  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['delete_node']['text'] = '删除';
+  $handler->display->display_options['path'] = 'user/my-project';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = '我发布的项目';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-member-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Page-my-fund */
+  $handler = $view->new_display('page', 'Page-my-fund', 'page_my_fund');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<button class="btn btn-warning"><a href="/node/add/project">发布资金</a></button>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: 行政部门封面图 */
+  $handler->display->display_options['fields']['field_image_logo']['id'] = 'field_image_logo';
+  $handler->display->display_options['fields']['field_image_logo']['table'] = 'field_data_field_image_logo';
+  $handler->display->display_options['fields']['field_image_logo']['field'] = 'field_image_logo';
+  $handler->display->display_options['fields']['field_image_logo']['label'] = '';
+  $handler->display->display_options['fields']['field_image_logo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_logo']['settings'] = array(
+    'image_style' => 'event_logo',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'china_date';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: 融资区间 */
+  $handler->display->display_options['fields']['field_price_range']['id'] = 'field_price_range';
+  $handler->display->display_options['fields']['field_price_range']['table'] = 'field_data_field_price_range';
+  $handler->display->display_options['fields']['field_price_range']['field'] = 'field_price_range';
+  $handler->display->display_options['fields']['field_price_range']['label'] = '';
+  $handler->display->display_options['fields']['field_price_range']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_price_range']['click_sort_column'] = 'from';
+  $handler->display->display_options['fields']['field_price_range']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'range_separator' => '-',
+    'range_combine' => 0,
+    'from_prefix_suffix' => 1,
+    'to_prefix_suffix' => 1,
+    'field_prefix_suffix' => 1,
+    'combined_prefix_suffix' => 0,
+  );
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = '编辑';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = '';
+  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['delete_node']['text'] = '删除';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'fund' => 'fund',
+  );
+  $handler->display->display_options['path'] = 'user/my-fund';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = '我发布的资金';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-member-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $translatables['finance'] = array(
+    t('Master'),
+    t('项目页面'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Page'),
+    t('<a href="/node/add/project">我有好项目</a>
+<div class="clear"></div>'),
+    t('Attachment Fund'),
+    t('资金'),
+    t('<div class="clear"></div>
+<a href="/node/add/fund">我有钱！要投资！</a>
+<div class="clear"></div>'),
+    t('Attachment Case'),
+    t('成功案例'),
+    t('<div class="clear"></div>
+<h3>成功案例</h3>
+<div class="clear"></div>'),
+    t('Page-admin'),
+    t('<a href="/node/add/finance-case" style="background: #b73939; color: #fff; padding: 10px; float: right; margin-bottom: 10px;">新增金融案例</a>'),
+    t('- Choose an operation -'),
+    t('内容'),
+    t('类别'),
+    t('Page-my-project'),
+    t('<button class="btn btn-warning"><a href="/node/add/project">发布项目</a></button>'),
+    t('编辑'),
+    t('删除'),
+    t('Page-my-fund'),
+    t('<button class="btn btn-warning"><a href="/node/add/project">发布资金</a></button>'),
+  );
   $export['finance'] = $view;
 
   return $export;

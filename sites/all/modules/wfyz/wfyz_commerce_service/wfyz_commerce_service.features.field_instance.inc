@@ -358,11 +358,7 @@ function wfyz_commerce_service_field_default_field_instances() {
   // 'field_collection_item-field_payment-field_pay_status'.
   $field_instances['field_collection_item-field_payment-field_pay_status'] = array(
     'bundle' => 'field_payment',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -389,6 +385,46 @@ function wfyz_commerce_service_field_default_field_instances() {
       ),
       'type' => 'field_extrawidgets_hidden',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_payment-field_pay_workflow'.
+  $field_instances['field_collection_item-field_payment-field_pay_workflow'] = array(
+    'bundle' => 'field_payment',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'workflowfield',
+        'settings' => array(
+          'comment' => 1,
+          'fieldset' => 0,
+          'name_as_title' => 1,
+        ),
+        'type' => 'workflow_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_pay_workflow',
+    'label' => '支付流程',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'workflowfield',
+      'settings' => array(
+        'comment' => 1,
+        'fieldset' => 0,
+        'name_as_title' => 1,
+      ),
+      'type' => 'workflow_default',
+      'weight' => 18,
     ),
   );
 
@@ -2533,6 +2569,7 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('支付');
   t('支付宝交易号');
   t('支付宝订单状态');
+  t('支付流程');
   t('支付状态');
   t('支付类型');
   t('支付者ID');

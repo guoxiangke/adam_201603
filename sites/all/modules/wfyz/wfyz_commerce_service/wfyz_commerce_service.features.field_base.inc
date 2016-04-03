@@ -281,8 +281,8 @@ function wfyz_commerce_service_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => '未支付',
-        1 => '已支付',
-        2 => '确认完成',
+        1 => '已支付平台',
+        2 => '已支付商家',
         3 => '申请退款中',
         4 => '已退款',
         5 => '退款失败',
@@ -292,6 +292,61 @@ function wfyz_commerce_service_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_integer',
+  );
+
+  // Exported field_base: 'field_pay_workflow'.
+  $field_bases['field_pay_workflow'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pay_workflow',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'workflowfield',
+    'settings' => array(
+      'allowed_values_function' => 'workflowfield_allowed_values',
+      'allowed_values_string' => '11 | (creation)
+12 | 未支付
+13 | 已支付平台
+14 | 已支付商家
+15 | 申请退款中
+16 | 已退款
+17 | 退款失败',
+      'history' => array(
+        'history_tab_show' => 1,
+        'roles' => array(
+          -1 => -1,
+          1 => 0,
+          2 => 2,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
+      ),
+      'profile2_private' => FALSE,
+      'watchdog_log' => 1,
+      'wid' => 3,
+      'widget' => array(
+        'comment' => 0,
+        'fieldset' => 0,
+        'hide' => 1,
+        'name_as_title' => 1,
+        'options' => 'buttons',
+        'schedule' => 0,
+        'schedule_timezone' => 0,
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'workflow',
   );
 
   // Exported field_base: 'field_payment'.

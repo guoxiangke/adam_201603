@@ -1,7 +1,7 @@
 name = wfyz finance
 core = 7.x
 package = wfyz
-version = 7.x-1.8
+version = 7.x-1.9
 dependencies[] = dragndrop_upload_image
 dependencies[] = features
 dependencies[] = file
