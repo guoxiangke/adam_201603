@@ -217,6 +217,9 @@ function wfyz_commerce_service_views_default_views() {
 
   /* Display: EVA Field */
   $handler = $view->new_display('entity_view', 'EVA Field', 'entity_view_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Field collection item: Entity with the 付款方式 (field_payment) */
   $handler->display->display_options['relationships']['field_payment_node']['id'] = 'field_payment_node';
@@ -1086,7 +1089,7 @@ function wfyz_commerce_service_views_default_views() {
   $view->description = '';
   $view->tag = 'service-market';
   $view->base_table = 'node';
-  $view->human_name = 'Store';
+  $view->human_name = '用户服务超市';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */

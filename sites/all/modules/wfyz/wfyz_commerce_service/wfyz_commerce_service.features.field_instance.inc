@@ -127,7 +127,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -159,7 +159,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -287,6 +287,42 @@ function wfyz_commerce_service_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_payment-field_pay_button'.
+  $field_instances['field_collection_item-field_payment-field_pay_button'] = array(
+    'bundle' => 'field_payment',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_pay_button',
+    'label' => 'pay button',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_payment-field_pay_id'.
   $field_instances['field_collection_item-field_payment-field_pay_id'] = array(
     'bundle' => 'field_payment',
@@ -298,7 +334,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -368,7 +404,7 @@ function wfyz_commerce_service_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -2476,6 +2512,7 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('Group');
   t('Groups audience');
   t('TRADE_FINISHED  交易成功 TRADE_SUCCESS  支付成功WAIT_BUYER_PAY  交易创建 TRADE_CLOSED  交易关闭 WAIT_SELLER_SEND_GOODS');
+  t('pay button');
   t('买家留言');
   t('付款备注');
   t('付款方式');
