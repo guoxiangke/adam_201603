@@ -1,7 +1,7 @@
 name = wfyz user verify
 core = 7.x
 package = wfyz
-version = 7.x-2.0
+version = 7.x-2.1
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = list

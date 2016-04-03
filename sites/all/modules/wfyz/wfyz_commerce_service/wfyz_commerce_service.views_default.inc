@@ -190,6 +190,11 @@ function wfyz_commerce_service_views_default_views() {
   $handler->display->display_options['fields']['field_pay_id']['id'] = 'field_pay_id';
   $handler->display->display_options['fields']['field_pay_id']['table'] = 'field_data_field_pay_id';
   $handler->display->display_options['fields']['field_pay_id']['field'] = 'field_pay_id';
+  /* Field: Field collection item: 支付宝订单状态 */
+  $handler->display->display_options['fields']['field_alipay_trade_status']['id'] = 'field_alipay_trade_status';
+  $handler->display->display_options['fields']['field_alipay_trade_status']['table'] = 'field_data_field_alipay_trade_status';
+  $handler->display->display_options['fields']['field_alipay_trade_status']['field'] = 'field_alipay_trade_status';
+  $handler->display->display_options['fields']['field_alipay_trade_status']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
@@ -326,6 +331,7 @@ function wfyz_commerce_service_views_default_views() {
     t('服务'),
     t('支付宝交易号'),
     t('支付者ID'),
+    t('支付宝订单状态'),
     t('店铺'),
     t('EVA Field'),
     t('Nid'),

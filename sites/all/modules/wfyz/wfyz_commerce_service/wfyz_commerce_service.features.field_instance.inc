@@ -183,9 +183,13 @@ function wfyz_commerce_service_field_default_field_instances() {
   // 'field_collection_item-field_payment-field_alipay_trade_status'.
   $field_instances['field_collection_item-field_payment-field_alipay_trade_status'] = array(
     'bundle' => 'field_payment',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'TRADE_FINISHED  交易成功 TRADE_SUCCESS  支付成功WAIT_BUYER_PAY  交易创建 TRADE_CLOSED  交易关闭 WAIT_SELLER_SEND_GOODS',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -205,7 +209,9 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'field_extrawidgets',
-      'settings' => array(),
+      'settings' => array(
+        'size' => 60,
+      ),
       'type' => 'field_extrawidgets_hidden',
       'weight' => 5,
     ),

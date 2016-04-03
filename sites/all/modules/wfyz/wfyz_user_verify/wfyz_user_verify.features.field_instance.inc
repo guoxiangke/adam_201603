@@ -107,7 +107,7 @@ function wfyz_user_verify_field_default_field_instances() {
     'entity_type' => 'profile2',
     'field_name' => 'field_single_text',
     'label' => '营业执照注册号',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -178,7 +178,7 @@ function wfyz_user_verify_field_default_field_instances() {
     'entity_type' => 'profile2',
     'field_name' => 'field_single_image',
     'label' => '身份证照片',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -220,7 +220,7 @@ function wfyz_user_verify_field_default_field_instances() {
     'entity_type' => 'profile2',
     'field_name' => 'field_single_text',
     'label' => '身份证号码',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
