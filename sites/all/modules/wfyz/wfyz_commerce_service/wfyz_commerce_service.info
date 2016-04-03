@@ -1,7 +1,7 @@
 name = wfyz commerce service
 core = 7.x
 package = wfyz
-version = 7.x-6.3
+version = 7.x-6.4
 dependencies[] = auto_entitylabel
 dependencies[] = better_exposed_filters
 dependencies[] = conditional_fields
@@ -34,6 +34,7 @@ dependencies[] = views
 dependencies[] = views_bulk_operations
 dependencies[] = views_field_view
 dependencies[] = wfyz_core
+dependencies[] = workflow
 dependencies[] = workflowfield
 features[Workflow][] = service_order_payment
 features[conditional_fields][] = node:service_order
