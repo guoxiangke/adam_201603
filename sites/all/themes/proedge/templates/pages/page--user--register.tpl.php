@@ -8,7 +8,7 @@
 </div>
 <div class="bodyBox">
   <div id="logoBg">
-      <img src="http://wdev.camplus.cn:8003/sites/all/themes/proedge/images/login/logoBg.png" width="1920" height="739">
+      <img src="http://wdev.camplus.cn:8003/sites/all/themes/proedge/images/login/logoBg.jpg" width="1920" height="739">
   </div>
   <div class="registerBody">
     <div class="container">
@@ -33,7 +33,6 @@
             </div>
           </div>
         </div>
-
         <div id="bottom_part">
           <div class="login_link">
             <?php print l(t('Login'), 'user/login'); ?>

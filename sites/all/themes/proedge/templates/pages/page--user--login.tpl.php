@@ -8,10 +8,9 @@
     </div>
   </div>
 
-
   <div class="loginBox_body">
     <div id="logoBg">
-      <img src="http://wdev.camplus.cn:8003/sites/all/themes/proedge/images/login/logoBg.png" width="1920" height="739">
+      <img src="http://wdev.camplus.cn:8003/sites/all/themes/proedge/images/login/logoBg.jpg" width="1920" height="739">
     </div>
     <div class="loginBox">
       <div class="messages_part">
@@ -36,7 +35,6 @@
     </div>
   </div>  
 </div>
-
 
 <div class="footer">
   <div id="_pageBottom">
@@ -79,5 +77,3 @@
         </div>
     </div>
 </div>
-
-
