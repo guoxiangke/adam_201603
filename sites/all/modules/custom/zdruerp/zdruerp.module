@@ -194,6 +194,7 @@ function zdruerp_user_delete($account) {
 function zdruerp_form_user_register_form_alter(&$form, &$form_state) {
   $form['#submit'][] = 'zdruerp_user_register_form_submit';
 }
+
 function zdruerp_user_register_form_submit($form, &$form_state) {
   global $user;
   // If the subuser relation is to be stored then create the relation.
@@ -252,4 +253,71 @@ LEFT JOIN {field_data_field_from_service} field_payment_field_collection_item__f
 LEFT JOIN {node} node_field_data_field_from_service ON field_payment_field_collection_item__field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service.nid
 WHERE (( (field_collection_item.item_id = '".$entity_id."' ) ))
 LIMIT 1 OFFSET 0")->fetchObject();
+}
+
+/**
+ * [get_five_star_results description]
+ * @param  [type] $nid      [description]
+ * @param  string $nodetype [description]
+ * @param  string $tag      [description]
+ * @return [type]           [description]
+ */
+function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
+  // $allordersid = get_all_sucess_orders_byservice($node->nid);
+  $allordersid = get_all_stared_orders($nodetype,$nid);
+  //对于每一个成功的订单的评价的平均值计算
+  foreach ($allordersid as $key => $order) {
+    // $order_node = node_load($order->nid);
+    // get all rate of this order!!! aveage!
+    $ids[] = $order->nid;
+  }
+  $votes_results = fivestar_get_votes_multiple('node', $ids,$tag);
+  //field_first_rate
+  // dpm($votes_results);
+  $vote_user = 0;
+  $vote_average = 0;
+  $vote_count = 0;
+  $count = 0;
+  foreach ($votes_results['node'] as $nid => $vote) {
+    if(isset($vote['user'])) $vote_user += (int)$vote['user']['value'];
+    if(isset($vote['average'])) $vote_average += (int)$vote['average']['value'];
+    if(isset($vote['count'])) $vote_count += (int)$vote['count']['value'];
+    $count++;
+  }
+  // dpm($vote_user/$count);
+  // dpm($vote_average/$count);
+  // dpm($vote_count);
+  $count *=20;
+  $first_rate = array('user'=>$vote_user/$count,
+    'count'=>$vote_count,
+    'average'=>$vote_average/$count,
+    );
+  dpm($first_rate);
+  return $first_rate;
+  // $node->content['#first_rate']= $first_rate;
+}
+
+
+function get_all_stared_orders($nodtype,$nid){
+  if($nodtype=='store'){
+    return db_query("SELECT node.title AS node_title, node.nid AS nid
+          FROM
+          {node} node
+          LEFT JOIN {field_data_field_from_service} field_data_field_from_service ON node.nid = field_data_field_from_service.entity_id AND (field_data_field_from_service.entity_type = 'node' AND field_data_field_from_service.deleted = '0')
+          LEFT JOIN {node} node_field_data_field_from_service ON field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service.nid
+          LEFT JOIN {og_membership} node_field_data_field_from_service__og_membership ON node_field_data_field_from_service.nid = node_field_data_field_from_service__og_membership.etid AND node_field_data_field_from_service__og_membership.entity_type = 'node'
+          LEFT JOIN {node} node_og_membership ON node_field_data_field_from_service__og_membership.gid = node_og_membership.nid
+          INNER JOIN {field_data_field_so_status} field_data_field_so_status ON node.nid = field_data_field_so_status.entity_id AND (field_data_field_so_status.entity_type = 'node' AND field_data_field_so_status.deleted = '0')
+          WHERE (( (node_og_membership.nid = '".$nid."' ) )AND(( (node.status = '1') AND (node.type IN  ('service_order')) AND (field_data_field_so_status.field_so_status_value IN  ('1', '2')) )))")->fetchAll();
+  }
+  if($nodtype=='service'){
+    return db_query("SELECT node.title AS node_title, node.nid AS nid
+      FROM
+      {node} node
+      LEFT JOIN {field_data_field_from_service} field_data_field_from_service ON node.nid = field_data_field_from_service.entity_id AND (field_data_field_from_service.entity_type = 'node' AND field_data_field_from_service.deleted = '0')
+      LEFT JOIN {node} node_field_data_field_from_service ON field_data_field_from_service.field_from_service_target_id = node_field_data_field_from_service.nid
+      INNER JOIN {field_data_field_so_status} field_data_field_so_status ON node.nid = field_data_field_so_status.entity_id AND (field_data_field_so_status.entity_type = 'node' AND field_data_field_so_status.deleted = '0')
+      WHERE (( (node_field_data_field_from_service.nid = '".$nid."' ) )AND(( (node.status = '1') AND (node.type IN  ('service_order')) AND (field_data_field_so_status.field_so_status_value IN  ('1', '2')) )))")->fetchAll();
+
+  }
 }
