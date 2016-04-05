@@ -158,6 +158,7 @@ function zdruerp_uninstall() {
  * Implements hook_init().
  */
 function zdruerp_init() {
+  if(user_is_anonymous()) return;
   $url = URL('',array('absolute'=>1));
   $sso_host = 'http://111.9.116.181:20160';
   $sso_logout_url = $sso_host.'/sso/api/logoutJs';
