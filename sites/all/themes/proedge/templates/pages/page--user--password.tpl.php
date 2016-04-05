@@ -10,18 +10,16 @@
 <!-- 主体 -->
 <div class="RePassword">
   <div id="logoBg">
-    <img src="http://wdev.camplus.cn:8003/sites/all/themes/proedge/images/login/logoBg.png" width="1920" height="739">
+    <img src="http://wdev.camplus.cn:8003/sites/all/themes/proedge/images/login/logoBg.jpg" width="1920" height="739">
   </div>
   <div class="RePasswordBody">
     <div id="auth_box" class="password">
       <div id="middle_part">
         <h2 class="title"><?php print $title; ?></h2>
-
         <?php print $messages; ?>
         
         <?php print render($page['content']); ?>
       </div>
-
       <div id="bottom_part">
         <!-- <div class="btn btn-warning login_link floatRight">
           <?php print l(t('Login'), 'user/login'); ?>
@@ -77,4 +75,3 @@
         </div>
     </div>
 </div>
-

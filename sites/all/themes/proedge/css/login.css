@@ -135,10 +135,9 @@
     height: 30px;
 }
 
-.loginBox .password_link a {
+.loginBox .password_link>a {
     float: right;
-    margin-right: -70px;
-    padding-top: 20px;
+    margin-top: -16px;
     padding-bottom: 20px;
     font-size: 10px;
     color: #999;

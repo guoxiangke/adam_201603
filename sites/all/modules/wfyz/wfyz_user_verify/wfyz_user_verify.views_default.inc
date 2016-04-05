@@ -199,6 +199,36 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  $translatables['subuser'] = array(
+    t('Master'),
+    t('子用户'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Subuser'),
+    t('- Choose an operation -'),
+    t('Name'),
+    t('E-mail'),
+    t('角色'),
+    t('Active'),
+    t('最后访问'),
+    t('Page'),
+    t('<div class="btn btn-primary">
+<a href="/admin/people/create">新增子用户</a>
+</div>'),
+    t('Entity Reference'),
+    t('All'),
+  );
   $export['subuser'] = $view;
 
   $view = new view();
@@ -220,6 +250,7 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'administer users';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
@@ -368,6 +399,7 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
   $handler->display->display_options['fields']['rid']['field'] = 'rid';
   $handler->display->display_options['fields']['rid']['label'] = '角色';
+  $handler->display->display_options['fields']['rid']['element_label_colon'] = FALSE;
   /* Field: User: Active */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'users';
@@ -448,17 +480,21 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['filters']['rid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
+    3 => 0,
+    4 => 0,
     6 => 0,
     5 => 0,
-    4 => 0,
+    8 => 0,
+    9 => 0,
     7 => 0,
-    3 => 0,
   );
+  $handler->display->display_options['filters']['rid']['reduce_duplicates'] = TRUE;
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid_1']['id'] = 'rid_1';
   $handler->display->display_options['filters']['rid_1']['table'] = 'users_roles';
   $handler->display->display_options['filters']['rid_1']['field'] = 'rid';
   $handler->display->display_options['filters']['rid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['rid_1']['reduce_duplicates'] = TRUE;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -469,6 +505,35 @@ function wfyz_user_verify_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-admin-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $translatables['user_mgt'] = array(
+    t('Master'),
+    t('用户管理'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('<a href="/admin/people/create" style="background: #b73939; color: #fff; padding: 10px; float: right; margin-bottom: 10px;">新增用户</a>'),
+    t('Profile'),
+    t('- Choose an operation -'),
+    t('Name'),
+    t('E-mail'),
+    t('角色'),
+    t('Active'),
+    t('创建日期'),
+    t('上次访问'),
+    t('实名认证'),
+    t('用户状态'),
+    t('Page'),
+  );
   $export['user_mgt'] = $view;
 
   return $export;

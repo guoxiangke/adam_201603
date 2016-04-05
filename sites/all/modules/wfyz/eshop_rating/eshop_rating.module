@@ -5,46 +5,29 @@
  * Hide average fivestar field from review edit/create form.
  */
 function eshop_rating_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'comment_node_service_order_form') {
+  if ($form_id == 'service_order_node_form') {
     // Hide average field, this field is calculated upon node_presave.
-    $form['field_overall_rating']['#access'] = FALSE;
-  }
-  if ($form_id == 'comment_node_product_display_form') {
-    // Hide average field, this field is calculated upon node_presave.
-    $form['field_overall_rating']['#access'] = FALSE;
+    $form['field_overall_rate']['#access'] = FALSE;
   }
 }
+
 /**
- * Implements hook_comment_presave().
+ * Implements hook_node_presave().
  *
  * Calculates average vote rating.
  */
-function eshop_rating_comment_presave($comment) {
-  $parent_node = node_load($comment->nid);
-  if ($parent_node->type == 'service_order') {
+function eshop_rating_node_presave($node) {
+  if ($node->type == 'service_order') {
     // Get values from 3 axis.
-    $first_rate   = entity_metadata_wrapper('comment', $comment)->field_first_rating->value();
-    $second_rate      = entity_metadata_wrapper('comment', $comment)->field_second_rating->value();
-    $third_rate    = entity_metadata_wrapper('comment', $comment)->field_third_rating->value();
+    $first_rate      = entity_metadata_wrapper('node', $node)->field_first_rate->value();
+    $second_rate      = entity_metadata_wrapper('node', $node)->field_second_rate->value();
+    $third_rate    = entity_metadata_wrapper('node', $node)->field_third_rate->value();
+
     // Calculate and set average axe.
-    $overall    = ($first_rate + $second_rate + $third_rate) / 3;
+    $overall      = ($first_rate + $second_rate + $third_rate) / 3;
     // @info: Can't use entity_metadata_wrapper, because '->set' not supported on this field.
     //entity_metadata_wrapper('node', $node)->field_review_votes_average->set($votes_average);
-    $comment->field_overall_rating['und'][0]['rating'] = $overall;
-  }
-  if ($parent_node->type == 'product_display') {
-    // Get values from 3 axis.
-    $first_rate      = entity_metadata_wrapper('comment', $comment)->field_first_rating->value();
-    $second_rate   = entity_metadata_wrapper('comment', $comment)->field_second_rating->value();
-    $third_rate  = entity_metadata_wrapper('comment', $comment)->field_third_rating->value();
-    // Calculate and set average axe.
-    $overall    = ($first_rate + $second_rate + $third_rate) / 3;
-    // @info: Can't use entity_metadata_wrapper, because '->set' not supported on this field.
-    //entity_metadata_wrapper('node', $node)->field_review_votes_average->set($votes_average);
-    $comment->field_overall_rating['und'][0]['rating'] = $overall;
+    $node->field_overall_rate['und'][0]['rating'] = $overall;  
   }
 }
-
-
-
 ?>
