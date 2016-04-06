@@ -285,10 +285,10 @@ function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
     if(isset($vote['count']['value'])) $vote_count += (int)$vote['count']['value'];
     $count++;
   }
- //  dpm($vote_user/$count);
-//   dpm($vote_average/$count);
-//   dpm($vote_count);
-  dpm($count);
+  // dpm($vote_user/$count);
+  // dpm($vote_average/$count);
+  // dpm($vote_count);
+  // dpm($count);
   $count *=20;
   $first_rate = array('user'=>(float)$vote_user/$count,
     'count'=>$vote_count,
