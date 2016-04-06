@@ -157,7 +157,7 @@ function uuke_alipay_for_entity($entity_id){
     "seller_email"    => variable_get('uuke_alipay_seller_email', ''),     //卖家邮箱，必填
   );
   //支付宝即时到账交易接口参数 end
-dpm($parameter);
+  // dpm($parameter);
   //支付宝纯担保交易接口
   if($service == 'create_partner_trade_by_buyer') {dpm('123');
     //商品数量
