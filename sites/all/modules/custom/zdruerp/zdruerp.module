@@ -274,7 +274,7 @@ function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
   }
   $votes_results = fivestar_get_votes_multiple('node', $ids,$tag);
   //field_first_rate
-   dpm($votes_results);
+  // dpm($votes_results);
   $vote_user = 0;
   $vote_average = 0;
   $vote_count = 0;

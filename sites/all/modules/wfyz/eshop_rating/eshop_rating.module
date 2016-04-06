@@ -16,7 +16,7 @@ function eshop_rating_form_alter(&$form, &$form_state, $form_id) {
  *
  * Calculates average vote rating.
  */
-function eshop_rating_node_presave($node) {
+function eshop_rating_node_update($node) {
   if ($node->type == 'service_order') {
     // Get values from 3 axis.
     $first_rate      = entity_metadata_wrapper('node', $node)->field_first_rate->value();

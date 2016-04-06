@@ -45,7 +45,7 @@
 
 		<div class="row margin-top-20">
     		<div class="col-lg-6 col-md-6 col-sm-12">
-				<?php //print render($content['field_overall_rate']); ?>
+				
         <div class="field-label">总体评分:</div>
         <div class="fivestar-static-item">
           <div class="form-item form-type-item">
@@ -70,7 +70,6 @@
         </div>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-12">
-				<?php //print render($content['field_first_rate']); ?>
 
         <div class="field-label">服务态度:</div>
         <div class="fivestar-static-item">
@@ -94,8 +93,8 @@
             </div>
           </div>
         </div>
-				<?php //print render($content['field_second_rate']); ?>
-        <div class="field-label">服务态度:</div>
+				
+        <div class="field-label">工作速度:</div>
         <div class="fivestar-static-item">
           <div class="form-item form-type-item">
             <div class="fivestar-oxygen">
@@ -117,8 +116,8 @@
             </div>
           </div>
         </div>
-				<?php //print render($content['field_third_rate']); ?>
-        <div class="field-label">服务态度:</div>
+				
+        <div class="field-label">完成质量:</div>
         <div class="fivestar-static-item">
           <div class="form-item form-type-item">
             <div class="fivestar-oxygen">
