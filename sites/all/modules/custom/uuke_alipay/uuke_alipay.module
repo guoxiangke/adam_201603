@@ -157,7 +157,7 @@ function uuke_alipay_for_entity($entity_id){
     "seller_email"    => variable_get('uuke_alipay_seller_email', ''),     //卖家邮箱，必填
   );
   //支付宝即时到账交易接口参数 end
-dpm($parameter);
+  // dpm($parameter);
   //支付宝纯担保交易接口
   if($service == 'create_partner_trade_by_buyer') {dpm('123');
     //商品数量
@@ -357,8 +357,8 @@ function uuke_alipay_for_node($product_node) {
 		$order_node->field_uuke_alipay_link[LANGUAGE_NONE][0]['value'] = $link;
 		node_save($order_node);
   }
-  dpm($link);
-  drupal_goto($link);
+  // dpm($link);
+  // drupal_goto($link);
   return '';
 }
 
@@ -866,51 +866,51 @@ function _uuke_alipay_return() {
     }
     entity_save($entity_type,$order_entity);
     // update order begin
-    $service_info = get_service_info_by_payment($entity_id);
+    // $service_info = get_service_info_by_payment($entity_id);
     // dpm($service_info);
-    $order_id = $service_info->field_payment_field_collection_item_nid;
-    $node = node_load($order_id);//get order order!
+    // $order_id = $service_info->field_payment_field_collection_item_nid;
+    // $node = node_load($order_id);//get order order!
     // dpm($node);
-    $count = 0;
-    if(count($node->field_payment[LANGUAGE_NONE]) ==1){//1cixing
-    	// 一次性付款成功，更新订单！
-    	$node->field_so_status[LANGUAGE_NONE][0]['value']=2;
-    	// $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
-    	node_save($node);
-      return 'Success！支付成功！谢谢！';
-    }else{
-    	//查看其他订单，第二个！第三个！
-      $count = 1;
-    	foreach ($node->field_payment[LANGUAGE_NONE] as $key => $value) {
-        $payment_entity = entity_load($entity_type, array($value['value']));
-        // if(!isset($payment_entity[$service_info->id])){
-        if($value['value']==$service_info->item_id)continue;
-          foreach ($payment_entity as $key => $value) {
-            // 0|未支付
-            // 1|已支付
-            // 2|确认完成
-            // 3|申请退款中
-            // 4|已退款
-            // 5|退款失败
-            // if(in_array($value->field_pay_status[LANGUAGE_NONE][0]['value'], array(1,2))) $count++;
-            if($value->field_pay_workflow[LANGUAGE_NONE][0]['value']==14) $count++;
-              // dpm($count);
-          }
-        // }
-    	}
+    // $count = 0;
+    // if(count($node->field_payment[LANGUAGE_NONE]) ==1){//1cixing
+    // 	// 一次性付款成功，更新订单！
+    // 	$node->field_so_status[LANGUAGE_NONE][0]['value']=2;
+    // 	// $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;
+    // 	node_save($node);
+    //   return 'Success！支付成功！谢谢！';
+    // }else{
+    // 	//查看其他订单，第二个！第三个！
+    //   $count = 1;
+    // 	foreach ($node->field_payment[LANGUAGE_NONE] as $key => $value) {
+    //     $payment_entity = entity_load($entity_type, array($value['value']));
+    //     // if(!isset($payment_entity[$service_info->id])){
+    //     if($value['value']==$service_info->item_id)continue;
+    //       foreach ($payment_entity as $key => $value) {
+    //         // 0|未支付
+    //         // 1|已支付
+    //         // 2|确认完成
+    //         // 3|申请退款中
+    //         // 4|已退款
+    //         // 5|退款失败
+    //         // if(in_array($value->field_pay_status[LANGUAGE_NONE][0]['value'], array(1,2))) $count++;
+    //         if($value->field_pay_workflow[LANGUAGE_NONE][0]['value']==14) $count++;
+    //           // dpm($count);
+    //       }
+    //     // }
+    // 	}
 
-      // if($count) {
-      // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//全部支付
-      $node->field_so_status[LANGUAGE_NONE][0]['value']=1;//部分支付
-      // }
-      if($count==count($node->field_payment[LANGUAGE_NONE])){
-        //付款成功！
-        $node->field_so_status[LANGUAGE_NONE][0]['value']=2;//交易成功
-        // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//全部支付
-        // dpm('交易成功?');
-      }
-      node_save($node);
-    }
+    //   // if($count) {
+    //   // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=1;//全部支付
+    //   $node->field_so_status[LANGUAGE_NONE][0]['value']=1;//部分支付
+    //   // }
+    //   if($count==count($node->field_payment[LANGUAGE_NONE])){
+    //     //付款成功！
+    //     $node->field_so_status[LANGUAGE_NONE][0]['value']=2;//交易成功 这里我应该设置成
+    //     // $node->field_so_pay_status[LANGUAGE_NONE][0]['value']=2;//全部支付
+    //     // dpm('交易成功?');
+    //   }
+    //   node_save($node);
+    // }
     // update order end
   }else {//认证不合格
     $output = t('您的交易信息是无效的，如果你使用的是已有的返回信息的话，那么交易已经成立，你可以查看订单历史。如果你是黑客的话，俺是守法的好公民，希望你能饶了我这个小店');

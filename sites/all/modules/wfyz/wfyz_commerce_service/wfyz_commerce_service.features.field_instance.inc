@@ -440,55 +440,6 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_first_rate'.
-  $field_instances['node-service-field_first_rate'] = array(
-    'bundle' => 'service',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_first_rate',
-    'label' => '服务态度',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'node-service-field_image'.
   $field_instances['node-service-field_image'] = array(
     'bundle' => 'service',
@@ -612,59 +563,6 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_overall_rate'.
-  $field_instances['node-service-field_overall_rate'] = array(
-    'bundle' => 'service',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_overall_rate',
-    'label' => '总体评分',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(
-        'widget' => array(
-          'fivestar_widget' => 'default',
-        ),
-      ),
-      'type' => 'exposed',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-service-field_price_range'.
   $field_instances['node-service-field_price_range'] = array(
     'bundle' => 'service',
@@ -784,55 +682,6 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service-field_second_rate'.
-  $field_instances['node-service-field_second_rate'] = array(
-    'bundle' => 'service',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_second_rate',
-    'label' => '工作速度',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 11,
-    ),
-  );
-
   // Exported field_instance: 'node-service-field_service_guarantee'.
   $field_instances['node-service-field_service_guarantee'] = array(
     'bundle' => 'service',
@@ -904,55 +753,6 @@ function wfyz_commerce_service_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-service-field_third_rate'.
-  $field_instances['node-service-field_third_rate'] = array(
-    'bundle' => 'service',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_third_rate',
-    'label' => '完成质量',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 12,
     ),
   );
 
@@ -1221,7 +1021,11 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(),
+      'settings' => array(
+        'widget' => array(
+          'fivestar_widget' => 'default',
+        ),
+      ),
       'type' => 'exposed',
       'weight' => 15,
     ),
@@ -1399,7 +1203,7 @@ function wfyz_commerce_service_field_default_field_instances() {
           'style' => 'average',
           'text' => 'average',
           'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
+            'fivestar_widget' => 'default',
           ),
         ),
         'type' => 'fivestar_formatter_default',
@@ -1528,7 +1332,11 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(),
+      'settings' => array(
+        'widget' => array(
+          'fivestar_widget' => 'default',
+        ),
+      ),
       'type' => 'exposed',
       'weight' => 16,
     ),
@@ -1662,7 +1470,11 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(),
+      'settings' => array(
+        'widget' => array(
+          'fivestar_widget' => 'default',
+        ),
+      ),
       'type' => 'exposed',
       'weight' => 17,
     ),
@@ -1999,55 +1811,6 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-store-field_first_rate'.
-  $field_instances['node-store-field_first_rate'] = array(
-    'bundle' => 'store',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_first_rate',
-    'label' => '服务态度',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 34,
-    ),
-  );
-
   // Exported field_instance: 'node-store-field_image_logo'.
   $field_instances['node-store-field_image_logo'] = array(
     'bundle' => 'store',
@@ -2102,104 +1865,6 @@ function wfyz_commerce_service_field_default_field_instances() {
       ),
       'type' => 'dragndrop_upload_image',
       'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-store-field_overall_rate'.
-  $field_instances['node-store-field_overall_rate'] = array(
-    'bundle' => 'store',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_overall_rate',
-    'label' => '总体评分',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-store-field_second_rate'.
-  $field_instances['node-store-field_second_rate'] = array(
-    'bundle' => 'store',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_second_rate',
-    'label' => '工作速度',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 36,
     ),
   );
 
@@ -2334,55 +1999,6 @@ function wfyz_commerce_service_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-store-field_third_rate'.
-  $field_instances['node-store-field_third_rate'] = array(
-    'bundle' => 'store',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/fivestar/widgets/oxygen/oxygen.css',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_third_rate',
-    'label' => '完成质量',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 0,
-      'allow_revote' => 0,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(),
-      'type' => 'exposed',
-      'weight' => 38,
     ),
   );
 
