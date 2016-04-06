@@ -21,28 +21,7 @@
 <div class="row margin-top-20">
           <div class="col-lg-6 col-md-6 col-sm-12">
             <!-- 总评分 -->    
-            <div class="field-label">总体评分:</div>
-            <div class="fivestar-static-item">
-                <div class="form-item form-type-item">
-                    <div class="fivestar-oxygen">
-                      <div class="fivestar-widget-static fivestar-widget-static-vote fivestar-widget-static-5 clearfix">
-                        <?php $rate=get_five_star_results($node->nid,$node->type,'overall_rate');
-                          $i=1; while ($i <= 5) { ?>
-                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=$rate['average'])?'on':'off' ?>"></span></div>
-                        <?
-                            $i++;
-                          }
-                        ?>
-                      </div>
-                    </div>
-
-                    <div class="description">
-                      <div class="fivestar-summary fivestar-summary-average-count">
-                      <?php echo $rate['count']?('Average: <span>'.$rate['average'].'</span></span> <span class="total-votes">(<span>'.$rate['count'].'</span> votes)'):'<span class="empty">'.t('No votes yet').'</span>';?></div>
-                    </div>
-
-                </div>
-            </div>
+            
             <!-- end 总评分 -->
           </div>
 
