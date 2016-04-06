@@ -49,7 +49,7 @@
             <!-- end 总评分 -->
           </div>
 
-          <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
             <!-- 服务态度 -->
             <div class="field-label">服务态度:</div>
             <div class="fivestar-static-item">
