@@ -366,6 +366,7 @@ function uuke_alipay_for_node($product_node) {
  * Implements hook_entity_view().
  */
 function uuke_alipay_entity_view($entity, $type, $view_mode, $langcode) {
+  dpm($entity);
   // $view_mode == 'full'
   // if($type == 'field_collection_item'){
   //   if(isset($entity->field_pay_status[LANGUAGE_NONE])&&!$entity->field_pay_status[LANGUAGE_NONE][0]['value']) {
@@ -838,8 +839,9 @@ function _uuke_alipay_return() {
     // dpm($_GET);
     $order_entity->field_alipay_trade_no[LANGUAGE_NONE][0]['value'] = $_GET['trade_no'];
     $order_entity->field_alipay_return[LANGUAGE_NONE][0]['value'] = serialize($_GET);
-
-    $old_status = $order_entity->field_alipay_trade_status[LANGUAGE_NONE][0]['value'];
+    $old_status = 'WAIT_BUYER_PAY';
+    if(isset($order_entity->field_alipay_trade_status[LANGUAGE_NONE]))
+      $old_status = $order_entity->field_alipay_trade_status[LANGUAGE_NONE][0]['value'];
     if($old_status != uuke_alipay_trade_status_to_chinese($_GET['trade_status'])) {
     $order_entity->field_alipay_trade_status[LANGUAGE_NONE][0]['value'] = uuke_alipay_trade_status_to_chinese($_GET['trade_status']);
     watchdog('uuke_alipay_notify',$out_trade_no.'交易状态改变 '.$old_status.'=>'.$_GET['trade_status']);
