@@ -267,11 +267,13 @@ function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
   // $allordersid = get_all_sucess_orders_byservice($node->nid);
   $allordersid = get_all_stared_orders($nodetype,$nid);
   //对于每一个成功的订单的评价的平均值计算
+  if(count($allordersid))
   foreach ($allordersid as $key => $order) {
     // $order_node = node_load($order->nid);
     // get all rate of this order!!! aveage!
     $ids[] = $order->nid;
   }
+  if(isset($ids))
   $votes_results = fivestar_get_votes_multiple('node', $ids,$tag);
   //field_first_rate
   // dpm($votes_results);
@@ -279,6 +281,7 @@ function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
   $vote_average = 0;
   $vote_count = 0;
   $count = 0;
+  if($votes_results['node'])
   foreach ($votes_results['node'] as $nid => $vote) {
     if(isset($vote['user']['value'])) $vote_user += (int)$vote['user']['value'];
     if(isset($vote['average']['value'])) $vote_average += (int)$vote['average']['value'];
@@ -290,13 +293,10 @@ function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
   // dpm($vote_count);
   // dpm($count);
   $count *=20;
-  $first_rate = array('user'=>(float)$vote_user/$count,
-    'count'=>$vote_count,
-    'average'=>(float)$vote_average/$count,
-    );
-  //dpm($first_rate);
-  return $first_rate;
-  // $node->content['#first_rate']= $first_rate;
+  $return['average'] = (float)$vote_average/$count;
+  $return['user'] = (float)$vote_user/$count;
+  $return['count'] = $vote_count;
+  return $return;
 }
 
 
