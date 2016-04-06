@@ -274,26 +274,27 @@ function get_five_star_results($nid,$nodetype='service',$tag='first_rate') {
   }
   $votes_results = fivestar_get_votes_multiple('node', $ids,$tag);
   //field_first_rate
-  // dpm($votes_results);
+   dpm($votes_results);
   $vote_user = 0;
   $vote_average = 0;
   $vote_count = 0;
   $count = 0;
   foreach ($votes_results['node'] as $nid => $vote) {
-    if(isset($vote['user'])) $vote_user += (int)$vote['user']['value'];
-    if(isset($vote['average'])) $vote_average += (int)$vote['average']['value'];
-    if(isset($vote['count'])) $vote_count += (int)$vote['count']['value'];
+    if(isset($vote['user']['value'])) $vote_user += (int)$vote['user']['value'];
+    if(isset($vote['average']['value'])) $vote_average += (int)$vote['average']['value'];
+    if(isset($vote['count']['value'])) $vote_count += (int)$vote['count']['value'];
     $count++;
   }
-  // dpm($vote_user/$count);
-  // dpm($vote_average/$count);
-  // dpm($vote_count);
+ //  dpm($vote_user/$count);
+//   dpm($vote_average/$count);
+//   dpm($vote_count);
+  dpm($count);
   $count *=20;
-  $first_rate = array('user'=>$vote_user/$count,
+  $first_rate = array('user'=>(float)$vote_user/$count,
     'count'=>$vote_count,
-    'average'=>$vote_average/$count,
+    'average'=>(float)$vote_average/$count,
     );
-  dpm($first_rate);
+  //dpm($first_rate);
   return $first_rate;
   // $node->content['#first_rate']= $first_rate;
 }

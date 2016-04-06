@@ -32,8 +32,6 @@
             <p class="title"><?php print $fields['title']->content; ?></p>
             <p><?php print $fields['created']->content; ?></p>
             <p><?php print $fields['field_price_range']->content; ?></p>
-
-            <div class="grid-edit"><?php print $fields['edit_node']->content; ?></div>
             <div class="clear"></div>              
         </div>
     </div>
