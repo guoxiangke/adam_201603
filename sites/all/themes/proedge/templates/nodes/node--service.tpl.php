@@ -44,8 +44,8 @@
 
 		<div class="row margin-top-20">
           <div class="col-lg-6 col-md-6 col-sm-12">
-            <!-- 总评分 -->		
-            
+            <!-- 总评分 -->
+
             <!-- end 总评分 -->
           </div>
 
@@ -60,7 +60,7 @@
                             $rate=get_five_star_results($node->nid,$node->type,'first_rate');
                             $i=1; while ($i <= 5) {
                           ?>
-                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=$rate['average'])?'on':'off' ?>"></span>
+                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=round($rate['average']))?'on':'off' ?>"></span>
                            </div>
                           <?
                               $i++;
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <!-- end 服务态度 -->
-            <!-- 工作速度 -->               				
+            <!-- 工作速度 -->
             <div class="field-label">工作速度:</div>
             <div class="fivestar-static-item">
                 <div class="form-item form-type-item">
@@ -87,7 +87,7 @@
                           $rate=get_five_star_results($node->nid,$node->type,'second_rate');
                           $i=1; while ($i <= 5) {
                         ?>
-                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=$rate['average'])?'on':'off' ?>"></span>
+                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=round($rate['average']))?'on':'off' ?>"></span>
                            </div>
                         <?
                             $i++;
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <!-- end 服务态度 -->
-            <!-- 完成质量 -->                				
+            <!-- 完成质量 -->
             <div class="field-label">完成质量:</div>
             <div class="fivestar-static-item">
                 <div class="form-item form-type-item">
@@ -114,7 +114,7 @@
                           $rate=get_five_star_results($node->nid,$node->type,'third_rate');
                           $i=1; while ($i <= 5) {
                         ?>
-                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=$rate['average'])?'on':'off' ?>"></span>
+                           <div class="star star-<?php echo $i;?>"><span class="<? echo ($i<=round($rate['average']))?'on':'off' ?>"></span>
                            </div>
                         <?
                             $i++;
