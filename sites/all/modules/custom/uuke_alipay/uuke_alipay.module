@@ -366,7 +366,7 @@ function uuke_alipay_for_node($product_node) {
  * Implements hook_entity_view().
  */
 function uuke_alipay_entity_view($entity, $type, $view_mode, $langcode) {
-  dpm($entity);
+  // dpm($entity);
   // $view_mode == 'full'
   // if($type == 'field_collection_item'){
   //   if(isset($entity->field_pay_status[LANGUAGE_NONE])&&!$entity->field_pay_status[LANGUAGE_NONE][0]['value']) {
