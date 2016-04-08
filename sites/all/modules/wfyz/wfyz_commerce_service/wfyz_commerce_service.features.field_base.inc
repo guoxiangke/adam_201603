@@ -178,24 +178,6 @@ function wfyz_commerce_service_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_overall_rate'.
-  $field_bases['field_overall_rate'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_overall_rate',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'fivestar',
-    'settings' => array(
-      'axis' => 'overall',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'fivestar',
-  );
-
   // Exported field_base: 'field_pay_amount'.
   $field_bases['field_pay_amount'] = array(
     'active' => 1,

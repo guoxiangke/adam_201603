@@ -5,6 +5,8 @@
  */
 
 /**
+ * well new add
+ * well add second time
  * Implements hook_html_head_alter().
  */
 function proedge_html_head_alter(&$head_elements) {
