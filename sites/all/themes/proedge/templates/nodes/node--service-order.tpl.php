@@ -21,7 +21,6 @@
 //field_first_rate
 //field_second_rate
 //field_third_rate
-//field_overall_rate
 //field_body
 
 //flag_cancel_sales_order
@@ -89,7 +88,6 @@ print drupal_render($field_pay_status);
 
 <?php if ($content['field_so_status']['#items']['0']['value']=='1' || $content['field_so_status']['#items']['0']['value']=='2'): ?>
 <div class="well margin-top-20">
-<?php print render($content['field_overall_rate']); ?>
 <?php print render($content['field_first_rate']); ?>
 <?php print render($content['field_second_rate']); ?>
 <?php print render($content['field_third_rate']); ?>

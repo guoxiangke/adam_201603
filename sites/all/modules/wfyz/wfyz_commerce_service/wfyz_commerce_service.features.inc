@@ -42,9 +42,9 @@ function wfyz_commerce_service_default_Workflow() {
     "typeMap" : [],
     "wid_original" : "3",
     "system_roles" : {
-      "-1" : "(author)",
-      "1" : "anonymous user",
-      "2" : "authenticated user",
+      "-1" : "(\\u4f5c\\u8005)",
+      "1" : "\\u533f\\u540d\\u7528\\u6237",
+      "2" : "\\u6ce8\\u518c\\u7528\\u6237",
       "3" : "api user",
       "4" : "\\u7ba1\\u7406\\u5458",
       "6" : "\\u4f01\\u4e1a\\u7528\\u6237",

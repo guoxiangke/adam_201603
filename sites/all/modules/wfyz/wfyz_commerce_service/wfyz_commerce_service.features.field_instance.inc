@@ -1188,59 +1188,6 @@ function wfyz_commerce_service_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-service_order-field_overall_rate'.
-  $field_instances['node-service_order-field_overall_rate'] = array(
-    'bundle' => 'service_order',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'fivestar',
-        'settings' => array(
-          'expose' => 0,
-          'style' => 'average',
-          'text' => 'average',
-          'widget' => array(
-            'fivestar_widget' => 'default',
-          ),
-        ),
-        'type' => 'fivestar_formatter_default',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_overall_rate',
-    'label' => '总体评分',
-    'required' => 0,
-    'settings' => array(
-      'allow_clear' => 0,
-      'allow_ownvote' => 1,
-      'allow_revote' => 1,
-      'stars' => 5,
-      'target' => 'none',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'fivestar',
-      'settings' => array(
-        'widget' => array(
-          'fivestar_widget' => 'default',
-        ),
-      ),
-      'type' => 'exposed',
-      'weight' => 14,
-    ),
-  );
-
   // Exported field_instance: 'node-service_order-field_payment'.
   $field_instances['node-service_order-field_payment'] = array(
     'bundle' => 'service_order',
@@ -1332,11 +1279,7 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(
-        'widget' => array(
-          'fivestar_widget' => 'default',
-        ),
-      ),
+      'settings' => array(),
       'type' => 'exposed',
       'weight' => 16,
     ),
@@ -1470,11 +1413,7 @@ function wfyz_commerce_service_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'fivestar',
-      'settings' => array(
-        'widget' => array(
-          'fivestar_widget' => 'default',
-        ),
-      ),
+      'settings' => array(),
       'type' => 'exposed',
       'weight' => 17,
     ),
@@ -2079,7 +2018,6 @@ function wfyz_commerce_service_field_default_field_instances() {
   t('店铺Logo');
   t('店铺横额');
   t('店铺管理用户');
-  t('总体评分');
   t('您希望用多长的时间来完成这个需求，您可以在截稿后开始选稿');
   t('您需要何时完成?');
   t('支付宝交易号');

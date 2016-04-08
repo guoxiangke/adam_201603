@@ -9,6 +9,7 @@ stylesheets[all][] = css/bootstrap.min.css
 stylesheets[all][] = css/bootstrap.css
 stylesheets[all][] = css/home.css
 stylesheets[all][] = css/custom.css
+stylesheets[all][] = css/well.css
 
 scripts[] = js/proedge.js
 scripts[] = js/bootstrap.min.js
